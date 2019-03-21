@@ -1,0 +1,119 @@
+/**
+ * COLORS
+ */
+/**
+ * PADDING 
+ */
+/*
+ * Breakpoint Mixins
+ * see: freeCodeCamp article: "The 100% correct way to do CSS breakpoints"
+ *
+ */
+@font-face {
+  font-family: 'EB Garamond';
+  src: url("../assets/fonts/EB_Garamond/EBGaramond-SemiBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Cantarell';
+  src: url("../assets/fonts/Cantarell/Cantarell-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: #f2f2f2; }
+
+body,
+button,
+input {
+  font-family: 'Cantarell', sans-serif;
+  color: #3a3b40; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'EB Garamond', serif;
+  color: #222326; }
+
+h1, h2, h3, h4, h5, h6,
+p,
+button,
+a,
+input,
+span {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0; }
+
+h1 {
+  font-size: 48px; }
+
+h2 {
+  font-size: 48px; }
+
+h3 {
+  font-size: 24px; }
+
+p {
+  font-size: 24px; }
+  p.secondary-text {
+    font-size: 18px; }
+
+a {
+  text-decoration: none; }
+
+/**
+ * class applied to keywords displayed below each application name
+ */
+.app-keywords {
+  font-size: 15px; }
+
+/**
+ * TABLET STYLES
+ */
+@media (min-width: 600px) {
+  h1 {
+    font-size: 64px; }
+  h2 {
+    font-size: 64px; }
+  h3 {
+    font-size: 30px; }
+  .app-keywords {
+    font-size: 18px; } }
+
+/**
+ * DESKTOP STYLES
+ */
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 96px; }
+  h2 {
+    font-size: 72px; }
+  p.secondary-text {
+    font-size: 20px; }
+  .app-keywords {
+    font-size: 20px; } }
+
+/**
+ * PAGE SECTIONS
+ */
+#intro-section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 84px 16px 0; }
+  #intro-section h1 {
+    margin-bottom: 36px; }
+  #intro-section h1,
+  #intro-section p {
+    display: flex;
+    flex-direction: column; }

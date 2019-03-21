@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $off-white;
+}
+
+body,
+button,
+input {
+    font-family: 'Cantarell', sans-serif;
+    color: $dark-grey;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'EB Garamond', serif;
+    color: $black;
+}
+
+h1, h2, h3, h4, h5, h6,
+p,
+button,
+a,
+input,
+span {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 24px;
+
+    &.secondary-text {
+        font-size: 18px;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+/**
+ * class applied to keywords displayed below each application name
+ */
+.app-keywords {
+    font-size: 15px;
+}
+
+/**
+ * TABLET STYLES
+ */
+
+@include for-tablet-portrait-up {
+
+    h1 {
+        font-size: 64px;
+    }
+
+    h2 {
+        font-size: 64px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    .app-keywords {
+        font-size: 18px;
+    }
+
+}
+
+/**
+ * DESKTOP STYLES
+ */
+
+@include for-desktop-up {
+
+    h1 {
+        font-size: 96px;
+    }
+
+    h2 {
+        font-size: 72px;
+    }
+
+    p.secondary-text {
+        font-size: 20px;
+    }
+
+    .app-keywords {
+        font-size: 20px;
+    }
+}
