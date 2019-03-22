@@ -20,29 +20,41 @@ class RouletteSection extends React.Component {
 
             <div id="roulette-section">
                  
-                <SectionTitle
-                    title="Roulette"
-                    keywords={APP_KEYWORDS}>
-                </SectionTitle>
+                <div className="primary">
+                    <SectionTitle
+                        title="Roulette"
+                        keywords={APP_KEYWORDS}>
+                    </SectionTitle>
 
-                <p className="app-description">
-                    <span>
-                        Create and export 
-                    </span>
-                    <span>
-                        magnificent designs with this 
-                    </span>
-                    <span>
-                        roulette drawing tool for 
-                    </span>
-                    <span>
-                        desktop. 
-                    </span>
-                </p>
+                    <p className="app-description">
+                        <span>
+                            Create and export 
+                        </span>
+                        <span>
+                            magnificent designs with this 
+                        </span>
+                        <span>
+                            roulette drawing tool for 
+                        </span>
+                        <span>
+                            desktop. 
+                        </span>
+                    </p>
 
-                <AppLink
-                    title="create"
-                    linkType={APP_LINK_TYPE.clear} />
+                    <AppLink
+                        title="create"
+                        linkType={APP_LINK_TYPE.clear} />
+                </div>
+
+                <div className="image-cards">
+                     
+                    <div className="image-card">
+                         
+                    </div>
+                    <div className="image-card">
+                         
+                    </div>
+                </div>
             </div>
         );
     }

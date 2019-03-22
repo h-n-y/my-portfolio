@@ -1,4 +1,43 @@
 #roulette-section {
     padding-left: $page-side-padding--mobile;
     padding-right: $page-side-padding--mobile;
+    padding-bottom: 64px;
+
+    .app-description {
+        margin-bottom: 24px;
+    }
+
+    .image-cards {
+        height: 286px;
+        margin-top: 24px;
+        position: relative;
+
+    }
+
+    .image-card {
+        position: absolute;
+    }
+
+    .image-card:nth-child(1) {
+        top: 106px;
+        left: 0;
+        width: 216px;
+        height: 150px;
+        background-color: $light-grey;
+        z-index: 50;
+    }
+
+
+    .image-card:nth-child(2) {
+        top: 0;
+        left: 90px;
+        width: 218px;
+        height: 286px;
+        background-color: $black;
+        z-index: 49;
+    }
+
+    /**
+     * TODO: use a function or for loop to set z indices of cards?
+     */
 }
