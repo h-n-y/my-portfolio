@@ -30,7 +30,9 @@ p,
 button,
 a,
 input,
-span {
+span,
+ul,
+li {
     margin: 0;
     padding: 0;
     background-color: transparent;
@@ -60,6 +62,16 @@ p {
 
 a {
     text-decoration: none;
+}
+
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+button,
+a {
+    cursor: pointer;
 }
 
 /**

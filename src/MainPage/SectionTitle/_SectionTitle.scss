@@ -1,0 +1,22 @@
+.section-title {
+
+}
+
+.title-keyword-divider {
+    width: 66px;
+    height: 2px;
+    background-color: $light-grey;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.app-keywords {
+    display: flex;
+    align-items: baseline;
+    color: $light-grey;
+    font-weight: bold;
+
+    li:not(:last-child) {
+        margin-right: 4px;
+    }
+}

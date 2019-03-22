@@ -8,4 +8,34 @@
  */
 
 @import '../MainPage/IntroSection/IntroSection';
+@import '../MainPage/RouletteSection/RouletteSection';
+@import '../MainPage/SectionTitle/SectionTitle';
 
+@import '../MainPage/AppLink/AppLink';
+
+/**
+ * GLOBAL STYLES
+ */
+
+.transparent {
+    opacity: 0.4;
+}
+
+
+/*
+ * Assigned to the imperative, descriptive text that follows the title
+ * and keywords of each app section.
+ */
+.app-description {
+
+    /* vertical separation between app description and title/keywords */
+    margin-top: 36px;
+
+    span {
+        display: inline-block;
+    }
+
+    span:not(:last-child) {
+        margin-right: 4px;
+    }
+}

@@ -8,11 +8,11 @@ class IntroSection extends React.Component {
             <section id="intro-section">
                 <h1>
                     <span> Hi, </span> 
-                    <span> I'm Hans.  </span>
+                    <span> I&apos;m Hans.  </span>
                 </h1> 
                 <p>
                     <span>
-                        I'm a growing 
+                        I&apos;m a growing 
                     </span> 
                     <span>
                         <strong> front-end </strong> and <strong> iOS </strong> developer.
