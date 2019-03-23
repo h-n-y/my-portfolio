@@ -1,0 +1,32 @@
+#trick-or-treat-section {
+    padding: 48px $page-side-padding--mobile 64px;
+    background-color: $black;
+    color: $off-white;
+
+    .app-description,
+    .udacity-credit {
+        text-align: center;
+    }
+
+    .udacity-credit {
+        font-size: 18px;
+        color: $light-grey;
+        line-height: 1.6;
+        margin-top: 16px;
+    }
+
+    a {
+        color: white;
+    }
+
+    /**
+     * add spacing around links to separate words
+     */
+    a {
+        margin-left: 4px;
+    }
+
+    a.udacity-fed-link {
+        margin-right: 4px;
+    }
+}

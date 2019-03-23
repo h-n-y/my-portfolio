@@ -1,11 +1,11 @@
 import React from 'react';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
-import AppLink from '../AppLink/AppLink';
+import AppLink from '../../AppLink/AppLink';
 
 import {
     APP_LINK_TYPE,
-} from '../../constants/constants';
+} from '../../../constants/constants';
 
 const APP_KEYWORDS = [
     'React',
@@ -37,7 +37,7 @@ class RouletteSection extends React.Component {
                             roulette drawing tool for 
                         </span>
                         <span>
-                            desktop. 
+                            desktop.
                         </span>
                     </p>
 

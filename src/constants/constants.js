@@ -17,3 +17,9 @@ export const APP_LINK_TYPE = {
      */
     simple: 'simple',
 };
+
+export const SECTION_TITLE_POSITION = {
+    left: 'left',
+    center: 'center',
+    right: 'right',
+};

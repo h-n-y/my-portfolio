@@ -1,8 +1,8 @@
 import React from 'react';
-import PT from 'prop-types';
 
-import IntroSection from './IntroSection/IntroSection';
-import RouletteSection from './RouletteSection/RouletteSection';
+import IntroSection from './sections/IntroSection/IntroSection';
+import RouletteSection from './sections/RouletteSection/RouletteSection';
+import TrickOrTreatSection from './sections/TrickOrTreatSection/TrickOrTreatSection';
 
 class MainPage extends React.Component {
 
@@ -12,6 +12,7 @@ class MainPage extends React.Component {
                      
                 <IntroSection />
                 <RouletteSection />
+                <TrickOrTreatSection />
             </main>
         );
     }

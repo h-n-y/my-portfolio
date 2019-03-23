@@ -1,5 +1,27 @@
 .section-title {
+    display: flex;
+    flex-direction: column;
+}
 
+/**
+ * Title position styles
+ */
+
+.section-title.align-center {
+    align-items: center;
+}
+
+.section-title.align-right {
+    align-items: flex-end;
+}
+
+/**
+ * styles for title placed over a dark background:
+ */
+
+.section-title.dark-background .title {
+
+    color: $off-white;
 }
 
 .title-keyword-divider {
