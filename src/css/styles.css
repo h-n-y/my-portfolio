@@ -187,6 +187,10 @@ a {
   #melody-section .app-description {
     text-align: right; }
 
+#oxo-section {
+  padding: 48px 16px 64px;
+  background-color: white; }
+
 .section-title {
   display: flex;
   flex-direction: column; }
