@@ -180,6 +180,13 @@ a {
   #trick-or-treat-section a.udacity-fed-link {
     margin-right: 4px; }
 
+#melody-section {
+  padding: 48px 16px 64px;
+  background-color: #3a3b40;
+  background-color: white; }
+  #melody-section .app-description {
+    text-align: right; }
+
 .section-title {
   display: flex;
   flex-direction: column; }
