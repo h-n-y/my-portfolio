@@ -5,6 +5,7 @@ import RouletteSection from './sections/RouletteSection/RouletteSection';
 import TrickOrTreatSection from './sections/TrickOrTreatSection/TrickOrTreatSection';
 import MelodySection from './sections/MelodySection/MelodySection';
 import OXOSection from './sections/OXOSection/OXOSection';
+import FooterSection from './sections/FooterSection/FooterSection';
 
 class MainPage extends React.Component {
 
@@ -17,6 +18,7 @@ class MainPage extends React.Component {
                 <TrickOrTreatSection />
                 <MelodySection />
                 <OXOSection />
+                <FooterSection />
             </main>
         );
     }

@@ -191,6 +191,24 @@ a {
   padding: 48px 16px 64px;
   background-color: white; }
 
+#footer-section {
+  padding: 48px 16px 64px;
+  background-color: #74e0d4;
+  color: white;
+  /**
+     * email link
+     */ }
+  #footer-section p:first-of-type {
+    margin-bottom: 36px; }
+  #footer-section a {
+    margin: 36px auto 0;
+    display: block;
+    width: max-content;
+    font-size: 24px;
+    color: white; }
+    #footer-section a span {
+      color: #219486; }
+
 .section-title {
   display: flex;
   flex-direction: column; }
