@@ -2,3 +2,46 @@
     padding: 48px $page-side-padding--mobile 64px;
     background-color: white;
 }
+
+#oxo-screenshot-wrapper {
+    margin-top: 36px;
+    margin-bottom: 36px;
+
+    img {
+        opacity: 0;
+        will-change: transform;
+        transition: opacity 0.3s ease-out;
+
+        /** make image span the full width of the screen */
+        margin-left: -$page-side-padding--mobile;
+        margin-right: -$page-side-padding--mobile;
+    }
+
+    img.tablet,
+    img.desktop {
+        display: none;
+    }
+
+    &.img-loaded img {
+        opacity: 1;
+    }
+}
+
+/**
+ * this styling makes the embedded YouTube video responsive
+ */
+#oxo-video-wrapper {
+    height: 0;
+    max-width: 1280px;
+    padding-top: 25px;
+    padding-bottom: 50.25%; /* 16 : 9 ratio */
+    position: relative;
+
+    iframe {
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}

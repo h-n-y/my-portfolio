@@ -191,6 +191,39 @@ a {
   padding: 48px 16px 64px;
   background-color: white; }
 
+#oxo-screenshot-wrapper {
+  margin-top: 36px;
+  margin-bottom: 36px; }
+  #oxo-screenshot-wrapper img {
+    opacity: 0;
+    will-change: transform;
+    transition: opacity 0.3s ease-out;
+    /** make image span the full width of the screen */
+    margin-left: -16px;
+    margin-right: -16px; }
+  #oxo-screenshot-wrapper img.tablet,
+  #oxo-screenshot-wrapper img.desktop {
+    display: none; }
+  #oxo-screenshot-wrapper.img-loaded img {
+    opacity: 1; }
+
+/**
+ * this styling makes the embedded YouTube video responsive
+ */
+#oxo-video-wrapper {
+  height: 0;
+  max-width: 1280px;
+  padding-top: 25px;
+  padding-bottom: 50.25%;
+  /* 16 : 9 ratio */
+  position: relative; }
+  #oxo-video-wrapper iframe {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0; }
+
 #footer-section {
   padding: 48px 16px 64px;
   background-color: #74e0d4;
