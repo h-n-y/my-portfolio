@@ -4,9 +4,10 @@
 @import './normalize.scss';
 
 /**
- * PAGE SECTIONS
+ * MAIN PAGE
  */
 
+@import '../MainPage/MainPage';
 @import '../MainPage/sections/IntroSection/IntroSection';
 @import '../MainPage/sections/RouletteSection/RouletteSection';
 @import '../MainPage/sections/TrickOrTreatSection/TrickOrTreatSection';

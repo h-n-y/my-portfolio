@@ -1,2 +1,6 @@
+** General **
+- optimize images
+
 ** OXO Section **
 - set the screenshot image src according to the viewport width?
+- set screenshot image width to calc(100% + 2 * padding)

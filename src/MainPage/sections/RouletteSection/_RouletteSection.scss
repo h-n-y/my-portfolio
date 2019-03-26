@@ -1,7 +1,10 @@
 #roulette-section {
+    position: relative;
     padding-left: $page-side-padding--mobile;
     padding-right: $page-side-padding--mobile;
     padding-bottom: 64px;
+
+    
 
     .app-description {
         margin-bottom: 24px;
@@ -16,6 +19,11 @@
 
     .image-card {
         position: absolute;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+        }
     }
 
     .image-card:nth-child(1) {
@@ -23,21 +31,39 @@
         left: 0;
         width: 216px;
         height: 150px;
-        background-color: $light-grey;
+        background-color: $cream;
         z-index: 50;
     }
 
 
     .image-card:nth-child(2) {
         top: 0;
-        left: 90px;
+        left: 110px;
         width: 218px;
         height: 286px;
         background-color: $black;
         z-index: 49;
+
+        img {
+            top: -140px;
+        }
     }
+
 
     /**
      * TODO: use a function or for loop to set z indices of cards?
      */
+}
+
+/**
+ * desaturated roulette background image
+ */
+#roulette-bg-design-wrapper {
+    position: absolute;
+    bottom: calc(100% - 337px);
+    left: 40px;
+    transform: scale(0.8);
+
+    /* keep this background image below text that may appear above it. */
+    z-index: -1;
 }
