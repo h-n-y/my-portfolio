@@ -1,0 +1,2 @@
+** OXO Section **
+- set the screenshot image src according to the viewport width?
