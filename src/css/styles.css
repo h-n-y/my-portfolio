@@ -142,8 +142,8 @@ a {
 @media (min-width: 600px) {
   #intro-section {
     min-height: 768px;
-    padding-left: 34px;
-    padding-right: 34px;
+    padding-left: 32px;
+    padding-right: 32px;
     display: flex;
     justify-content: space-between;
     /**
@@ -154,7 +154,15 @@ a {
       flex-shrink: 0; }
   #roulette-design-wrapper {
     display: block;
-    transform: translateY(-230px); } }
+    transform: translateY(-80px); } }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+@media (min-width: 900px) {
+  #intro-section {
+    padding-left: 48px;
+    padding-right: 48px; } }
 
 #roulette-section {
   position: relative;
@@ -208,8 +216,8 @@ a {
  */
 @media (min-width: 600px) {
   #roulette-section {
-    padding-left: 34px;
-    padding-right: 34px;
+    padding-left: 32px;
+    padding-right: 32px;
     /**
          * Horizontal Layout:
          * Left: text
@@ -229,6 +237,24 @@ a {
      */
   #roulette-bg-design-wrapper {
     display: none; } }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+@media (min-width: 900px) {
+  #roulette-section {
+    padding-left: 48px;
+    padding-right: 48px;
+    /**
+         * make image cards larger 
+         */ }
+    #roulette-section .image-card:nth-child(1) {
+      width: 350px;
+      height: 200px; }
+    #roulette-section .image-card:nth-child(2) {
+      width: 280px;
+      height: 390px;
+      top: -50px; } }
 
 #trick-or-treat-section {
   position: relative;
@@ -307,8 +333,8 @@ a {
  */
 @media (min-width: 600px) {
   #trick-or-treat-section {
-    padding-left: 34px;
-    padding-right: 34px;
+    padding-left: 32px;
+    padding-right: 32px;
     display: flex; }
     #trick-or-treat-section .primary p {
       text-align: right; }
@@ -323,6 +349,20 @@ a {
     width: 70%; }
   #jack-and-candy {
     width: 30%; } }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+@media (min-width: 900px) {
+  #trick-or-treat-section {
+    padding-left: 48px;
+    padding-right: 48px; }
+  /**
+     * make column widths the same
+     */
+  #trick-or-treat-section .primary,
+  #jack-and-candy {
+    width: 50%; } }
 
 #melody-section {
   width: 100%;
@@ -388,6 +428,16 @@ a {
   #melody-section .app-link-wrapper {
     margin-top: 96px; } }
 
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+@media (min-width: 900px) {
+  /**
+     * make app description less wide
+     */
+  #melody-section .app-description {
+    width: 50%; } }
+
 #oxo-section {
   padding: 48px 16px 64px;
   background-color: white; }
@@ -434,8 +484,22 @@ a {
     flex-direction: column;
     align-items: center; }
     #oxo-section .app-description {
-      width: 70%;
+      /**
+             * match the width of the oxo screenshots image
+             */
+      width: 506px;
       text-align: center; } }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+@media (min-width: 900px) {
+  /**
+     * rotate the screenshots 90 degrees so they display
+     * horizontally.
+     */
+  #oxo-screenshot-wrapper {
+    transform: translateY(-130px) rotateZ(-90deg); } }
 
 #footer-section {
   padding: 48px 16px 64px;
@@ -460,10 +524,21 @@ a {
  */
 @media (min-width: 600px) {
   #footer-section {
-    padding-left: 34px;
-    padding-right: 34px; }
+    padding-left: 32px;
+    padding-right: 32px; }
     #footer-section p {
       width: 80%; } }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+@media (min-width: 900px) {
+  #footer-section a, #footer-section p {
+    margin-left: auto;
+    margin-right: auto; }
+  #footer-section p {
+    text-align: center;
+    width: 60%; } }
 
 /*.section-title {
 

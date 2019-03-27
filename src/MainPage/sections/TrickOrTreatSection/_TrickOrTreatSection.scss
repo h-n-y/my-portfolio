@@ -128,3 +128,25 @@
         width: 30%;
     }
 }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+
+@include for-tablet-landscape-up {
+
+    #trick-or-treat-section {
+        padding-left: $page-side-padding--tablet-landscape;
+        padding-right: $page-side-padding--tablet-landscape;
+    }
+    
+    /**
+     * make column widths the same
+     */
+
+    #trick-or-treat-section .primary,
+    #jack-and-candy {
+        width: 50%;
+    }
+
+}

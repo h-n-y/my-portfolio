@@ -58,8 +58,28 @@
         align-items: center;
 
         .app-description {
-            width: 70%;
+
+            /**
+             * match the width of the oxo screenshots image
+             */
+            width: 506px;
             text-align: center;
         }
+    }
+}
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+
+@include for-tablet-landscape-up {
+
+    /**
+     * rotate the screenshots 90 degrees so they display
+     * horizontally.
+     */
+    #oxo-screenshot-wrapper {
+
+        transform: translateY(-130px) rotateZ(-90deg);
     }
 }

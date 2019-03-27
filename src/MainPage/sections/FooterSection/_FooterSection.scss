@@ -39,3 +39,26 @@
         }
     }
 }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+
+@include for-tablet-landscape-up {
+
+    #footer-section {
+
+        a, p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p {
+            text-align: center;
+            width: 60%;
+        }
+    }
+
+    #footer-section a {
+    }
+}

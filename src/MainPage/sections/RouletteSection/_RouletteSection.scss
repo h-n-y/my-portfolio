@@ -106,3 +106,31 @@
         display: none;
     }
 }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+
+@include for-tablet-landscape-up {
+
+    #roulette-section {
+        padding-left: $page-side-padding--tablet-landscape;
+        padding-right: $page-side-padding--tablet-landscape;
+
+
+        /**
+         * make image cards larger 
+         */
+
+        .image-card:nth-child(1) {
+            width: 350px;
+            height: 200px;
+        }
+
+        .image-card:nth-child(2) {
+            width: 280px;
+            height: 390px;
+            top: -50px;
+        }
+    }
+}

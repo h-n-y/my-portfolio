@@ -87,3 +87,17 @@
 
     }
 }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+
+@include for-tablet-landscape-up {
+
+    /**
+     * make app description less wide
+     */
+    #melody-section .app-description {
+        width: 50%;
+    }
+}

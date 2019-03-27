@@ -39,6 +39,18 @@
 
     #roulette-design-wrapper {
         display: block;
-        transform: translateY(-230px);
+        transform: translateY(-80px);
     }
 }
+
+/**
+ * TABLET ( LANDSCAPE ) LAYOUT
+ */
+@include for-tablet-landscape-up {
+
+    #intro-section {
+        padding-left: $page-side-padding--tablet-landscape;
+        padding-right: $page-side-padding--tablet-landscape;
+    }
+}
+
