@@ -44,3 +44,9 @@
         margin-right: 4px;
     }
 }
+
+@include for-tablet-portrait-up {
+    .mobile-only {
+        display: none;
+    }
+}

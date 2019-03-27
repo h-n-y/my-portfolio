@@ -1,7 +1,9 @@
 #trick-or-treat-section {
-    padding: 48px $page-side-padding--mobile 64px;
+    position: relative;
+    padding: 48px $page-side-padding--mobile 96px;
     background-color: $black;
     color: $off-white;
+    overflow: hidden;
 
     .app-description,
     .udacity-credit {
@@ -29,4 +31,67 @@
     a.udacity-fed-link {
         margin-right: 4px;
     }
+
+    /**
+     * link to trick-or-treat app
+     */
+    .app-link-wrapper {
+        margin-top: 12px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+#jack-and-candy {
+    margin-top: 24px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    .tot-candy {
+        display: none;
+    }
+}
+
+
+/* the candy corn image */
+.tot-candy {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 51px;
+}
+
+/**
+ * Skulls and Pumpkin images
+ */
+#skulls-and-pumpkins {
+    position: absolute;
+    left: 0;
+
+    /* vertically aligns div such that pumpkin and skulls appear to
+     * be "peeking" over the top of the next page section
+     */
+    bottom: -47px;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tot-pumpkin {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.tot-skull {
+    width: 51px;
+
+    /**
+     * moves the skull images down such that they appear to "peek"
+     * over the top of the next page section.
+     */
+    transform: translateY(15px);
 }
