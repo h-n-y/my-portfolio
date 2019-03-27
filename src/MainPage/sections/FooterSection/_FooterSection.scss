@@ -11,14 +11,31 @@
      * email link
      */
     a {
-        margin: 36px auto 0;
         display: block;
+        margin-top: 36px;
         width: max-content;
         font-size: 24px;
         color: white;
 
         span {
             color: rgba(white, 0.5);
+        }
+    }
+}
+
+/**
+ * TABLET LAYOUT
+ */
+
+@include for-tablet-portrait-up {
+
+    #footer-section {
+
+        padding-left: $page-side-padding--tablet;
+        padding-right: $page-side-padding--tablet;
+
+        p {
+            width: 80%;
         }
     }
 }

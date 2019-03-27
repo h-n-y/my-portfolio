@@ -3,7 +3,7 @@
     position: relative;
     padding: 48px $page-side-padding--mobile 360px;
     background-color: $dark-grey;
-    //background-color: white;
+    overflow: hidden;
 
     .app-description {
         color: white;
@@ -61,3 +61,29 @@
     z-index: 2;
 }
 
+
+/****
+ * TABLET LAYOUT
+ */
+
+@include for-tablet-portrait-up {
+
+    #melody-section {
+
+        .primary {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .app-description {
+            width: 70%;
+            text-align: center;
+        }
+
+        .app-link-wrapper {
+            margin-top: 96px;
+        }
+
+    }
+}

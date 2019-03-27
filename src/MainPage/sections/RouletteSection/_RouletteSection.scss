@@ -67,3 +67,42 @@
     /* keep this background image below text that may appear above it. */
     z-index: -1;
 }
+
+/**
+ * TABLET LAYOUT
+ */
+
+@include for-tablet-portrait-up {
+
+    #roulette-section {
+
+        padding-left: $page-side-padding--tablet;
+        padding-right: $page-side-padding--tablet;
+
+        /**
+         * Horizontal Layout:
+         * Left: text
+         * Right: roulette cards
+         */
+        display: flex;
+
+        .image-cards {
+            width: 50%;
+            flex-shrink: 0;
+        }
+
+        .image-card:nth-child(2) {
+            left: auto;
+            right: 0;
+        }
+    }
+
+    /**
+     * hide the desaturated roulette background image for tablet
+     * and desktop screens. A colored version of this image appears in its
+     * place in the Intro section.
+     */
+    #roulette-bg-design-wrapper {
+        display: none;
+    }
+}

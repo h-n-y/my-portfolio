@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import AppLink from '../../AppLink/AppLink';
@@ -22,22 +23,40 @@ const APP_KEYWORDS = [
 
 class TrickOrTreatSection extends React.Component {
 
+    sectionTitlePositionForViewportWidth(width) {
+        if ( width < 600 ) {
+            return SECTION_TITLE_POSITION.center;
+        }
+
+        return SECTION_TITLE_POSITION.right;
+    }
+
     render() {
+
+        const { viewportWidth } = this.props;
+        const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
+
         return (
             <div id="trick-or-treat-section">
-                <SectionTitle
-                    title="Trick-or-Treat"
-                    keywords={APP_KEYWORDS}
-                    position={SECTION_TITLE_POSITION.center}
-                    displayedOverDarkBackground={true} />
+                <div id="jack-and-candy">
+                    <img src={Jack} alt="Jack" className="tot-jack"/> 
+                    <div className="app-link-wrapper">
+                        <AppLink
+                            title="Help"
+                            linkType={APP_LINK_TYPE.standard} />
+                    </div>
+                    <img src={candy} alt="candy corn" className="tot-candy"/>
+                </div>
 
                 <div className="primary">
+                    <SectionTitle
+                        title="Trick-or-Treat"
+                        keywords={APP_KEYWORDS}
+                        position={sectionTitlePosition}
+                        displayedOverDarkBackground={true} />
                      
 
-                    <div id="jack-and-candy">
-                        <img src={Jack} alt="Jack" /> 
-                        <img src={candy} alt="candy corn" className="tot-candy"/> 
-                    </div>
+                    <img src={Jack} alt="Jack" className="tot-jack mobile-only"/> 
 
                     <p className="app-description">
                         Help Jack find the candy corn he lost while trick-or-treating! 
@@ -58,7 +77,7 @@ class TrickOrTreatSection extends React.Component {
                     {/* mobile candy corn image */}
                     <img src={candy} alt="candy corn" className="tot-candy mobile-only"/>
 
-                    <div className="app-link-wrapper">
+                    <div className="app-link-wrapper mobile-only">
                         <AppLink
                             title="Help"
                             linkType={APP_LINK_TYPE.standard} />
@@ -73,8 +92,19 @@ class TrickOrTreatSection extends React.Component {
                 </div>
                  
             </div>
+
         );
     }
 }
+
+TrickOrTreatSection.propTypes = {
+
+    //
+    // Required in order to set the text alignment of the SectionTitle
+    // Normally would just use CSS, but this SectionTitle styling differs
+    // from other SectionTitles in its text-alignment behavior.
+    //
+    viewportWidth: PT.number.isRequired,
+};
 
 export default TrickOrTreatSection;

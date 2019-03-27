@@ -136,6 +136,26 @@ a {
     display: flex;
     flex-direction: column; }
 
+#roulette-design-wrapper {
+  display: none; }
+
+@media (min-width: 600px) {
+  #intro-section {
+    min-height: 768px;
+    padding-left: 34px;
+    padding-right: 34px;
+    display: flex;
+    justify-content: space-between;
+    /**
+         * prevent introductory text from shrinking horizontally due to the
+         * wide adjacent roulette image.
+         */ }
+    #intro-section .primary {
+      flex-shrink: 0; }
+  #roulette-design-wrapper {
+    display: block;
+    transform: translateY(-230px); } }
+
 #roulette-section {
   position: relative;
   padding-left: 16px;
@@ -183,6 +203,33 @@ a {
   /* keep this background image below text that may appear above it. */
   z-index: -1; }
 
+/**
+ * TABLET LAYOUT
+ */
+@media (min-width: 600px) {
+  #roulette-section {
+    padding-left: 34px;
+    padding-right: 34px;
+    /**
+         * Horizontal Layout:
+         * Left: text
+         * Right: roulette cards
+         */
+    display: flex; }
+    #roulette-section .image-cards {
+      width: 50%;
+      flex-shrink: 0; }
+    #roulette-section .image-card:nth-child(2) {
+      left: auto;
+      right: 0; }
+  /**
+     * hide the desaturated roulette background image for tablet
+     * and desktop screens. A colored version of this image appears in its
+     * place in the Intro section.
+     */
+  #roulette-bg-design-wrapper {
+    display: none; } }
+
 #trick-or-treat-section {
   position: relative;
   padding: 48px 16px 96px;
@@ -215,12 +262,7 @@ a {
     justify-content: center; }
 
 #jack-and-candy {
-  margin-top: 24px;
-  position: relative;
-  display: flex;
-  justify-content: center; }
-  #jack-and-candy .tot-candy {
-    display: none; }
+  display: none; }
 
 /* the candy corn image */
 .tot-candy {
@@ -244,6 +286,10 @@ a {
   align-items: center;
   justify-content: center; }
 
+.tot-jack {
+  display: block;
+  margin: 24px auto 0; }
+
 .tot-pumpkin {
   margin-left: 12px;
   margin-right: 12px; }
@@ -256,11 +302,34 @@ a {
      */
   transform: translateY(15px); }
 
+/**
+ * TABLET LAYOUT
+ */
+@media (min-width: 600px) {
+  #trick-or-treat-section {
+    padding-left: 34px;
+    padding-right: 34px;
+    display: flex; }
+    #trick-or-treat-section .primary p {
+      text-align: right; }
+  #jack-and-candy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  /**
+     * column widths:
+     */
+  #trick-or-treat-section .primary {
+    width: 70%; }
+  #jack-and-candy {
+    width: 30%; } }
+
 #melody-section {
   width: 100%;
   position: relative;
   padding: 48px 16px 360px;
-  background-color: #3a3b40; }
+  background-color: #3a3b40;
+  overflow: hidden; }
   #melody-section .app-description {
     color: white;
     text-align: right; }
@@ -305,6 +374,20 @@ a {
   position: relative;
   z-index: 2; }
 
+/****
+ * TABLET LAYOUT
+ */
+@media (min-width: 600px) {
+  #melody-section .primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  #melody-section .app-description {
+    width: 70%;
+    text-align: center; }
+  #melody-section .app-link-wrapper {
+    margin-top: 96px; } }
+
 #oxo-section {
   padding: 48px 16px 64px;
   background-color: white; }
@@ -342,6 +425,18 @@ a {
     top: 0;
     left: 0; }
 
+/**
+ * TABLET LAYOUT
+ */
+@media (min-width: 600px) {
+  #oxo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    #oxo-section .app-description {
+      width: 70%;
+      text-align: center; } }
+
 #footer-section {
   padding: 48px 16px 64px;
   background-color: #3a3b40;
@@ -352,14 +447,47 @@ a {
   #footer-section p:first-of-type {
     margin-bottom: 36px; }
   #footer-section a {
-    margin: 36px auto 0;
     display: block;
+    margin-top: 36px;
     width: max-content;
     font-size: 24px;
     color: white; }
     #footer-section a span {
       color: rgba(255, 255, 255, 0.5); }
 
+/**
+ * TABLET LAYOUT
+ */
+@media (min-width: 600px) {
+  #footer-section {
+    padding-left: 34px;
+    padding-right: 34px; }
+    #footer-section p {
+      width: 80%; } }
+
+/*.section-title {
+
+}
+
+.title-keyword-divider {
+    width: 66px;
+    height: 2px;
+    background-color: $light-grey;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.app-keywords {
+    display: flex;
+    align-items: baseline;
+    color: $light-grey;
+    font-weight: bold;
+
+    li:not(:last-child) {
+        margin-right: 4px;
+    }
+}
+*/
 .section-title {
   display: flex;
   flex-direction: column; }
@@ -470,6 +598,18 @@ a {
   .app-description span:not(:last-child) {
     margin-right: 4px; }
 
+.tablet-only,
+.desktop-only {
+  display: none; }
+
 @media (min-width: 600px) {
   .mobile-only {
-    display: none; } }
+    display: none !important; }
+  .tablet-only {
+    display: initial; } }
+
+@media (min-width: 1200px) {
+  .tablet-only {
+    display: none !important; }
+  .desktop-only {
+    display: initial; } }

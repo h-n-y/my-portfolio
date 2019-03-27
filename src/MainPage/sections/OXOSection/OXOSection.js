@@ -54,11 +54,11 @@ class OXOSection extends React.Component {
                 <div id="oxo-screenshot-wrapper"
                     className={screenshotWrapperClassName}>
                      
-                    <img src={oxoIconMobile} alt="oxo screenshot" className="mobile"
+                    <img src={oxoIconMobile} alt="oxo screenshot" className="mobile-only"
                         onLoad={this.handleScreenshotImageLoad}/>
-                    <img src={oxoIconTablet} alt="oxo screenshot" className="tablet"
+                    <img src={oxoIconTablet} alt="oxo screenshot" className="tablet-only"
                         onLoad={this.handleScreenshotImageLoad}/>
-                    <img src={oxoIconDesktop} alt="oxo screenshot" className="desktop"
+                    <img src={oxoIconDesktop} alt="oxo screenshot" className="desktop-only"
                         onLoad={this.handleScreenshotImageLoad}/>
                 </div>
 

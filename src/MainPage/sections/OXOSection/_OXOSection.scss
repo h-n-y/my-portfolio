@@ -45,3 +45,21 @@
         left: 0;
     }
 }
+
+/**
+ * TABLET LAYOUT
+ */
+
+@include for-tablet-portrait-up {
+
+    #oxo-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .app-description {
+            width: 70%;
+            text-align: center;
+        }
+    }
+}

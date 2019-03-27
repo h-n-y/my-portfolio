@@ -13,3 +13,32 @@
         flex-direction: column;
     }
 }
+
+#roulette-design-wrapper {
+    display: none;
+}
+
+@include for-tablet-portrait-up {
+    #intro-section {
+        min-height: 768px;
+        padding-left: $page-side-padding--tablet;
+        padding-right: $page-side-padding--tablet;
+
+        display: flex;
+        justify-content: space-between;
+
+        /**
+         * prevent introductory text from shrinking horizontally due to the
+         * wide adjacent roulette image.
+         */
+        .primary {
+            flex-shrink: 0;
+        }
+    }
+
+
+    #roulette-design-wrapper {
+        display: block;
+        transform: translateY(-230px);
+    }
+}

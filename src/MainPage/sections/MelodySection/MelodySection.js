@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import AppLink from '../../AppLink/AppLink';
@@ -20,7 +21,18 @@ const APP_KEYWORDS = [
 
 class MelodySection extends React.Component {
 
+    sectionTitlePositionForViewportWidth(width) {
+        if ( width < 600 ) {
+            return SECTION_TITLE_POSITION.right;
+        }
+
+        return SECTION_TITLE_POSITION.center;
+    }
+
     render() {
+
+        const { viewportWidth } = this.props;
+        const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
 
         return (
             <div id="melody-section">
@@ -32,7 +44,7 @@ class MelodySection extends React.Component {
                     <SectionTitle 
                         title="Melody"
                         keywords={APP_KEYWORDS}
-                        position={SECTION_TITLE_POSITION.right}
+                        position={sectionTitlePosition}
                         displayedOverDarkBackground={true}
                     />
 
@@ -51,5 +63,15 @@ class MelodySection extends React.Component {
         );
     }
 }
+
+MelodySection.propTypes = {
+
+    //
+    // Required in order to set the text alignment of the SectionTitle
+    // Normally would just use CSS, but this SectionTitle styling differs
+    // from other SectionTitles in its text-alignment behavior.
+    //
+    viewportWidth: PT.number.isRequired,
+};
 
 export default MelodySection;
