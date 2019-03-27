@@ -257,11 +257,53 @@ a {
   transform: translateY(15px); }
 
 #melody-section {
-  padding: 48px 16px 64px;
-  background-color: #3a3b40;
-  background-color: white; }
+  width: 100%;
+  position: relative;
+  padding: 48px 16px 360px;
+  background-color: #3a3b40; }
   #melody-section .app-description {
+    color: white;
     text-align: right; }
+  #melody-section .app-link-wrapper {
+    margin-top: 48px;
+    display: flex;
+    justify-content: flex-end; }
+
+/**
+ * SECTION BACKGROUND
+ */
+#melody-section-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+#treble-clef,
+#base-clef {
+  position: absolute; }
+
+#treble-clef {
+  transform: scale(0.4);
+  transform-origin: left top;
+  top: 30px;
+  left: 20px; }
+
+#base-clef {
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  bottom: 0px;
+  right: -20px; }
+
+/**
+ * Z-INDICES
+ */
+#melody-section-bg {
+  z-index: 1; }
+
+#melody-section .primary {
+  position: relative;
+  z-index: 2; }
 
 #oxo-section {
   padding: 48px 16px 64px;
@@ -302,7 +344,7 @@ a {
 
 #footer-section {
   padding: 48px 16px 64px;
-  background-color: #74e0d4;
+  background-color: #3a3b40;
   color: white;
   /**
      * email link
@@ -316,7 +358,7 @@ a {
     font-size: 24px;
     color: white; }
     #footer-section a span {
-      color: #219486; }
+      color: rgba(255, 255, 255, 0.5); }
 
 .section-title {
   display: flex;

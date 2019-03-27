@@ -1,9 +1,63 @@
 #melody-section {
-    padding: 48px $page-side-padding--mobile 64px;
+    width: 100%;
+    position: relative;
+    padding: 48px $page-side-padding--mobile 360px;
     background-color: $dark-grey;
-    background-color: white;
+    //background-color: white;
 
     .app-description {
+        color: white;
         text-align: right;
     }
+
+    .app-link-wrapper {
+        margin-top: 48px;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
+
+/**
+ * SECTION BACKGROUND
+ */
+
+#melody-section-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#treble-clef,
+#base-clef {
+    position: absolute;
+}
+
+#treble-clef {
+    transform: scale(0.4);
+    transform-origin: left top;
+    top: 30px;
+    left: 20px;
+}
+
+#base-clef {
+    transform: scale(0.5);
+    transform-origin: bottom right;
+    bottom: 0px;
+    right: -20px;
+}
+
+/**
+ * Z-INDICES
+ */
+
+#melody-section-bg {
+    z-index: 1;
+}
+
+#melody-section .primary {
+    position: relative;
+    z-index: 2;
+}
+

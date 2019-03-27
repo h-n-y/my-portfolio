@@ -1,6 +1,6 @@
 #footer-section {
     padding: 48px $page-side-padding--mobile 64px;
-    background-color: $pastel-green;
+    background-color: $dark-grey;
     color: white;
 
     p:first-of-type {
@@ -18,7 +18,7 @@
         color: white;
 
         span {
-            color: #219486;     // forest green
+            color: rgba(white, 0.5);
         }
     }
 }
