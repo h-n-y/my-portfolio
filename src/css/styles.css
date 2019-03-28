@@ -154,7 +154,12 @@ a {
       flex-shrink: 0; }
   #roulette-design-wrapper {
     display: block;
-    transform: translateY(-80px); } }
+    transform: translateY(-80px); }
+    #roulette-design-wrapper figcaption {
+      /**
+             * moves caption closer to the roulette design
+             */
+      transform: translate(90px, -60px); } }
 
 /**
  * TABLET ( LANDSCAPE ) LAYOUT
@@ -164,16 +169,31 @@ a {
     padding-left: 48px;
     padding-right: 48px; } }
 
+/**
+ * DESKTOP LAYOUT
+ */
+@media (min-width: 1200px) {
+  #intro-section {
+    padding-left: 64px;
+    padding-right: 64px; }
+    #intro-section p {
+      line-height: 1.8; } }
+
 #roulette-section {
   position: relative;
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 64px;
   /**
+     * hide the third image card - it's visible only on
+     * desktop layout.
+     */
+  /**
      * TODO: use a function or for loop to set z indices of cards?
      */ }
   #roulette-section .app-description {
-    margin-bottom: 24px; }
+    margin-bottom: 24px;
+    width: 70%; }
   #roulette-section .image-cards {
     height: 286px;
     margin-top: 24px;
@@ -182,7 +202,11 @@ a {
     position: absolute;
     overflow: hidden; }
     #roulette-section .image-card img {
-      position: absolute; }
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.3s ease-out; }
+    #roulette-section .image-card img.visible {
+      opacity: 1; }
   #roulette-section .image-card:nth-child(1) {
     top: 106px;
     left: 0;
@@ -199,6 +223,8 @@ a {
     z-index: 49; }
     #roulette-section .image-card:nth-child(2) img {
       top: -140px; }
+  #roulette-section .image-card:nth-child(3) {
+    display: none; }
 
 /**
  * desaturated roulette background image
@@ -210,6 +236,12 @@ a {
   transform: scale(0.8);
   /* keep this background image below text that may appear above it. */
   z-index: -1; }
+  #roulette-bg-design-wrapper img {
+    opacity: 0;
+    will-change: transform;
+    transition: opacity 0.3s ease-out; }
+  #roulette-bg-design-wrapper img.visible {
+    opacity: 1; }
 
 /**
  * TABLET LAYOUT
@@ -224,6 +256,8 @@ a {
          * Right: roulette cards
          */
     display: flex; }
+    #roulette-section .app-description {
+      width: 100%; }
     #roulette-section .image-cards {
       width: 50%;
       flex-shrink: 0; }
@@ -256,6 +290,42 @@ a {
       height: 390px;
       top: -50px; } }
 
+@media (min-width: 1200px) {
+  #roulette-section {
+    /**
+         * set column widths
+         */
+    /**
+         * Position the three image cards
+         */ }
+    #roulette-section .primary {
+      width: 40%; }
+    #roulette-section .image-cards {
+      width: 60%; }
+    #roulette-section .image-card:nth-child(1) {
+      top: 106px;
+      left: 0; }
+    #roulette-section .image-card:nth-child(2) {
+      top: -50px;
+      left: 190px;
+      width: 320px;
+      height: 440px; }
+      #roulette-section .image-card:nth-child(2) img {
+        top: -140px;
+        right: -190px; }
+    #roulette-section .image-card:nth-child(3) {
+      display: block;
+      width: 400px;
+      height: 300px;
+      top: 0;
+      right: 0;
+      background-color: white; }
+      #roulette-section .image-card:nth-child(3) img {
+        right: -190px; } }
+
+#trick-or-treat-section-wrapper {
+  position: relative; }
+
 #trick-or-treat-section {
   position: relative;
   padding: 48px 16px 96px;
@@ -287,7 +357,8 @@ a {
     display: flex;
     justify-content: center; }
 
-#jack-and-candy {
+#jack-and-candy,
+#grey-panel-desktop-bg {
   display: none; }
 
 /* the candy corn image */
@@ -364,6 +435,48 @@ a {
   #jack-and-candy {
     width: 50%; } }
 
+/**
+ * DESKTOP LAYOUT
+ */
+@media (min-width: 1200px) {
+  #trick-or-treat-section {
+    width: 73%;
+    margin-left: auto; }
+  /**
+     * column widths
+     */
+  #trick-or-treat-section .primary {
+    width: 60%; }
+  #jack-and-candy {
+    width: 40%; }
+  #grey-panel-desktop-bg {
+    display: block;
+    position: absolute;
+    top: 396px;
+    left: 0;
+    height: 700px;
+    width: 83%;
+    background-color: rgba(136, 137, 140, 0.3);
+    pointer-events: none; }
+  /**
+     * Z-INDICES:
+     * 
+     * set the primary trick-or-treat section over the light grey
+     * background panel
+     */
+  #trick-or-treat-section {
+    z-index: 10; }
+  #grey-panel-desktop-bg {
+    z-index: 9; } }
+
+#melody-section-wrapper {
+  /**
+     * positions the melody section over the light grey background
+     * panel from the Trick-or-Treat section and the sheet music
+     * panel.
+     */
+  z-index: 11; }
+
 #melody-section {
   width: 100%;
   position: relative;
@@ -377,6 +490,12 @@ a {
     margin-top: 48px;
     display: flex;
     justify-content: flex-end; }
+
+/**
+ * Sheet Music panel only visible on desktop.
+ */
+#sheet-music {
+  display: none; }
 
 /**
  * SECTION BACKGROUND
@@ -437,6 +556,27 @@ a {
      */
   #melody-section .app-description {
     width: 50%; } }
+
+@media (min-width: 1200px) {
+  #melody-section-wrapper {
+    margin-top: 360px;
+    position: relative; }
+  #sheet-music {
+    position: absolute;
+    top: -80px;
+    left: 64px;
+    display: block;
+    overflow: hidden;
+    width: 530px;
+    height: 580px;
+    background-color: white; }
+  #melody-section {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 180px; }
+    #melody-section .app-description {
+      width: 75%; } }
 
 #oxo-section {
   padding: 48px 16px 64px;
@@ -501,6 +641,23 @@ a {
   #oxo-screenshot-wrapper {
     transform: translateY(-130px) rotateZ(-90deg); } }
 
+/**
+ * DESKTOP LAYOUT
+ */
+@media (min-width: 1200px) {
+  /**
+     * undo screenshot rotation applied in tablet ( landscape ) layout
+     */
+  #oxo-screenshot-wrapper {
+    transform: translateY(0) rotateZ(0); }
+  #oxo-screenshot-wrapper {
+    width: 80%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto; }
+    #oxo-screenshot-wrapper img {
+      width: 100%; } }
+
 #footer-section {
   padding: 48px 16px 64px;
   background-color: #3a3b40;
@@ -539,6 +696,13 @@ a {
   #footer-section p {
     text-align: center;
     width: 60%; } }
+
+/**
+ * DESKTOP LAYOUT
+ */
+@media (min-width: 1200px) {
+  #footer-section p {
+    width: 50%; } }
 
 /*.section-title {
 

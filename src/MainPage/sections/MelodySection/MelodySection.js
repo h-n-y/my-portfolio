@@ -7,6 +7,7 @@ import AppLink from '../../AppLink/AppLink';
 // images
 import trebleClef from '../../../assets/svg/treble.svg';
 import baseClef from '../../../assets/svg/base.svg';
+import sheetMusic from '../../../assets/svg/sheet-music.svg';
 
 import {
     APP_LINK_TYPE,
@@ -35,28 +36,33 @@ class MelodySection extends React.Component {
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
 
         return (
-            <div id="melody-section">
-                <div id="melody-section-bg">
-                    <img src={trebleClef} alt="treble clef" id="treble-clef"/> 
-                    <img src={baseClef} alt="base clef" id="base-clef"/> 
+            <div id="melody-section-wrapper">
+                <div id="sheet-music">
+                    <img src={sheetMusic} alt="sheet music" /> 
                 </div>
-                <div className="primary">
-                    <SectionTitle 
-                        title="Melody"
-                        keywords={APP_KEYWORDS}
-                        position={sectionTitlePosition}
-                        displayedOverDarkBackground={true}
-                    />
-
-                    <p className="app-description">
-                        Search artists, tracks, and lyrics with this simple, responsive prototype web app. 
-                    </p>
-                         
-                    <div className="app-link-wrapper">
-                        <AppLink
-                            title="Search"
-                            linkType={APP_LINK_TYPE.simple}
+                <div id="melody-section">
+                    <div id="melody-section-bg">
+                        <img src={trebleClef} alt="treble clef" id="treble-clef"/> 
+                        <img src={baseClef} alt="base clef" id="base-clef"/> 
+                    </div>
+                    <div className="primary">
+                        <SectionTitle 
+                            title="Melody"
+                            keywords={APP_KEYWORDS}
+                            position={sectionTitlePosition}
+                            displayedOverDarkBackground={true}
                         />
+
+                        <p className="app-description">
+                            Search artists, tracks, and lyrics with this simple, responsive prototype web app. 
+                        </p>
+                             
+                        <div className="app-link-wrapper">
+                            <AppLink
+                                title="Search"
+                                linkType={APP_LINK_TYPE.simple}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

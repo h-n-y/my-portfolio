@@ -40,6 +40,14 @@
     #roulette-design-wrapper {
         display: block;
         transform: translateY(-80px);
+
+        figcaption {
+
+            /**
+             * moves caption closer to the roulette design
+             */
+            transform: translate(90px, -60px);
+        }
     }
 }
 
@@ -54,3 +62,17 @@
     }
 }
 
+/**
+ * DESKTOP LAYOUT
+ */
+@include for-desktop-up {
+
+    #intro-section {
+        padding-left: $page-side-padding--desktop;
+        padding-right: $page-side-padding--desktop;
+        
+        p {
+            line-height: 1.8;
+        }
+    }
+}

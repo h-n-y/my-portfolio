@@ -37,60 +37,64 @@ class TrickOrTreatSection extends React.Component {
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
 
         return (
-            <div id="trick-or-treat-section">
-                <div id="jack-and-candy">
-                    <img src={Jack} alt="Jack" className="tot-jack"/> 
-                    <div className="app-link-wrapper">
-                        <AppLink
-                            title="Help"
-                            linkType={APP_LINK_TYPE.standard} />
+            <div id="trick-or-treat-section-wrapper">
+                <div id="grey-panel-desktop-bg"></div>
+                    
+                <div id="trick-or-treat-section">
+                    <div id="jack-and-candy">
+                        <img src={Jack} alt="Jack" className="tot-jack"/> 
+                        <div className="app-link-wrapper">
+                            <AppLink
+                                title="Help"
+                                linkType={APP_LINK_TYPE.standard} />
+                        </div>
+                        <img src={candy} alt="candy corn" className="tot-candy"/>
                     </div>
-                    <img src={candy} alt="candy corn" className="tot-candy"/>
-                </div>
 
-                <div className="primary">
-                    <SectionTitle
-                        title="Trick-or-Treat"
-                        keywords={APP_KEYWORDS}
-                        position={sectionTitlePosition}
-                        displayedOverDarkBackground={true} />
+                    <div className="primary">
+                        <SectionTitle
+                            title="Trick-or-Treat"
+                            keywords={APP_KEYWORDS}
+                            position={sectionTitlePosition}
+                            displayedOverDarkBackground={true} />
+                         
+
+                        <img src={Jack} alt="Jack" className="tot-jack mobile-only"/> 
+
+                        <p className="app-description">
+                            Help Jack find the candy corn he lost while trick-or-treating! 
+                        </p>
+                        <p className="udacity-credit">
+                            Built atop a game engine provided by 
+                            <a href="javascript:;">
+                                Udacity 
+                            </a>,
+                           from whom I took and completed a 
+                            <a href="javascript:;"
+                                className="udacity-fed-link">
+                                Front-end Developer 
+                            </a> 
+                            course.
+                        </p>
+
+                        {/* mobile candy corn image */}
+                        <img src={candy} alt="candy corn" className="tot-candy mobile-only"/>
+
+                        <div className="app-link-wrapper mobile-only">
+                            <AppLink
+                                title="Help"
+                                linkType={APP_LINK_TYPE.standard} />
+                        </div>
+                    </div>
+
+                    {/* skulls and pumpkins */}
+                    <div id="skulls-and-pumpkins">
+                        <img src={skull} alt="skull" className="tot-skull"/> 
+                        <img src={pumpkin} alt="pumpkin" className="tot-pumpkin"/> 
+                        <img src={skull} alt="skull" className="tot-skull"/> 
+                    </div>
                      
-
-                    <img src={Jack} alt="Jack" className="tot-jack mobile-only"/> 
-
-                    <p className="app-description">
-                        Help Jack find the candy corn he lost while trick-or-treating! 
-                    </p>
-                    <p className="udacity-credit">
-                        Built atop a game engine provided by 
-                        <a href="javascript:;">
-                            Udacity 
-                        </a>,
-                       from whom I took and completed a 
-                        <a href="javascript:;"
-                            className="udacity-fed-link">
-                            Front-end Developer 
-                        </a> 
-                        course.
-                    </p>
-
-                    {/* mobile candy corn image */}
-                    <img src={candy} alt="candy corn" className="tot-candy mobile-only"/>
-
-                    <div className="app-link-wrapper mobile-only">
-                        <AppLink
-                            title="Help"
-                            linkType={APP_LINK_TYPE.standard} />
-                    </div>
                 </div>
-
-                {/* skulls and pumpkins */}
-                <div id="skulls-and-pumpkins">
-                    <img src={skull} alt="skull" className="tot-skull"/> 
-                    <img src={pumpkin} alt="pumpkin" className="tot-pumpkin"/> 
-                    <img src={skull} alt="skull" className="tot-skull"/> 
-                </div>
-                 
             </div>
 
         );

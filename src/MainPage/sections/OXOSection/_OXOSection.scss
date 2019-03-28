@@ -83,3 +83,28 @@
         transform: translateY(-130px) rotateZ(-90deg);
     }
 }
+
+/**
+ * DESKTOP LAYOUT
+ */
+
+@include for-desktop-up {
+
+    /**
+     * undo screenshot rotation applied in tablet ( landscape ) layout
+     */
+    #oxo-screenshot-wrapper {
+        transform: translateY(0) rotateZ(0);
+    }
+
+    #oxo-screenshot-wrapper {
+        width: 80%; 
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+
+        img {
+            width: 100%;
+        }
+    }
+}

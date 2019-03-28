@@ -1,9 +1,19 @@
+#melody-section-wrapper {
+    /**
+     * positions the melody section over the light grey background
+     * panel from the Trick-or-Treat section and the sheet music
+     * panel.
+     */
+    z-index: 11;
+}
+
 #melody-section {
     width: 100%;
     position: relative;
     padding: 48px $page-side-padding--mobile 360px;
     background-color: $dark-grey;
     overflow: hidden;
+
 
     .app-description {
         color: white;
@@ -15,6 +25,13 @@
         display: flex;
         justify-content: flex-end;
     }
+}
+
+/**
+ * Sheet Music panel only visible on desktop.
+ */
+#sheet-music {
+    display: none;
 }
 
 /**
@@ -99,5 +116,35 @@
      */
     #melody-section .app-description {
         width: 50%;
+    }
+}
+
+@include for-desktop-up {
+
+    #melody-section-wrapper {
+        margin-top: 360px;
+        position: relative;
+    }
+
+    #sheet-music {
+        position: absolute;
+        top: -80px;
+        left: 64px;
+        display: block;
+        overflow: hidden;
+        width: 530px;
+        height: 580px;
+        background-color: white;
+    }
+
+    #melody-section {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 180px;
+
+        .app-description {
+            width: 75%;
+        }
     }
 }

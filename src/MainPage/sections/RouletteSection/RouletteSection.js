@@ -24,7 +24,7 @@ class RouletteSection extends React.Component {
         super(props);
 
         this.state = {
-            rouletteImageLoadedFlags: [ false, false, false ],
+            rouletteImageLoadedFlags: [ false, false, false, false ],
         };
 
         this.handleImageLoad = this.handleImageLoad.bind(this);
@@ -32,21 +32,31 @@ class RouletteSection extends React.Component {
 
     handleImageLoad(rouletteImageIndex) {
 
+        console.log(`image ${rouletteImageIndex} loaded`);
         const flags = this.state.rouletteImageLoadedFlags;
         const flagsUpdated = flags.slice(0, flags.length);
-        flags[rouletteImageIndex] = true;
+        flagsUpdated[rouletteImageIndex] = true;
 
         this.setState({ rouletteImageLoadedFlags: flagsUpdated });
     }
 
     render() {
+
+        const [ 
+            bgDesignVisible,
+            roulette1Visible, 
+            roulette2Visible, 
+            roulette3Visible
+        ] = this.state.rouletteImageLoadedFlags;
+
         return (
 
             <div id="roulette-section">
 
                 <div id="roulette-bg-design-wrapper">
                     <img src={rouletteDesignDesaturated} alt="roulette design"
-                        onLoad={this.handleImageLoad} /> 
+                        onLoad={() => this.handleImageLoad(0)} 
+                        className={bgDesignVisible ? 'visible' : ''}/> 
                 </div>
                  
                 <div className="primary">
@@ -56,18 +66,7 @@ class RouletteSection extends React.Component {
                     </SectionTitle>
 
                     <p className="app-description">
-                        <span>
-                            Create and export 
-                        </span>
-                        <span>
-                            magnificent designs with this 
-                        </span>
-                        <span>
-                            roulette drawing tool for 
-                        </span>
-                        <span>
-                            desktop.
-                        </span>
+                            Create and download magnificent designs with this roulette drawing tool for desktop. 
                     </p>
 
                     <AppLink
@@ -79,11 +78,22 @@ class RouletteSection extends React.Component {
                      
                     <div className="image-card">
                         <img src={rouletteDesign1} alt="roulette example"
-                            onLoad={this.handleImageLoad} /> 
+                            onLoad={() => this.handleImageLoad(1)} 
+                            className={roulette1Visible ? 'visible' : ''} 
+                        /> 
                     </div>
                     <div className="image-card">
                         <img src={rouletteDesign2} alt="roulette example"
-                            onLoad={this.handleImageLoad} /> 
+                            onLoad={() => this.handleImageLoad(2)}
+                            className={roulette2Visible ? 'visible' : ''} 
+                        />
+                    </div>
+
+                    <div className="image-card">
+                        <img src={rouletteDesign3} alt="roulette example"
+                            onLoad={() => this.handleImageLoad(3)}
+                            className={roulette2Visible ? 'visible' : ''} 
+                        />
                     </div>
                 </div>
             </div>

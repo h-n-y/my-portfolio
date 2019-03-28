@@ -28,9 +28,13 @@ class IntroSection extends React.Component {
                         </span>
                     </p>
                 </div>
-                <div id="roulette-design-wrapper">
+                <figure id="roulette-design-wrapper">
                     <img src={rouletteDesign} alt="roulette design" /> 
-                </div>
+
+                    <figcaption>
+                        * made with Roulette  
+                    </figcaption>
+                </figure>
             </section>
         );
     }

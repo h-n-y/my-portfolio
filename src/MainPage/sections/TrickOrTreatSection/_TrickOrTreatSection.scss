@@ -1,3 +1,7 @@
+#trick-or-treat-section-wrapper {
+    position: relative;
+}
+
 #trick-or-treat-section {
     position: relative;
     padding: 48px $page-side-padding--mobile 96px;
@@ -42,7 +46,8 @@
     }
 }
 
-#jack-and-candy {
+#jack-and-candy,
+#grey-panel-desktop-bg {
     display: none;
 }
 
@@ -149,4 +154,53 @@
         width: 50%;
     }
 
+}
+
+/**
+ * DESKTOP LAYOUT
+ */
+@include for-desktop-up {
+
+    #trick-or-treat-section {
+        width: 73%;
+        margin-left: auto;
+    }
+
+    /**
+     * column widths
+     */
+
+    #trick-or-treat-section .primary {
+        width: 60%;
+    }
+
+    #jack-and-candy {
+        width: 40%;
+    }
+
+    #grey-panel-desktop-bg {
+        display: block;
+        position: absolute;
+        top: 396px;
+        left: 0;
+        height: 700px;
+        width: 83%;
+        background-color: rgba($light-grey, 0.3);
+        pointer-events: none;
+    }
+
+    /**
+     * Z-INDICES:
+     * 
+     * set the primary trick-or-treat section over the light grey
+     * background panel
+     */
+
+    #trick-or-treat-section {
+        z-index: 10;
+    }
+
+    #grey-panel-desktop-bg {
+        z-index: 9;
+    }
 }

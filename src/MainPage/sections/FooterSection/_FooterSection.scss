@@ -62,3 +62,14 @@
     #footer-section a {
     }
 }
+
+/**
+ * DESKTOP LAYOUT
+ */
+
+@include for-desktop-up {
+
+    #footer-section p {
+        width: 50%;
+    }
+}
