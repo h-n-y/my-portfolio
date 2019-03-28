@@ -250,6 +250,7 @@ a {
   #roulette-section {
     padding-left: 32px;
     padding-right: 32px;
+    padding-bottom: 128px;
     /**
          * Horizontal Layout:
          * Left: text
@@ -263,7 +264,8 @@ a {
       flex-shrink: 0; }
     #roulette-section .image-card:nth-child(2) {
       left: auto;
-      right: 0; }
+      right: 0;
+      height: 386px; }
   /**
      * hide the desaturated roulette background image for tablet
      * and desktop screens. A colored version of this image appears in its
@@ -282,6 +284,8 @@ a {
     /**
          * make image cards larger 
          */ }
+    #roulette-section .app-description {
+      padding-right: 4px; }
     #roulette-section .image-card:nth-child(1) {
       width: 350px;
       height: 200px; }
@@ -290,8 +294,12 @@ a {
       height: 390px;
       top: -50px; } }
 
+/**
+ * DESKTOP LAYOUT
+ */
 @media (min-width: 1200px) {
   #roulette-section {
+    padding-bottom: 256px;
     /**
          * set column widths
          */
@@ -404,15 +412,24 @@ a {
  */
 @media (min-width: 600px) {
   #trick-or-treat-section {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 64px 32px 256px;
     display: flex; }
     #trick-or-treat-section .primary p {
       text-align: right; }
   #jack-and-candy {
     display: flex;
     flex-direction: column;
-    justify-content: center; }
+    justify-content: center;
+    /*
+         * subjectively better-looking if Jack is lowered a few pixels
+         */
+    transform: translateY(20px);
+    /*
+         * push Jack and candy away from the app link button
+         */ }
+    #jack-and-candy .app-link-wrapper {
+      margin-top: 24px;
+      margin-bottom: 24px; }
   /**
      * column widths:
      */
@@ -560,6 +577,7 @@ a {
 @media (min-width: 1200px) {
   #melody-section-wrapper {
     margin-top: 360px;
+    padding-bottom: 256px;
     position: relative; }
   #sheet-music {
     position: absolute;
@@ -659,7 +677,7 @@ a {
       width: 100%; } }
 
 #footer-section {
-  padding: 48px 16px 64px;
+  padding: 64px 16px 128px;
   background-color: #3a3b40;
   color: white;
   /**
@@ -701,6 +719,8 @@ a {
  * DESKTOP LAYOUT
  */
 @media (min-width: 1200px) {
+  #footer-section {
+    padding-top: 128px; }
   #footer-section p {
     width: 50%; } }
 

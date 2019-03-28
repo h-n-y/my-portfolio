@@ -1,5 +1,5 @@
 #footer-section {
-    padding: 48px $page-side-padding--mobile 64px;
+    padding: 64px $page-side-padding--mobile 128px;
     background-color: $dark-grey;
     color: white;
 
@@ -68,6 +68,10 @@
  */
 
 @include for-desktop-up {
+
+    #footer-section {
+        padding-top: 128px;
+    }
 
     #footer-section p {
         width: 50%;

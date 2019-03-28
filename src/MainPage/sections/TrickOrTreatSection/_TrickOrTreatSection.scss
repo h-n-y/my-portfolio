@@ -105,8 +105,7 @@
 @include for-tablet-portrait-up {
 
     #trick-or-treat-section {
-        padding-left: $page-side-padding--tablet;
-        padding-right: $page-side-padding--tablet;
+        padding: 64px $page-side-padding--tablet 256px;
 
         display: flex;
 
@@ -119,6 +118,19 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        /*
+         * subjectively better-looking if Jack is lowered a few pixels
+         */
+        transform: translateY(20px);
+
+        /*
+         * push Jack and candy away from the app link button
+         */
+        .app-link-wrapper {
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
     }
 
     /**

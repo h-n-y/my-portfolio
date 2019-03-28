@@ -103,6 +103,7 @@
 
         padding-left: $page-side-padding--tablet;
         padding-right: $page-side-padding--tablet;
+        padding-bottom: 128px;
 
         /**
          * Horizontal Layout:
@@ -123,6 +124,7 @@
         .image-card:nth-child(2) {
             left: auto;
             right: 0;
+            height: 386px;
         }
     }
 
@@ -146,6 +148,10 @@
         padding-left: $page-side-padding--tablet-landscape;
         padding-right: $page-side-padding--tablet-landscape;
 
+        .app-description {
+            padding-right: 4px;
+        }
+
 
         /**
          * make image cards larger 
@@ -164,9 +170,15 @@
     }
 }
 
+/**
+ * DESKTOP LAYOUT
+ */
+
 @include for-desktop-up {
 
     #roulette-section {
+
+        padding-bottom: 256px;
 
         /**
          * set column widths
