@@ -17,28 +17,57 @@ const APP_KEYWORDS = [
     'tic tac toe',
 ];
 
+//
+// Screenshot is kept hidden until OXO section is less than
+// this many pixels from the top of the viewport.
+//
+const SCREENSHOT_VISIBILITY_THRESHOLD = 60/*px*/;
+
 class OXOSection extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            screenshotLoaded: false,
+            screenshotVisible: false,
         };
 
-        this.handleScreenshotImageLoad = this.handleScreenshotImageLoad.bind(this);
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
+
+        this.sectionHTMLElement = React.createRef();
     }
 
-    handleScreenshotImageLoad() {
-        this.setState({ screenshotLoaded: true });
+    updateParallaxForSectionScrollPosition(position) {
+
+        const screenshotVisible = ( position < SCREENSHOT_VISIBILITY_THRESHOLD );
+        this.setState({ screenshotVisible });
+    }
+
+    handleWindowScroll() {
+        const sectionHTMLElement = this.sectionHTMLElement.current;
+        const { top } = sectionHTMLElement.getBoundingClientRect();
+
+        this.updateParallaxForSectionScrollPosition(top);
+    }
+
+    componentDidMount() {
+
+        //
+        // Listen for scroll events on the window
+        //
+        window.addEventListener('scroll', this.handleWindowScroll);
     }
 
     render() {
 
-        const screenshotWrapperClassName = ( this.state.screenshotLoaded ? 'img-loaded' : '' );
+        const {
+            screenshotVisible
+        } = this.state;
+
+        const screenshotWrapperClassName = ( screenshotVisible ? 'visible' : '' );
 
         return (
-            <div id="oxo-section">
+            <div id="oxo-section" ref={this.sectionHTMLElement}>
 
                 <SectionTitle 
                     title="OXO"
@@ -54,14 +83,12 @@ class OXOSection extends React.Component {
                 <div id="oxo-screenshot-wrapper"
                     className={screenshotWrapperClassName}>
                      
-                    <img src={oxoIconMobile} alt="oxo screenshot" className="mobile-only"
-                        onLoad={this.handleScreenshotImageLoad}/>
-                    <img src={oxoIconTablet} alt="oxo screenshot" className="tablet-only"
-                        onLoad={this.handleScreenshotImageLoad}/>
-                    <img src={oxoIconDesktop} alt="oxo screenshot" className="desktop-only"
-                        onLoad={this.handleScreenshotImageLoad}/>
+                    <img src={oxoIconMobile} alt="oxo screenshot" className="mobile-only" />
+                    <img src={oxoIconTablet} alt="oxo screenshot" className="tablet-only" />
+                    <img src={oxoIconDesktop} alt="oxo screenshot" className="desktop-only" />
                 </div>
 
+                {/*
                 <div id="oxo-trailer-section">
 
                     <div id="oxo-video-wrapper">
@@ -70,6 +97,7 @@ class OXOSection extends React.Component {
 
                      
                 </div>
+                */}
                  
             </div>
        );

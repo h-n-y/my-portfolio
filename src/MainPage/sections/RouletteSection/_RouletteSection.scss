@@ -11,14 +11,14 @@
         width: 70%;
     }
 
-    .image-cards {
+    .roulette-cards {
         height: 286px;
         margin-top: 24px;
         position: relative;
 
     }
 
-    .image-card {
+    .roulette-card {
         position: absolute;
         overflow: hidden;
 
@@ -33,7 +33,7 @@
         }
     }
 
-    .image-card:nth-child(1) {
+    .roulette-card:nth-child(1) {
         top: 106px;
         left: 0;
         width: 216px;
@@ -43,7 +43,7 @@
     }
 
 
-    .image-card:nth-child(2) {
+    .roulette-card:nth-child(2) {
         top: 0;
         left: 110px;
         width: 218px;
@@ -57,10 +57,10 @@
     }
 
     /**
-     * hide the third image card - it's visible only on
+     * hide the third roulette card - it's visible only on
      * desktop layout.
      */
-    .image-card:nth-child(3) {
+    .roulette-card:nth-child(3) {
         display: none;
     }
 
@@ -71,7 +71,7 @@
 }
 
 /**
- * desaturated roulette background image
+ * desaturated roulette background roulette
  */
 #roulette-bg-design-wrapper {
     position: absolute;
@@ -79,7 +79,7 @@
     left: 40px;
     transform: scale(0.8);
 
-    /* keep this background image below text that may appear above it. */
+    /* keep this background roulette below text that may appear above it. */
     z-index: -1;
 
     img {
@@ -116,12 +116,12 @@
             width: 100%;
         }
 
-        .image-cards {
+        .roulette-cards {
             width: 50%;
             flex-shrink: 0;
         }
 
-        .image-card:nth-child(2) {
+        .roulette-card:nth-child(2) {
             left: auto;
             right: 0;
             height: 386px;
@@ -129,8 +129,8 @@
     }
 
     /**
-     * hide the desaturated roulette background image for tablet
-     * and desktop screens. A colored version of this image appears in its
+     * hide the desaturated roulette background roulette for tablet
+     * and desktop screens. A colored version of this roulette appears in its
      * place in the Intro section.
      */
     #roulette-bg-design-wrapper {
@@ -154,15 +154,15 @@
 
 
         /**
-         * make image cards larger 
+         * make roulette cards larger 
          */
 
-        .image-card:nth-child(1) {
+        .roulette-card:nth-child(1) {
             width: 350px;
             height: 200px;
         }
 
-        .image-card:nth-child(2) {
+        .roulette-card:nth-child(2) {
             width: 280px;
             height: 390px;
             top: -50px;
@@ -188,20 +188,25 @@
             width: 40%;
         }
 
-        .image-cards {
+        .roulette-cards {
             width: 60%;
         }
 
+        .roulette-card {
+            will-change: transform;
+        }
+
         /**
-         * Position the three image cards
+         * Position the three roulette cards
          */
 
-        .image-card:nth-child(1) {
+        .roulette-card:nth-child(1) {
             top: 106px;
+            top: -25px;
             left: 0;
         }
 
-        .image-card:nth-child(2) {
+        .roulette-card:nth-child(2) {
             top: -50px;
             left: 190px;
             width: 320px;
@@ -213,7 +218,7 @@
             }
         }
 
-        .image-card:nth-child(3) {
+        .roulette-card:nth-child(3) {
             display: block;
             width: 400px;
             height: 300px;
@@ -224,6 +229,14 @@
             img {
                 right: -190px;
             }
+        }
+
+        .app-link-wrapper,
+        .roulette-card img {
+            /*
+             * make sure wrapper doesn't get repainted during parallax
+             */
+            will-change: transform;
         }
     }
 }

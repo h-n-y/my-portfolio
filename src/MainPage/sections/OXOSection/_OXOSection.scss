@@ -8,9 +8,6 @@
     margin-bottom: 36px;
 
     img {
-        opacity: 0;
-        will-change: transform;
-        transition: opacity 0.3s ease-out;
 
         /** make image span the full width of the screen */
         margin-left: -$page-side-padding--mobile;
@@ -20,10 +17,6 @@
     img.tablet,
     img.desktop {
         display: none;
-    }
-
-    &.img-loaded img {
-        opacity: 1;
     }
 }
 
@@ -90,18 +83,32 @@
 
 @include for-desktop-up {
 
+    #oxo-section {
+        padding-top: 96px;
+    }
+
     /**
      * undo screenshot rotation applied in tablet ( landscape ) layout
      */
     #oxo-screenshot-wrapper {
         transform: translateY(0) rotateZ(0);
+
     }
 
     #oxo-screenshot-wrapper {
+        opacity: 0;
         width: 80%; 
         max-width: 1280px;
         margin-left: auto;
         margin-right: auto;
+        will-change: transform;
+        transition: 0.3s ease-out;
+        transform: translateY(20px);
+
+        &.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         img {
             width: 100%;

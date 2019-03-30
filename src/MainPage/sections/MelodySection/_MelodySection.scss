@@ -123,8 +123,9 @@
 
     #melody-section-wrapper {
         margin-top: 360px;
-        padding-bottom: 256px;
+        padding-bottom: 0;
         position: relative;
+        height: 512px;
     }
 
     #sheet-music {
@@ -147,5 +148,11 @@
         .app-description {
             width: 75%;
         }
+    }
+
+    #melody-section,
+    #melody-section .app-link-wrapper,
+    #sheet-music {
+        will-change: transform;
     }
 }

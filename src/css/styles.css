@@ -136,6 +136,10 @@ a {
     display: flex;
     flex-direction: column; }
 
+#greeting,
+#about-me {
+  will-change: transform; }
+
 #roulette-design-wrapper {
   display: none; }
 
@@ -154,12 +158,12 @@ a {
       flex-shrink: 0; }
   #roulette-design-wrapper {
     display: block;
-    transform: translateY(-80px); }
+    will-change: transform; }
     #roulette-design-wrapper figcaption {
+      will-change: transform;
       /**
              * moves caption closer to the roulette design
-             */
-      transform: translate(90px, -60px); } }
+             */ } }
 
 /**
  * TABLET ( LANDSCAPE ) LAYOUT
@@ -175,7 +179,8 @@ a {
 @media (min-width: 1200px) {
   #intro-section {
     padding-left: 64px;
-    padding-right: 64px; }
+    padding-right: 64px;
+    padding-bottom: 720px; }
     #intro-section p {
       line-height: 1.8; } }
 
@@ -185,7 +190,7 @@ a {
   padding-right: 16px;
   padding-bottom: 64px;
   /**
-     * hide the third image card - it's visible only on
+     * hide the third roulette card - it's visible only on
      * desktop layout.
      */
   /**
@@ -194,47 +199,47 @@ a {
   #roulette-section .app-description {
     margin-bottom: 24px;
     width: 70%; }
-  #roulette-section .image-cards {
+  #roulette-section .roulette-cards {
     height: 286px;
     margin-top: 24px;
     position: relative; }
-  #roulette-section .image-card {
+  #roulette-section .roulette-card {
     position: absolute;
     overflow: hidden; }
-    #roulette-section .image-card img {
+    #roulette-section .roulette-card img {
       position: absolute;
       opacity: 0;
       transition: opacity 0.3s ease-out; }
-    #roulette-section .image-card img.visible {
+    #roulette-section .roulette-card img.visible {
       opacity: 1; }
-  #roulette-section .image-card:nth-child(1) {
+  #roulette-section .roulette-card:nth-child(1) {
     top: 106px;
     left: 0;
     width: 216px;
     height: 150px;
     background-color: #fff4e0;
     z-index: 50; }
-  #roulette-section .image-card:nth-child(2) {
+  #roulette-section .roulette-card:nth-child(2) {
     top: 0;
     left: 110px;
     width: 218px;
     height: 286px;
     background-color: #222326;
     z-index: 49; }
-    #roulette-section .image-card:nth-child(2) img {
+    #roulette-section .roulette-card:nth-child(2) img {
       top: -140px; }
-  #roulette-section .image-card:nth-child(3) {
+  #roulette-section .roulette-card:nth-child(3) {
     display: none; }
 
 /**
- * desaturated roulette background image
+ * desaturated roulette background roulette
  */
 #roulette-bg-design-wrapper {
   position: absolute;
   bottom: calc(100% - 337px);
   left: 40px;
   transform: scale(0.8);
-  /* keep this background image below text that may appear above it. */
+  /* keep this background roulette below text that may appear above it. */
   z-index: -1; }
   #roulette-bg-design-wrapper img {
     opacity: 0;
@@ -259,16 +264,16 @@ a {
     display: flex; }
     #roulette-section .app-description {
       width: 100%; }
-    #roulette-section .image-cards {
+    #roulette-section .roulette-cards {
       width: 50%;
       flex-shrink: 0; }
-    #roulette-section .image-card:nth-child(2) {
+    #roulette-section .roulette-card:nth-child(2) {
       left: auto;
       right: 0;
       height: 386px; }
   /**
-     * hide the desaturated roulette background image for tablet
-     * and desktop screens. A colored version of this image appears in its
+     * hide the desaturated roulette background roulette for tablet
+     * and desktop screens. A colored version of this roulette appears in its
      * place in the Intro section.
      */
   #roulette-bg-design-wrapper {
@@ -282,14 +287,14 @@ a {
     padding-left: 48px;
     padding-right: 48px;
     /**
-         * make image cards larger 
+         * make roulette cards larger 
          */ }
     #roulette-section .app-description {
       padding-right: 4px; }
-    #roulette-section .image-card:nth-child(1) {
+    #roulette-section .roulette-card:nth-child(1) {
       width: 350px;
       height: 200px; }
-    #roulette-section .image-card:nth-child(2) {
+    #roulette-section .roulette-card:nth-child(2) {
       width: 280px;
       height: 390px;
       top: -50px; } }
@@ -304,32 +309,41 @@ a {
          * set column widths
          */
     /**
-         * Position the three image cards
+         * Position the three roulette cards
          */ }
     #roulette-section .primary {
       width: 40%; }
-    #roulette-section .image-cards {
+    #roulette-section .roulette-cards {
       width: 60%; }
-    #roulette-section .image-card:nth-child(1) {
+    #roulette-section .roulette-card {
+      will-change: transform; }
+    #roulette-section .roulette-card:nth-child(1) {
       top: 106px;
+      top: -25px;
       left: 0; }
-    #roulette-section .image-card:nth-child(2) {
+    #roulette-section .roulette-card:nth-child(2) {
       top: -50px;
       left: 190px;
       width: 320px;
       height: 440px; }
-      #roulette-section .image-card:nth-child(2) img {
+      #roulette-section .roulette-card:nth-child(2) img {
         top: -140px;
         right: -190px; }
-    #roulette-section .image-card:nth-child(3) {
+    #roulette-section .roulette-card:nth-child(3) {
       display: block;
       width: 400px;
       height: 300px;
       top: 0;
       right: 0;
       background-color: white; }
-      #roulette-section .image-card:nth-child(3) img {
-        right: -190px; } }
+      #roulette-section .roulette-card:nth-child(3) img {
+        right: -190px; }
+    #roulette-section .app-link-wrapper,
+    #roulette-section .roulette-card img {
+      /*
+             * make sure wrapper doesn't get repainted during parallax
+             */
+      will-change: transform; } }
 
 #trick-or-treat-section-wrapper {
   position: relative; }
@@ -459,6 +473,9 @@ a {
   #trick-or-treat-section {
     width: 73%;
     margin-left: auto; }
+  #trick-or-treat-section,
+  #trick-or-treat-section .udacity-credit {
+    will-change: transform; }
   /**
      * column widths
      */
@@ -577,8 +594,9 @@ a {
 @media (min-width: 1200px) {
   #melody-section-wrapper {
     margin-top: 360px;
-    padding-bottom: 256px;
-    position: relative; }
+    padding-bottom: 0;
+    position: relative;
+    height: 512px; }
   #sheet-music {
     position: absolute;
     top: -80px;
@@ -594,7 +612,11 @@ a {
     margin-right: auto;
     padding-bottom: 180px; }
     #melody-section .app-description {
-      width: 75%; } }
+      width: 75%; }
+  #melody-section,
+  #melody-section .app-link-wrapper,
+  #sheet-music {
+    will-change: transform; } }
 
 #oxo-section {
   padding: 48px 16px 64px;
@@ -604,17 +626,12 @@ a {
   margin-top: 36px;
   margin-bottom: 36px; }
   #oxo-screenshot-wrapper img {
-    opacity: 0;
-    will-change: transform;
-    transition: opacity 0.3s ease-out;
     /** make image span the full width of the screen */
     margin-left: -16px;
     margin-right: -16px; }
   #oxo-screenshot-wrapper img.tablet,
   #oxo-screenshot-wrapper img.desktop {
     display: none; }
-  #oxo-screenshot-wrapper.img-loaded img {
-    opacity: 1; }
 
 /**
  * this styling makes the embedded YouTube video responsive
@@ -663,16 +680,25 @@ a {
  * DESKTOP LAYOUT
  */
 @media (min-width: 1200px) {
+  #oxo-section {
+    padding-top: 96px; }
   /**
      * undo screenshot rotation applied in tablet ( landscape ) layout
      */
   #oxo-screenshot-wrapper {
     transform: translateY(0) rotateZ(0); }
   #oxo-screenshot-wrapper {
+    opacity: 0;
     width: 80%;
     max-width: 1280px;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    will-change: transform;
+    transition: 0.3s ease-out;
+    transform: translateY(20px); }
+    #oxo-screenshot-wrapper.visible {
+      opacity: 1;
+      transform: translateY(0); }
     #oxo-screenshot-wrapper img {
       width: 100%; } }
 

@@ -25,19 +25,64 @@ class RouletteSection extends React.Component {
 
         this.state = {
             rouletteImageLoadedFlags: [ false, false, false, false ],
+
+            rouletteCard1TransformY: 0,
+            rouletteCard2TransformY: 0,
+            appLinkTransformY: 0,
+
+            rouletteImage1TransformY: 0,
+            rouletteImage2TransformY: 0,
         };
 
         this.handleImageLoad = this.handleImageLoad.bind(this);
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
+
+        this.sectionHTMLElement = React.createRef();
     }
 
     handleImageLoad(rouletteImageIndex) {
 
-        console.log(`image ${rouletteImageIndex} loaded`);
+        console.log(`roulette ${rouletteImageIndex} loaded`);
         const flags = this.state.rouletteImageLoadedFlags;
         const flagsUpdated = flags.slice(0, flags.length);
         flagsUpdated[rouletteImageIndex] = true;
 
         this.setState({ rouletteImageLoadedFlags: flagsUpdated });
+    }
+
+    handleWindowScroll(e) {
+
+        const sectionHTMLElement = this.sectionHTMLElement.current;
+        const { top } = sectionHTMLElement.getBoundingClientRect();
+
+        this.updateParallaxForSectionScrollPosition(top);
+    }
+
+    updateParallaxForSectionScrollPosition(position) {
+
+        const rouletteCard1TransformY = 0.4 * position - 0;
+        const rouletteCard2TransformY = 0.6 * position - 100;
+
+        //const rouletteImage3TransformY = -1 * ( rouletteCard1TransformY / 4 );
+        const rouletteImage3TransformY = -0.05 * position;
+
+        const appLinkTransformY = -1 * ( 0.1 * position - 50 );
+
+        this.setState({
+            rouletteCard1TransformY,
+            rouletteCard2TransformY,
+            //rouletteImage1TransformY,
+            rouletteImage3TransformY,
+            appLinkTransformY,
+        });
+    }
+
+    componentDidMount() {
+
+        //
+        // Listen for scroll events on the window.
+        //
+        window.addEventListener('scroll', this.handleWindowScroll);
     }
 
     render() {
@@ -46,12 +91,37 @@ class RouletteSection extends React.Component {
             bgDesignVisible,
             roulette1Visible, 
             roulette2Visible, 
-            roulette3Visible
+            roulette3Visible,
+
         ] = this.state.rouletteImageLoadedFlags;
+
+        const {
+            rouletteCard1TransformY, 
+            rouletteCard2TransformY, 
+            rouletteImage3TransformY,
+            appLinkTransformY,
+        } = this.state;
+
+        const rouletteCard1Styles = {
+            transform: `translateY(${rouletteCard1TransformY}px)`,
+        };
+
+        const rouletteCard2Styles = {
+            transform: `translateY(${rouletteCard2TransformY}px)`,
+        };
+
+        const rouletteImage3Styles = {
+            transform: `translateY(${rouletteImage3TransformY}px)`,
+        };
+
+        const appLinkWrapperStyles = {
+            transform: `translateY(${appLinkTransformY}px)`,
+        };
+
 
         return (
 
-            <div id="roulette-section">
+            <div id="roulette-section" ref={this.sectionHTMLElement}>
 
                 <div id="roulette-bg-design-wrapper">
                     <img src={rouletteDesignDesaturated} alt="roulette design"
@@ -69,28 +139,31 @@ class RouletteSection extends React.Component {
                             Create and download magnificent designs with this roulette drawing tool for desktop. 
                     </p>
 
-                    <AppLink
-                        title="create"
-                        linkType={APP_LINK_TYPE.clear} />
+                    <div className="app-link-wrapper" style={appLinkWrapperStyles}>
+                        <AppLink
+                            title="create"
+                            linkType={APP_LINK_TYPE.clear} />
+                    </div>
                 </div>
 
-                <div className="image-cards">
+                <div className="roulette-cards">
                      
-                    <div className="image-card">
+                    <div className="roulette-card" style={rouletteCard1Styles}>
                         <img src={rouletteDesign1} alt="roulette example"
                             onLoad={() => this.handleImageLoad(1)} 
                             className={roulette1Visible ? 'visible' : ''} 
                         /> 
                     </div>
-                    <div className="image-card">
+                    <div className="roulette-card" style={rouletteCard2Styles}>
                         <img src={rouletteDesign2} alt="roulette example"
                             onLoad={() => this.handleImageLoad(2)}
                             className={roulette2Visible ? 'visible' : ''} 
                         />
                     </div>
 
-                    <div className="image-card">
+                    <div className="roulette-card">
                         <img src={rouletteDesign3} alt="roulette example"
+                            style={rouletteImage3Styles}
                             onLoad={() => this.handleImageLoad(3)}
                             className={roulette2Visible ? 'visible' : ''} 
                         />

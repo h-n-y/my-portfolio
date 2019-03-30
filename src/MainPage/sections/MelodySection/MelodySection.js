@@ -22,6 +22,20 @@ const APP_KEYWORDS = [
 
 class MelodySection extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            sectionTransformY: 0,
+            sheetMusicCardTransformY: 0,
+            appLinkTransformY: 0,
+        };
+
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
+
+        this.sectionHTMLElement = React.createRef();
+    }
+
     sectionTitlePositionForViewportWidth(width) {
         if ( width < 600 ) {
             return SECTION_TITLE_POSITION.right;
@@ -30,17 +44,64 @@ class MelodySection extends React.Component {
         return SECTION_TITLE_POSITION.center;
     }
 
+    updateParallaxForSectionScrollPosition(position) {
+
+        const sectionTransformY = 0.6 * position - 400;
+        const sheetMusicCardTransformY = 0.4 * position - 400;
+        //const appLinkTransformY = -sheetMusicCardTransformY;
+        const appLinkTransformY = Math.max(0, -0.4 * position + 100);
+
+        this.setState({
+            sectionTransformY,
+            sheetMusicCardTransformY,
+            appLinkTransformY, 
+        });
+    }
+
+    handleWindowScroll(e) {
+
+        const sectionHTMLElement = this.sectionHTMLElement.current;
+        const { top } = sectionHTMLElement.getBoundingClientRect();
+
+        this.updateParallaxForSectionScrollPosition(top);
+    }
+
+    componentDidMount() {
+
+        //
+        // Listen for scroll events on the window
+        //
+        window.addEventListener('scroll', this.handleWindowScroll);
+    }
+
     render() {
 
+        const { 
+            sectionTransformY,
+            sheetMusicCardTransformY,
+            appLinkTransformY,
+        } = this.state;
         const { viewportWidth } = this.props;
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
 
+        const sectionStyles = {
+            transform: `translateY(${sectionTransformY}px)`,
+        };
+
+        const sheetMusicCardStyles = {
+            transform: `translateY(${sheetMusicCardTransformY}px)`,
+        };
+
+        const appLinkStyles = {
+            transform: `translateY(${appLinkTransformY}px)`,
+        };
+
         return (
-            <div id="melody-section-wrapper">
-                <div id="sheet-music">
+            <div id="melody-section-wrapper" ref={this.sectionHTMLElement}>
+                <div id="sheet-music" style={sheetMusicCardStyles}>
                     <img src={sheetMusic} alt="sheet music" /> 
                 </div>
-                <div id="melody-section">
+                <div id="melody-section" style={sectionStyles}>
                     <div id="melody-section-bg">
                         <img src={trebleClef} alt="treble clef" id="treble-clef"/> 
                         <img src={baseClef} alt="base clef" id="base-clef"/> 
@@ -57,7 +118,7 @@ class MelodySection extends React.Component {
                             Search artists, tracks, and lyrics with this simple, responsive prototype web app. 
                         </p>
                              
-                        <div className="app-link-wrapper">
+                        <div className="app-link-wrapper" style={appLinkStyles}>
                             <AppLink
                                 title="Search"
                                 linkType={APP_LINK_TYPE.simple}

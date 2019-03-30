@@ -178,6 +178,12 @@
         margin-left: auto;
     }
 
+    #trick-or-treat-section,
+    #trick-or-treat-section .udacity-credit {
+        will-change: transform;
+    }
+
+
     /**
      * column widths
      */

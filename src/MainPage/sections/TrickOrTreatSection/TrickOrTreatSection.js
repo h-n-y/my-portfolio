@@ -23,6 +23,19 @@ const APP_KEYWORDS = [
 
 class TrickOrTreatSection extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            sectionTransformY: 0,
+            udacityCreditTransformY: 0,
+        };
+
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
+
+        this.sectionHTMLElement = React.createRef();
+    }
+
     sectionTitlePositionForViewportWidth(width) {
         if ( width < 600 ) {
             return SECTION_TITLE_POSITION.center;
@@ -31,16 +44,57 @@ class TrickOrTreatSection extends React.Component {
         return SECTION_TITLE_POSITION.right;
     }
 
+    updateParallaxForSectionScrollPosition(position) {
+
+        const sectionTransformY = 0.4 * position;
+        const udacityCreditTransformY = Math.max(0, -0.4 * position);
+
+        this.setState({
+            sectionTransformY,
+            udacityCreditTransformY,
+        });
+    }
+
+    handleWindowScroll(e) {
+
+        const sectionHTMLElement = this.sectionHTMLElement.current;
+        const { top } = sectionHTMLElement.getBoundingClientRect();
+
+        this.updateParallaxForSectionScrollPosition(top);
+    }
+
+    componentDidMount() {
+
+        //
+        // Listen for scroll events on the window
+        //
+        window.addEventListener('scroll', this.handleWindowScroll);
+    }
+
     render() {
 
+        const {
+            sectionTransformY,
+            udacityCreditTransformY,
+        } = this.state;
         const { viewportWidth } = this.props;
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
 
+        const sectionStyles = {
+            transform: `translateY(${sectionTransformY}px)`,
+        };
+
+        const udacityCreditStyles = {
+            transform: `translateY(${udacityCreditTransformY}px)`,
+        };
+
         return (
-            <div id="trick-or-treat-section-wrapper">
+            <div id="trick-or-treat-section-wrapper"
+                ref={this.sectionHTMLElement}>
                 <div id="grey-panel-desktop-bg"></div>
                     
-                <div id="trick-or-treat-section">
+                <div id="trick-or-treat-section"
+                    style={sectionStyles}>
                     <div id="jack-and-candy">
                         <img src={Jack} alt="Jack" className="tot-jack"/> 
                         <div className="app-link-wrapper">
@@ -64,7 +118,8 @@ class TrickOrTreatSection extends React.Component {
                         <p className="app-description">
                             Help Jack find the candy corn he lost while trick-or-treating! 
                         </p>
-                        <p className="udacity-credit">
+                        <p className="udacity-credit"
+                            style={udacityCreditStyles}>
                             Built atop a game engine provided by 
                             <a href="javascript:;">
                                 Udacity 

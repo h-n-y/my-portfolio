@@ -14,6 +14,11 @@
     }
 }
 
+#greeting,
+#about-me {
+    will-change: transform;
+}
+
 #roulette-design-wrapper {
     display: none;
 }
@@ -39,14 +44,16 @@
 
     #roulette-design-wrapper {
         display: block;
-        transform: translateY(-80px);
+        will-change: transform;
+        //transform: translateY(-80px);
 
         figcaption {
+            will-change: transform;
 
             /**
              * moves caption closer to the roulette design
              */
-            transform: translate(90px, -60px);
+            //transform: translate(90px, -60px);
         }
     }
 }
@@ -70,6 +77,7 @@
     #intro-section {
         padding-left: $page-side-padding--desktop;
         padding-right: $page-side-padding--desktop;
+        padding-bottom: 720px;
         
         p {
             line-height: 1.8;
