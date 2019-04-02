@@ -3,6 +3,10 @@ import PT from 'prop-types';
 
 import rouletteDesign from '../../../assets/img/roulette-design.png';
 
+import {
+    CSS_ANIMATION,
+} from '../../../constants/constants';
+
 const DEFAULT_ROULETTE_DESIGN_TRANSFORM = -80/*px*/;
 const DEFAULT_ROULETTE_CAPTION_TRANSFORM_Y = -60/*px*/;
 const DEFAULT_ROULETTE_CAPTION_TRANSFORM_X = 90/*px*/;
@@ -13,6 +17,7 @@ class IntroSection extends React.Component {
         super(props);
 
         this.state = {
+            rouletteDesignLoaded: false,
             rouletteDesignTransformY: 0,
             greetingTransformY: 0,
             greetingOpacity: 1,
@@ -20,6 +25,7 @@ class IntroSection extends React.Component {
         };
 
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
+        this.handleRouletteImageLoad = this.handleRouletteImageLoad.bind(this);
 
         this.sectionHTMLElement = React.createRef();
     }
@@ -60,17 +66,26 @@ class IntroSection extends React.Component {
         this.updateParallaxForScrollPosition(top);
     }
 
+    handleRouletteImageLoad() {
+        this.setState({ rouletteDesignLoaded: true });
+    }
+
     componentDidMount() {
+
 
         //
         // Listen for scroll events on the window
         //
         window.addEventListener('scroll', this.handleWindowScroll);
+
+
+        this.setState({ componentMounted: true });
     }
 
     render() {
 
         const {
+            rouletteDesignLoaded,
             greetingTransformY,
             greetingOpacity,
             aboutMeTransformY,
@@ -97,31 +112,36 @@ class IntroSection extends React.Component {
             transform: `translateY(${aboutMeTransformY}px)`,
         };
 
+        const rouletteDesignClassName = ( rouletteDesignLoaded ? 'visible' : '' );
+
         return (
             <section id="intro-section" ref={this.sectionHTMLElement}>
                 <div className="primary">
-                    <h1 id="greeting" style={greetingStyles}>
-                        <span> Hi, </span> 
-                        <span> I&apos;m Hans.  </span>
+                    <h1 id="greeting" style={greetingStyles}
+                        >
+                        <span className={CSS_ANIMATION.fadeInFromBottom}> Hi, </span> 
+                        <span className={CSS_ANIMATION.fadeInFromBottom}> I&apos;m Hans.  </span>
                     </h1> 
                     <p id="about-me" style={aboutMeStyles}>
-                        <span>
+                        <span className={CSS_ANIMATION.fadeInFromLeft}>
                             I&apos;m a growing 
                         </span> 
-                        <span>
+                        <span className={CSS_ANIMATION.fadeInFromLeft}>
                             <strong> front-end </strong> and <strong> iOS </strong> developer.
                         </span>
-                        <span>
+                        <span className={CSS_ANIMATION.fadeInFromLeft}>
                             Scroll down to see examples
                         </span>
-                        <span>
+                        <span className={CSS_ANIMATION.fadeInFromLeft}>
                             of my work: 
                         </span>
                     </p>
                 </div>
                 <figure id="roulette-design-wrapper"
                     style={rouletteStyles}>
-                    <img src={rouletteDesign} alt="roulette design" /> 
+                    <img src={rouletteDesign} alt="roulette design" 
+                        onLoad={this.handleRouletteImageLoad} 
+                        className={rouletteDesignClassName}/> 
 
                     <figcaption style={rouletteCaptionStyles}>
                         * made with Roulette  

@@ -66,3 +66,58 @@
         margin-right: 4px;
     }
 }
+
+/**
+ * DESKTOP LAYOUT
+ */
+
+@include for-desktop-up {
+
+    .section-title {
+
+        .title,
+        .app-keywords, {
+            opacity: 0;
+        }
+
+        .title,
+        .title-keyword-divider,
+        .app-keywords {
+            will-change: transform;
+            transition: 0.4s cubic-bezier(0.26, 0.09, 0.23, 1.16);
+        }
+
+
+        .title-keyword-divider {
+            transform: scaleX(0);
+            transform-origin: left center;
+
+            animation-delay: 0.4s;
+        }
+
+        /**
+         * set the transform origin of the keyword divider
+         * according to the text positionint of the section title:
+         *
+         * Text Alignment
+         * LEFT: divider should expand to right
+         * RIGHT: divider should expand to left
+         * CENTER: divider should expand from center
+         */
+        .title-keyword-divider {
+            transform-origin: left center;
+        }
+        &.align-center .title-keyword-divider {
+            transform-origin: center center;
+        }
+        &.align-right .title-keyword-divider {
+            transform-origin: right center;
+        }
+
+        .app-keywords {
+            animation-delay: 0.2s;
+        }
+    }
+
+
+}

@@ -115,6 +115,66 @@ a {
   .app-keywords {
     font-size: 20px; } }
 
+/*
+ * ANIMATION CLASSES
+ */
+.animation--fade-in-from-left {
+  animation-name: fadeInFromLeft;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.26, 0.09, 0.23, 1.16);
+  animation-fill-mode: forwards; }
+
+.animation--fade-in-from-right {
+  animation: fadeInFromRight 0.5s cubic-bezier(0.26, 0.09, 0.23, 1.16) forwards; }
+
+.animation--fade-in-from-bottom {
+  animation: fadeInFromBottom 0.5s cubic-bezier(0.26, 0.09, 0.23, 1.16) forwards; }
+
+.animation--fade-in {
+  animation: fadeIn 0.5s ease-out forwards; }
+
+.animation--scale-x-up-from-zero {
+  animation: scaleXUpFromZero 0.5s cubic-bezier(0.26, 0.09, 0.23, 1.16) forwards; }
+
+/*
+ * ANIMATION KEYFRAMES
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10%); }
+  to {
+    transform: translateX(0);
+    opacity: 1; } }
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(10%); }
+  to {
+    transform: translateX(0);
+    opacity: 1; } }
+
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes scaleXUpFromZero {
+  from {
+    transform: scaleX(0); }
+  to {
+    transform: scaleX(1); } }
+
 /**
  * MAIN PAGE
  */
@@ -163,7 +223,15 @@ a {
       will-change: transform;
       /**
              * moves caption closer to the roulette design
-             */ } }
+             */ }
+    #roulette-design-wrapper img {
+      will-change: transform;
+      opacity: 0;
+      transform: scale(0.97);
+      transition: 0.5s ease-out; }
+    #roulette-design-wrapper img.visible {
+      opacity: 1;
+      transform: scale(1); } }
 
 /**
  * TABLET ( LANDSCAPE ) LAYOUT
@@ -177,6 +245,27 @@ a {
  * DESKTOP LAYOUT
  */
 @media (min-width: 1200px) {
+  #greeting {
+    overflow: hidden; }
+  #greeting span,
+  #about-me span {
+    opacity: 0; }
+  /**
+     * Animation delays from greeting and 'about me' text
+     */
+  #greeting span {
+    animation-delay: 0.5s; }
+  /**
+     * TODO: use for loop here...
+     */
+  #about-me span:nth-child(1) {
+    animation-delay: 0.5s; }
+  #about-me span:nth-child(2) {
+    animation-delay: 0.55s; }
+  #about-me span:nth-child(3) {
+    animation-delay: 0.6s; }
+  #about-me span:nth-child(4) {
+    animation-delay: 0.65s; }
   #intro-section {
     padding-left: 64px;
     padding-right: 64px;
@@ -311,6 +400,8 @@ a {
     /**
          * Position the three roulette cards
          */ }
+    #roulette-section .app-description {
+      opacity: 0; }
     #roulette-section .primary {
       width: 40%; }
     #roulette-section .roulette-cards {
@@ -473,8 +564,16 @@ a {
   #trick-or-treat-section {
     width: 73%;
     margin-left: auto; }
-  #trick-or-treat-section,
+  #trick-or-treat-section .app-description {
+    opacity: 0;
+    animation-delay: 0.2s; }
   #trick-or-treat-section .udacity-credit {
+    opacity: 0;
+    transition: opacity 1.2s ease-out; }
+  #trick-or-treat-section,
+  #trick-or-treat-section .app-description,
+  #trick-or-treat-section .udacity-credit,
+  #jack-and-candy {
     will-change: transform; }
   /**
      * column widths
@@ -492,6 +591,10 @@ a {
     width: 83%;
     background-color: rgba(136, 137, 140, 0.3);
     pointer-events: none; }
+  #jack-and-candy {
+    opacity: 0;
+    animation-duration: 1.0s;
+    animation-delay: 0.5s; }
   /**
      * Z-INDICES:
      * 
@@ -615,8 +718,12 @@ a {
       width: 75%; }
   #melody-section,
   #melody-section .app-link-wrapper,
+  #melody-section .app-description,
   #sheet-music {
-    will-change: transform; } }
+    will-change: transform; }
+  #melody-section .app-description {
+    opacity: 0;
+    animation-delay: 0.5s; } }
 
 #oxo-section {
   padding: 48px 16px 64px;
@@ -682,6 +789,10 @@ a {
 @media (min-width: 1200px) {
   #oxo-section {
     padding-top: 96px; }
+  #oxo-section .app-description {
+    opacity: 0;
+    will-change: transform;
+    animation-delay: 0.5s; }
   /**
      * undo screenshot rotation applied in tablet ( landscape ) layout
      */
@@ -746,9 +857,36 @@ a {
  */
 @media (min-width: 1200px) {
   #footer-section {
-    padding-top: 128px; }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 128px;
+    height: 100vh;
+    min-height: 500px;
+    /*
+ 	 * pattern created using tool at patternify.com
+	 */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC); }
   #footer-section p {
-    width: 50%; } }
+    width: 50%;
+    font-size: 22px;
+    opacity: 0;
+    will-change: transform;
+    animation-duration: 0.8s; }
+    #footer-section p:first-of-type {
+      margin-bottom: 48px; }
+    #footer-section p:last-of-type {
+      animation-delay: 0.3s; }
+  #email-link-wrapper {
+    opacity: 0;
+    will-change: transform;
+    animation-delay: 0.8s; }
+  #footer-section a {
+    opacity: 0.5; }
+    #footer-section a:hover {
+      opacity: 1;
+      text-decoration: underline; } }
 
 /*.section-title {
 
@@ -806,6 +944,41 @@ a {
   font-weight: bold; }
   .app-keywords li:not(:last-child) {
     margin-right: 4px; }
+
+/**
+ * DESKTOP LAYOUT
+ */
+@media (min-width: 1200px) {
+  .section-title {
+    /**
+         * set the transform origin of the keyword divider
+         * according to the text positionint of the section title:
+         *
+         * Text Alignment
+         * LEFT: divider should expand to right
+         * RIGHT: divider should expand to left
+         * CENTER: divider should expand from center
+         */ }
+    .section-title .title,
+    .section-title .app-keywords {
+      opacity: 0; }
+    .section-title .title,
+    .section-title .title-keyword-divider,
+    .section-title .app-keywords {
+      will-change: transform;
+      transition: 0.4s cubic-bezier(0.26, 0.09, 0.23, 1.16); }
+    .section-title .title-keyword-divider {
+      transform: scaleX(0);
+      transform-origin: left center;
+      animation-delay: 0.4s; }
+    .section-title .title-keyword-divider {
+      transform-origin: left center; }
+    .section-title.align-center .title-keyword-divider {
+      transform-origin: center center; }
+    .section-title.align-right .title-keyword-divider {
+      transform-origin: right center; }
+    .section-title .app-keywords {
+      animation-delay: 0.2s; } }
 
 .app-link {
   position: relative;
@@ -894,6 +1067,8 @@ a {
     display: initial; } }
 
 @media (min-width: 1200px) {
+  .app-description {
+    will-change: transform; }
   .tablet-only {
     display: none !important; }
   .desktop-only {

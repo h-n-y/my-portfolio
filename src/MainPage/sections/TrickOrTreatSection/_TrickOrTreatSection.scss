@@ -178,8 +178,20 @@
         margin-left: auto;
     }
 
-    #trick-or-treat-section,
+    #trick-or-treat-section .app-description {
+        opacity: 0;
+        animation-delay: 0.2s;
+    }
+
     #trick-or-treat-section .udacity-credit {
+        opacity: 0;
+        transition: opacity 1.2s ease-out;
+    }
+
+    #trick-or-treat-section,
+    #trick-or-treat-section .app-description,
+    #trick-or-treat-section .udacity-credit,
+    #jack-and-candy {
         will-change: transform;
     }
 
@@ -205,6 +217,12 @@
         width: 83%;
         background-color: rgba($light-grey, 0.3);
         pointer-events: none;
+    }
+
+    #jack-and-candy {
+        opacity: 0;
+        animation-duration: 1.0s;
+        animation-delay: 0.5s;
     }
 
     /**

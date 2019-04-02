@@ -55,6 +55,18 @@
              */
             //transform: translate(90px, -60px);
         }
+
+        img {
+            will-change: transform;
+            opacity: 0;
+            transform: scale(0.97);
+            transition: 0.5s ease-out;
+        }
+
+        img.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 }
 
@@ -73,6 +85,40 @@
  * DESKTOP LAYOUT
  */
 @include for-desktop-up {
+
+    #greeting {
+        overflow: hidden;
+    }
+
+
+    #greeting span,
+    #about-me span {
+        opacity: 0;
+    }
+
+    /**
+     * Animation delays from greeting and 'about me' text
+     */
+    #greeting span {
+        animation-delay: 0.5s;
+    }
+
+    /**
+     * TODO: use for loop here...
+     */
+
+    #about-me span:nth-child(1) {
+        animation-delay: 0.5s;
+    }
+    #about-me span:nth-child(2) {
+        animation-delay: 0.55s;
+    }
+    #about-me span:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+    #about-me span:nth-child(4) {
+        animation-delay: 0.65s;
+    }
 
     #intro-section {
         padding-left: $page-side-padding--desktop;

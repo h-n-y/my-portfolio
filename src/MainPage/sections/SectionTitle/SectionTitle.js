@@ -3,7 +3,12 @@ import PT from 'prop-types';
 
 import {
     SECTION_TITLE_POSITION,
+    CSS_ANIMATION,
 } from '../../../constants/constants';
+
+import {
+    toCSSClassName,
+} from '../../../utility/utility';
 
 /**
  * Displays an application's name, along with keywords naming
@@ -49,7 +54,7 @@ class SectionTitle extends React.Component {
     }
 
     render() {
-        const { title, keywords } = this.props;
+        const { title, keywords, isVisible } = this.props;
 
         //
         // Convert keywords to list items.
@@ -64,19 +69,31 @@ class SectionTitle extends React.Component {
         });
 
         const cssClassName = this.cssClassNameForComponent();
+        const titleCSSClassName = toCSSClassName([
+            'title',
+            ( isVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+        ]);
+        const appKeywordsCSSClassName = toCSSClassName([
+            'app-keywords',
+            ( isVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+        ]);
+        const dividerCSSClassName = toCSSClassName([
+            'title-keyword-divider',
+            ( isVisible ? CSS_ANIMATION.scaleXUpFromZero : '' ),
+        ]);
 
         return (
             <section className={cssClassName}>
 
                 {/* APP TITLE */}
-                <h2 className="title">
+                <h2 className={titleCSSClassName}>
                     { title }                             
                 </h2> 
 
-                <div className="title-keyword-divider"></div>
+                <div className={dividerCSSClassName}></div>
 
                 {/* KEYWORDS */}
-                <ul className="app-keywords">
+                <ul className={appKeywordsCSSClassName}>
                     {keywordListItems} 
                 </ul>
 
@@ -89,6 +106,7 @@ class SectionTitle extends React.Component {
 SectionTitle.defaultProps = {
     displayedOverDarkBackground: false,
     position: SECTION_TITLE_POSITION.left,
+    isVisible: false,
 };
 
 SectionTitle.propTypes = {

@@ -87,6 +87,12 @@
         padding-top: 96px;
     }
 
+    #oxo-section .app-description {
+        opacity: 0;
+        will-change: transform;
+        animation-delay: 0.5s;
+    }
+
     /**
      * undo screenshot rotation applied in tablet ( landscape ) layout
      */

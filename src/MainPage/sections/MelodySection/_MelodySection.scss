@@ -152,7 +152,13 @@
 
     #melody-section,
     #melody-section .app-link-wrapper,
+    #melody-section .app-description,
     #sheet-music {
         will-change: transform;
+    }
+
+    #melody-section .app-description {
+        opacity: 0;
+        animation-delay: 0.5s;
     }
 }

@@ -12,8 +12,13 @@ import candy from '../../../assets/img/candy-corn.png';
 
 import {
     APP_LINK_TYPE,
+    CSS_ANIMATION,
     SECTION_TITLE_POSITION,
 } from '../../../constants/constants';
+
+import {
+    toCSSClassName,
+} from '../../../utility/utility';
 
 const APP_KEYWORDS = [
     'JavaScript',
@@ -21,12 +26,22 @@ const APP_KEYWORDS = [
     'Udacity'
 ];
 
+/*
+ * When the distance between the top of the viewport and the top of this section
+ * falls under this threshold, the section text is animated into view.
+ */
+const TEXT_DISPLAY_SCROLL_THRESHOLD = 200/*px*/;
+const JACK_DISPLAY_SCROLL_THRESHOLD = TEXT_DISPLAY_SCROLL_THRESHOLD;
+
 class TrickOrTreatSection extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            sectionTextVisible: false,
+            udacityCreditVisible: false,
+            jackAndCandyVisible: false,
             sectionTransformY: 0,
             udacityCreditTransformY: 0,
         };
@@ -42,6 +57,38 @@ class TrickOrTreatSection extends React.Component {
         }
 
         return SECTION_TITLE_POSITION.right;
+    }
+
+    /**
+     * NOTE: a copy/paste from RouletteSection
+     */
+    conditionallyDisplaySectionTextForScrollPosition(position) {
+
+
+        //
+        // Udacity credit
+        //
+        if ( position < 0 && !this.state.udacityCreditVisbile ) {
+            this.setState({ udacityCreditVisible: true });
+        }
+
+        //
+        // App description
+        //
+        if ( this.state.sectionTextVisible ) { return; }
+        if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {
+            this.setState({ sectionTextVisible: true });
+        }
+    }
+
+    conditionallyDisplayJackForScrollPosition(position) {
+        if ( this.state.jackAndCandyVisible ) { return; }
+        if ( position < JACK_DISPLAY_SCROLL_THRESHOLD ) {
+            this.setState({ jackAndCandyVisible: true });
+        }
+    }
+
+    conditionallyDisplayAppLinkForScrollPosition(position) {
     }
 
     updateParallaxForSectionScrollPosition(position) {
@@ -61,6 +108,9 @@ class TrickOrTreatSection extends React.Component {
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
         this.updateParallaxForSectionScrollPosition(top);
+        this.conditionallyDisplaySectionTextForScrollPosition(top);
+        this.conditionallyDisplayJackForScrollPosition(top);
+        this.conditionallyDisplayAppLinkForScrollPosition(top);
     }
 
     componentDidMount() {
@@ -74,8 +124,11 @@ class TrickOrTreatSection extends React.Component {
     render() {
 
         const {
+            sectionTextVisible,
             sectionTransformY,
+            udacityCreditVisible,
             udacityCreditTransformY,
+            jackAndCandyVisible,
         } = this.state;
         const { viewportWidth } = this.props;
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
@@ -86,7 +139,17 @@ class TrickOrTreatSection extends React.Component {
 
         const udacityCreditStyles = {
             transform: `translateY(${udacityCreditTransformY}px)`,
+            opacity: ( udacityCreditVisible ? 1 : 0 ),
         };
+
+        const appDescriptionCSSClassName = toCSSClassName([
+            'app-description',
+            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromRight : '' ),
+        ]);
+
+        const jackAndCandyCSSClassName = toCSSClassName([
+            ( jackAndCandyVisible ? CSS_ANIMATION.fadeIn : '' )
+        ]);
 
         return (
             <div id="trick-or-treat-section-wrapper"
@@ -95,7 +158,9 @@ class TrickOrTreatSection extends React.Component {
                     
                 <div id="trick-or-treat-section"
                     style={sectionStyles}>
-                    <div id="jack-and-candy">
+                    <div id="jack-and-candy"
+                        className={jackAndCandyCSSClassName}
+                        >
                         <img src={Jack} alt="Jack" className="tot-jack"/> 
                         <div className="app-link-wrapper">
                             <AppLink
@@ -107,6 +172,7 @@ class TrickOrTreatSection extends React.Component {
 
                     <div className="primary">
                         <SectionTitle
+                            isVisible={sectionTextVisible}
                             title="Trick-or-Treat"
                             keywords={APP_KEYWORDS}
                             position={sectionTitlePosition}
@@ -115,7 +181,7 @@ class TrickOrTreatSection extends React.Component {
 
                         <img src={Jack} alt="Jack" className="tot-jack mobile-only"/> 
 
-                        <p className="app-description">
+                        <p className={appDescriptionCSSClassName}>
                             Help Jack find the candy corn he lost while trick-or-treating! 
                         </p>
                         <p className="udacity-credit"

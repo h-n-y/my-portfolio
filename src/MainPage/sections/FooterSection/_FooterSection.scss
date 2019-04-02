@@ -70,10 +70,50 @@
 @include for-desktop-up {
 
     #footer-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         padding-top: 128px;
+
+        height: 100vh;
+        min-height: 500px;
+
+	/*
+ 	 * pattern created using tool at patternify.com
+	 */
+	background-image:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC);
     }
 
     #footer-section p {
         width: 50%;
+        font-size: 22px;
+        opacity: 0;
+        will-change: transform;
+        animation-duration: 0.8s;
+
+        &:first-of-type {
+            margin-bottom: 48px;
+        }
+
+        &:last-of-type {
+            animation-delay: 0.3s;
+        }
+    }
+
+    #email-link-wrapper {
+        opacity: 0;
+        will-change: transform;
+        animation-delay: 0.8s;
+    }
+
+    #footer-section a {
+
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
     }
 }

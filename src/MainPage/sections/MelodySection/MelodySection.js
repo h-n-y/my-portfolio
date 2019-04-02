@@ -11,8 +11,13 @@ import sheetMusic from '../../../assets/svg/sheet-music.svg';
 
 import {
     APP_LINK_TYPE,
+    CSS_ANIMATION,
     SECTION_TITLE_POSITION,
 } from '../../../constants/constants';
+
+import {
+    toCSSClassName,
+} from '../../../utility/utility';
 
 const APP_KEYWORDS = [
     'Angular 2+',
@@ -20,12 +25,19 @@ const APP_KEYWORDS = [
     'music'
 ];
 
+/*
+ * When the distance between the top of the viewport and the top of this section
+ * falls under this threshold, the section text is animated into view.
+ */
+const TEXT_DISPLAY_SCROLL_THRESHOLD = 500/*px*/;
+
 class MelodySection extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            sectionTextVisible: false,
             sectionTransformY: 0,
             sheetMusicCardTransformY: 0,
             appLinkTransformY: 0,
@@ -44,11 +56,20 @@ class MelodySection extends React.Component {
         return SECTION_TITLE_POSITION.center;
     }
 
+    /**
+     * NOTE: this method is the same across several components?
+     */
+    conditionallyDisplaySectionTextForScrollPosition(position) {
+        if ( this.state.sectionTextVisible ) { return; }
+        if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {
+            this.setState({ sectionTextVisible: true });
+        }
+    }
+
     updateParallaxForSectionScrollPosition(position) {
 
         const sectionTransformY = 0.6 * position - 400;
         const sheetMusicCardTransformY = 0.4 * position - 400;
-        //const appLinkTransformY = -sheetMusicCardTransformY;
         const appLinkTransformY = Math.max(0, -0.4 * position + 100);
 
         this.setState({
@@ -64,6 +85,7 @@ class MelodySection extends React.Component {
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
         this.updateParallaxForSectionScrollPosition(top);
+        this.conditionallyDisplaySectionTextForScrollPosition(top);
     }
 
     componentDidMount() {
@@ -77,6 +99,7 @@ class MelodySection extends React.Component {
     render() {
 
         const { 
+            sectionTextVisible,
             sectionTransformY,
             sheetMusicCardTransformY,
             appLinkTransformY,
@@ -96,6 +119,11 @@ class MelodySection extends React.Component {
             transform: `translateY(${appLinkTransformY}px)`,
         };
 
+        const appDescriptionCSSClassName = toCSSClassName([
+            'app-description',
+            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+        ]);
+
         return (
             <div id="melody-section-wrapper" ref={this.sectionHTMLElement}>
                 <div id="sheet-music" style={sheetMusicCardStyles}>
@@ -109,12 +137,13 @@ class MelodySection extends React.Component {
                     <div className="primary">
                         <SectionTitle 
                             title="Melody"
+                            isVisible={sectionTextVisible}
                             keywords={APP_KEYWORDS}
                             position={sectionTitlePosition}
                             displayedOverDarkBackground={true}
                         />
 
-                        <p className="app-description">
+                        <p className={appDescriptionCSSClassName}>
                             Search artists, tracks, and lyrics with this simple, responsive prototype web app. 
                         </p>
                              

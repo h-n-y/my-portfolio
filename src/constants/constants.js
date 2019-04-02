@@ -23,3 +23,11 @@ export const SECTION_TITLE_POSITION = {
     center: 'center',
     right: 'right',
 };
+
+export const CSS_ANIMATION = {
+    fadeIn: 'animation--fade-in',
+    fadeInFromLeft: 'animation--fade-in-from-left',
+    fadeInFromRight: 'animation--fade-in-from-right',
+    fadeInFromBottom: 'animation--fade-in-from-bottom',
+    scaleXUpFromZero: 'animation--scale-x-up-from-zero',
+};

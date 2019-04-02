@@ -10,7 +10,12 @@ import rouletteDesign3 from '../../../assets/img/roulette-example-3.png';
 
 import {
     APP_LINK_TYPE,
+    CSS_ANIMATION,
 } from '../../../constants/constants';
+
+import {
+    toCSSClassName,
+} from '../../../utility/utility';
 
 const APP_KEYWORDS = [
     'React',
@@ -18,12 +23,19 @@ const APP_KEYWORDS = [
     'art'
 ];
 
+/*
+ * When the distance between the top of the viewport and the top of this section
+ * falls under this threshold, the section text is animated into view.
+ */
+const TEXT_DISPLAY_SCROLL_THRESHOLD = 450/*px*/;
+
 class RouletteSection extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            sectionTextVisible: false,
             rouletteImageLoadedFlags: [ false, false, false, false ],
 
             rouletteCard1TransformY: 0,
@@ -56,6 +68,7 @@ class RouletteSection extends React.Component {
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
         this.updateParallaxForSectionScrollPosition(top);
+        this.conditionallyDisplaySectionTextForScrollPosition(top);
     }
 
     updateParallaxForSectionScrollPosition(position) {
@@ -77,6 +90,13 @@ class RouletteSection extends React.Component {
         });
     }
 
+    conditionallyDisplaySectionTextForScrollPosition(position) {
+        if ( this.state.sectionTextVisible ) { return; }
+        if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {
+            this.setState({ sectionTextVisible: true });
+        }
+    }
+
     componentDidMount() {
 
         //
@@ -96,6 +116,7 @@ class RouletteSection extends React.Component {
         ] = this.state.rouletteImageLoadedFlags;
 
         const {
+            sectionTextVisible,
             rouletteCard1TransformY, 
             rouletteCard2TransformY, 
             rouletteImage3TransformY,
@@ -118,6 +139,13 @@ class RouletteSection extends React.Component {
             transform: `translateY(${appLinkTransformY}px)`,
         };
 
+        const appDescriptionCSSClassName = toCSSClassName([
+            'app-description',
+            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromLeft : '' ),
+        ]);
+
+        console.log(appDescriptionCSSClassName);
+
 
         return (
 
@@ -132,10 +160,12 @@ class RouletteSection extends React.Component {
                 <div className="primary">
                     <SectionTitle
                         title="Roulette"
-                        keywords={APP_KEYWORDS}>
+                        keywords={APP_KEYWORDS}
+                        isVisible={sectionTextVisible}
+                    >
                     </SectionTitle>
 
-                    <p className="app-description">
+                    <p className={appDescriptionCSSClassName}>
                             Create and download magnificent designs with this roulette drawing tool for desktop. 
                     </p>
 

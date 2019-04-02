@@ -8,8 +8,13 @@ import oxoIconDesktop from '../../../assets/img/oxo-desktop.png';
 
 import {
     APP_LINK_TYPE,
+    CSS_ANIMATION,
     SECTION_TITLE_POSITION,
 } from '../../../constants/constants';
+
+import {
+    toCSSClassName,
+} from '../../../utility/utility';
 
 const APP_KEYWORDS = [
     'iOS',
@@ -23,12 +28,19 @@ const APP_KEYWORDS = [
 //
 const SCREENSHOT_VISIBILITY_THRESHOLD = 60/*px*/;
 
+/*
+ * When the distance between the top of the viewport and the top of this section
+ * falls under this threshold, the section text is animated into view.
+ */
+const TEXT_DISPLAY_SCROLL_THRESHOLD = 300/*px*/;
+
 class OXOSection extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            sectionTextVisible: false,
             screenshotVisible: false,
         };
 
@@ -43,11 +55,22 @@ class OXOSection extends React.Component {
         this.setState({ screenshotVisible });
     }
 
+    /**
+     * NOTE: this method is the same across several components?
+     */
+    conditionallyDisplaySectionTextForScrollPosition(position) {
+        if ( this.state.sectionTextVisible ) { return; }
+        if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {
+            this.setState({ sectionTextVisible: true });
+        }
+    }
+
     handleWindowScroll() {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
         this.updateParallaxForSectionScrollPosition(top);
+        this.conditionallyDisplaySectionTextForScrollPosition(top);
     }
 
     componentDidMount() {
@@ -61,10 +84,16 @@ class OXOSection extends React.Component {
     render() {
 
         const {
+            sectionTextVisible,
             screenshotVisible
         } = this.state;
 
         const screenshotWrapperClassName = ( screenshotVisible ? 'visible' : '' );
+
+        const appDescriptionCSSClassName = toCSSClassName([
+            'app-description',
+            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+        ]);
 
         return (
             <div id="oxo-section" ref={this.sectionHTMLElement}>
@@ -73,9 +102,10 @@ class OXOSection extends React.Component {
                     title="OXO"
                     keywords={APP_KEYWORDS}
                     position={SECTION_TITLE_POSITION.center}
+                    isVisible={sectionTextVisible}
                 />
 
-                <p className="app-description">
+                <p className={appDescriptionCSSClassName}>
                     Play a classic game - tic tac toe - with a minimalist finish
                     and pleasing animations. 
                 </p>
