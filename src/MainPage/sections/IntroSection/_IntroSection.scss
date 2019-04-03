@@ -45,6 +45,11 @@
     #roulette-design-wrapper {
         display: block;
         will-change: transform;
+
+        /**
+         * prevent roulette design from being pushed down by section top padding
+         */
+        transform: translateY(-84px);
         //transform: translateY(-80px);
 
         figcaption {
@@ -128,5 +133,9 @@
         p {
             line-height: 1.8;
         }
+    }
+
+    #roulette-design-wrapper {
+        transform: translateY(0);
     }
 }

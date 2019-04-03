@@ -46,18 +46,16 @@
     }
 }
 
+/*
 .tablet-only,
 .desktop-only {
     display: none;
 }
+*/
 
 @include for-tablet-portrait-up {
     .mobile-only {
         display: none !important;
-    }
-
-    .tablet-only {
-        display: initial;
     }
 }
 
@@ -65,13 +63,5 @@
 
     .app-description {
         will-change: transform;
-    }
-
-    .tablet-only {
-        display: none !important;
-    }
-
-    .desktop-only {
-        display: initial;
     }
 }

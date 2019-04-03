@@ -32,4 +32,5 @@ export const CSS_ANIMATION = {
     scaleXUpFromZero: 'animation--scale-x-up-from-zero',
 };
 
+export const MIN_VIEWPORT_WIDTH_FOR_TABLET_PORTRAIT_UI = 600/*px*/;
 export const MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI = 1200/*px*/;

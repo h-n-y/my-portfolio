@@ -218,7 +218,11 @@ a {
       flex-shrink: 0; }
   #roulette-design-wrapper {
     display: block;
-    will-change: transform; }
+    will-change: transform;
+    /**
+         * prevent roulette design from being pushed down by section top padding
+         */
+    transform: translateY(-84px); }
     #roulette-design-wrapper figcaption {
       will-change: transform;
       /**
@@ -271,7 +275,9 @@ a {
     padding-right: 64px;
     padding-bottom: 540px; }
     #intro-section p {
-      line-height: 1.8; } }
+      line-height: 1.8; }
+  #roulette-design-wrapper {
+    transform: translateY(0); } }
 
 #roulette-section {
   position: relative;
@@ -1066,20 +1072,16 @@ a {
   .app-description span:not(:last-child) {
     margin-right: 4px; }
 
+/*
 .tablet-only,
 .desktop-only {
-  display: none; }
-
+    display: none;
+}
+*/
 @media (min-width: 600px) {
   .mobile-only {
-    display: none !important; }
-  .tablet-only {
-    display: initial; } }
+    display: none !important; } }
 
 @media (min-width: 1200px) {
   .app-description {
-    will-change: transform; }
-  .tablet-only {
-    display: none !important; }
-  .desktop-only {
-    display: initial; } }
+    will-change: transform; } }

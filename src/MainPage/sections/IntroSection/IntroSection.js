@@ -95,13 +95,26 @@ class IntroSection extends React.Component {
         } = this.state;
 
         const rouletteDesignClassName = ( rouletteDesignLoaded ? 'visible' : '' );
+        let rouletteCaptionStyles = {
+                transform: `translate(${DEFAULT_ROULETTE_CAPTION_TRANSFORM_X}px, ${DEFAULT_ROULETTE_CAPTION_TRANSFORM_Y}px)`,
+        };
 
+        let 
+            rouletteTransformY = 0,
+            rouletteCaptionTransform = 0,
+            rouletteStyles, 
+            greetingStyles, 
+            aboutMeStyles,
+            greetingSpanClassName,
+            aboutMeParagraphClassName;
         //
         // Check if desktop-specific styles need to be added
         //
-        let rouletteTransformY = 0, rouletteCaptionTransform = 0;
-        let rouletteStyles, rouletteCaptionStyles, greetingStyles, aboutMeStyles;
         if ( Section.shouldDisplayDesktopUI.call(this) ) {
+
+            greetingSpanClassName = CSS_ANIMATION.fadeInFromBottom;
+            aboutMeParagraphClassName = CSS_ANIMATION.fadeInFromLeft;
+
             rouletteTransformY = DEFAULT_ROULETTE_DESIGN_TRANSFORM + this.state.rouletteDesignTransformY;
             rouletteCaptionTransform = Math.abs(rouletteTransformY / 5);
 
@@ -128,20 +141,20 @@ class IntroSection extends React.Component {
                 <div className="primary">
                     <h1 id="greeting" style={greetingStyles}
                         >
-                        <span className={CSS_ANIMATION.fadeInFromBottom}> Hi, </span> 
-                        <span className={CSS_ANIMATION.fadeInFromBottom}> I&apos;m Hans.  </span>
+                        <span className={greetingSpanClassName}> Hi, </span> 
+                        <span className={greetingSpanClassName}> I&apos;m Hans.  </span>
                     </h1> 
                     <p id="about-me" style={aboutMeStyles}>
-                        <span className={CSS_ANIMATION.fadeInFromLeft}>
+                        <span className={aboutMeParagraphClassName}>
                             I&apos;m a growing 
                         </span> 
-                        <span className={CSS_ANIMATION.fadeInFromLeft}>
+                        <span className={aboutMeParagraphClassName}>
                             <strong> front-end </strong> and <strong> iOS </strong> developer.
                         </span>
-                        <span className={CSS_ANIMATION.fadeInFromLeft}>
+                        <span className={aboutMeParagraphClassName}>
                             Scroll down to see examples
                         </span>
-                        <span className={CSS_ANIMATION.fadeInFromLeft}>
+                        <span className={aboutMeParagraphClassName}>
                             of my work: 
                         </span>
                     </p>
