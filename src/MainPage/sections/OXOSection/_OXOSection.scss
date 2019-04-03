@@ -4,14 +4,20 @@
 }
 
 #oxo-screenshot-wrapper {
-    margin-top: 36px;
-    margin-bottom: 36px;
+    margin: 36px #{-$page-side-padding--mobile};
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 
     img {
+        width: 100%;
+        max-width: 375px;
 
         /** make image span the full width of the screen */
+        /*
         margin-left: -$page-side-padding--mobile;
         margin-right: -$page-side-padding--mobile;
+        */
     }
 
     img.tablet,
@@ -58,6 +64,10 @@
             width: 506px;
             text-align: center;
         }
+    }
+
+    #oxo-screenshot-wrapper img {
+        max-width: none;
     }
 }
 
@@ -108,7 +118,7 @@
         margin-left: auto;
         margin-right: auto;
         will-change: transform;
-        transition: 0.3s ease-out;
+        transition: opacity 0.3s ease-out;
         transform: translateY(20px);
 
         &.visible {

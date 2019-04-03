@@ -3,6 +3,12 @@
     background-color: $dark-grey;
     color: white;
 
+	/*
+ 	 * pattern created using tool at patternify.com
+	 */
+	background-image:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC);
+
+
     p:first-of-type {
         margin-bottom: 36px;
     }
@@ -79,10 +85,6 @@
         height: 100vh;
         min-height: 500px;
 
-	/*
- 	 * pattern created using tool at patternify.com
-	 */
-	background-image:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC);
     }
 
     #footer-section p {

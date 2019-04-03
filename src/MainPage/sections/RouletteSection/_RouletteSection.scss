@@ -12,6 +12,9 @@
     }
 
     .roulette-cards {
+        width: 320px;
+        margin-left: auto;
+        margin-right: auto;
         height: 286px;
         margin-top: 24px;
         position: relative;
@@ -75,9 +78,8 @@
  */
 #roulette-bg-design-wrapper {
     position: absolute;
-    bottom: calc(100% - 337px);
-    left: 40px;
-    transform: scale(0.8);
+    bottom: calc(100% - 287px);
+    left: 110px;
 
     /* keep this background roulette below text that may appear above it. */
     z-index: -1;

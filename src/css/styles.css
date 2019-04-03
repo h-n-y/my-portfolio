@@ -289,6 +289,9 @@ a {
     margin-bottom: 24px;
     width: 70%; }
   #roulette-section .roulette-cards {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
     height: 286px;
     margin-top: 24px;
     position: relative; }
@@ -325,9 +328,8 @@ a {
  */
 #roulette-bg-design-wrapper {
   position: absolute;
-  bottom: calc(100% - 337px);
-  left: 40px;
-  transform: scale(0.8);
+  bottom: calc(100% - 287px);
+  left: 110px;
   /* keep this background roulette below text that may appear above it. */
   z-index: -1; }
   #roulette-bg-design-wrapper img {
@@ -730,12 +732,18 @@ a {
   background-color: white; }
 
 #oxo-screenshot-wrapper {
-  margin-top: 36px;
-  margin-bottom: 36px; }
+  margin: 36px -16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; }
   #oxo-screenshot-wrapper img {
+    width: 100%;
+    max-width: 375px;
     /** make image span the full width of the screen */
-    margin-left: -16px;
-    margin-right: -16px; }
+    /*
+        margin-left: -$page-side-padding--mobile;
+        margin-right: -$page-side-padding--mobile;
+        */ }
   #oxo-screenshot-wrapper img.tablet,
   #oxo-screenshot-wrapper img.desktop {
     display: none; }
@@ -770,7 +778,9 @@ a {
              * match the width of the oxo screenshots image
              */
       width: 506px;
-      text-align: center; } }
+      text-align: center; }
+  #oxo-screenshot-wrapper img {
+    max-width: none; } }
 
 /**
  * TABLET ( LANDSCAPE ) LAYOUT
@@ -805,7 +815,7 @@ a {
     margin-left: auto;
     margin-right: auto;
     will-change: transform;
-    transition: 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
     transform: translateY(20px); }
     #oxo-screenshot-wrapper.visible {
       opacity: 1;
@@ -817,6 +827,10 @@ a {
   padding: 64px 16px 128px;
   background-color: #3a3b40;
   color: white;
+  /*
+ 	 * pattern created using tool at patternify.com
+	 */
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC);
   /**
      * email link
      */ }
@@ -863,11 +877,7 @@ a {
     align-items: center;
     padding-top: 128px;
     height: 100vh;
-    min-height: 500px;
-    /*
- 	 * pattern created using tool at patternify.com
-	 */
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC); }
+    min-height: 500px; }
   #footer-section p {
     width: 50%;
     font-size: 22px;

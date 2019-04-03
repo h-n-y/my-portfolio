@@ -3,8 +3,6 @@
 - remove window event listeners on components when they are destroyed
 - `handleWindowScroll` function is the same across all components --> extract
   to utility folder?
-- need to make sure when applying desktop-only styles that they don't get
-  added for smaller layouts
 
 ** OXO Section **
 - set the screenshot image src according to the viewport width?
