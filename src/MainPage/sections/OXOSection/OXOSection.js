@@ -1,4 +1,6 @@
 import React from 'react';
+import PT from 'prop-types';
+import * as Section from '../shared';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 
@@ -71,6 +73,8 @@ class OXOSection extends React.Component {
 
         this.updateParallaxForSectionScrollPosition(top);
         this.conditionallyDisplaySectionTextForScrollPosition(top);
+
+        //console.log(`*** ${top}`);
     }
 
     componentDidMount() {
@@ -90,10 +94,19 @@ class OXOSection extends React.Component {
 
         const screenshotWrapperClassName = ( screenshotVisible ? 'visible' : '' );
 
-        const appDescriptionCSSClassName = toCSSClassName([
-            'app-description',
-            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
-        ]);
+
+        let appDescriptionCSSClassName = 'app-description';
+
+        //
+        // Check if desktop-specific styles need to be added
+        //
+        if ( Section.shouldDisplayDesktopUI.call(this) ) {
+
+            appDescriptionCSSClassName = toCSSClassName([
+                'app-description',
+                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+            ]);
+        }
 
         return (
             <div id="oxo-section" ref={this.sectionHTMLElement}>
@@ -103,6 +116,7 @@ class OXOSection extends React.Component {
                     keywords={APP_KEYWORDS}
                     position={SECTION_TITLE_POSITION.center}
                     isVisible={sectionTextVisible}
+                    viewportWidth={this.props.viewportWidth}
                 />
 
                 <p className={appDescriptionCSSClassName}>
@@ -133,5 +147,9 @@ class OXOSection extends React.Component {
        );
     }
 }
+
+OXOSection.propTypes = {
+    viewportWidth: PT.number.isRequired,
+};
 
 export default OXOSection;

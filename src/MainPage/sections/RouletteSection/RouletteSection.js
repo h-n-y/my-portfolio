@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Section from '../shared';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import AppLink from '../../AppLink/AppLink';
@@ -27,7 +28,8 @@ const APP_KEYWORDS = [
  * When the distance between the top of the viewport and the top of this section
  * falls under this threshold, the section text is animated into view.
  */
-const TEXT_DISPLAY_SCROLL_THRESHOLD = 450/*px*/;
+//const TEXT_DISPLAY_SCROLL_THRESHOLD = 450/*px*/;
+const TEXT_DISPLAY_SCROLL_THRESHOLD = 350/*px*/;
 
 class RouletteSection extends React.Component {
 
@@ -67,8 +69,14 @@ class RouletteSection extends React.Component {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
-        this.updateParallaxForSectionScrollPosition(top);
-        this.conditionallyDisplaySectionTextForScrollPosition(top);
+        const shouldUpdateForScroll = Section.insideScrollRangeForUpdates.call(this, top);
+        if ( shouldUpdateForScroll ) {
+            this.updateParallaxForSectionScrollPosition(top);
+            this.conditionallyDisplaySectionTextForScrollPosition(top);
+        }
+
+
+        //console.log(`*** ${top}`);
     }
 
     updateParallaxForSectionScrollPosition(position) {
@@ -123,29 +131,39 @@ class RouletteSection extends React.Component {
             appLinkTransformY,
         } = this.state;
 
-        const rouletteCard1Styles = {
-            transform: `translateY(${rouletteCard1TransformY}px)`,
-        };
+        let 
+            rouletteCard1Styles,
+            rouletteCard2Styles,
+            rouletteImage3Styles,
+            appLinkWrapperStyles,
+            appDescriptionCSSClassName = 'app-description';
 
-        const rouletteCard2Styles = {
-            transform: `translateY(${rouletteCard2TransformY}px)`,
-        };
+        //
+        // Check if desktop-specific styles need to be added
+        //
+        if ( Section.shouldDisplayDesktopUI.call(this) ) {
+            
+            rouletteCard1Styles = {
+                transform: `translateY(${rouletteCard1TransformY}px)`,
+            };
 
-        const rouletteImage3Styles = {
-            transform: `translateY(${rouletteImage3TransformY}px)`,
-        };
+            rouletteCard2Styles = {
+                transform: `translateY(${rouletteCard2TransformY}px)`,
+            };
 
-        const appLinkWrapperStyles = {
-            transform: `translateY(${appLinkTransformY}px)`,
-        };
+            rouletteImage3Styles = {
+                transform: `translateY(${rouletteImage3TransformY}px)`,
+            };
 
-        const appDescriptionCSSClassName = toCSSClassName([
-            'app-description',
-            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromLeft : '' ),
-        ]);
+            appLinkWrapperStyles = {
+                transform: `translateY(${appLinkTransformY}px)`,
+            };
 
-        console.log(appDescriptionCSSClassName);
-
+            appDescriptionCSSClassName = toCSSClassName([
+                'app-description',
+                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromLeft : '' ),
+            ]);
+        }
 
         return (
 
@@ -162,6 +180,7 @@ class RouletteSection extends React.Component {
                         title="Roulette"
                         keywords={APP_KEYWORDS}
                         isVisible={sectionTextVisible}
+                        viewportWidth={this.props.viewportWidth}
                     >
                     </SectionTitle>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
+import * as Section from '../shared';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import AppLink from '../../AppLink/AppLink';
@@ -84,8 +85,13 @@ class MelodySection extends React.Component {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
-        this.updateParallaxForSectionScrollPosition(top);
-        this.conditionallyDisplaySectionTextForScrollPosition(top);
+        
+        const shouldUpdateForScroll = Section.insideScrollRangeForUpdates.call(this, top);
+        if ( shouldUpdateForScroll ) {
+            this.updateParallaxForSectionScrollPosition(top);
+            this.conditionallyDisplaySectionTextForScrollPosition(top);
+        }
+        //console.log(`*** ${top}`);
     }
 
     componentDidMount() {
@@ -107,22 +113,35 @@ class MelodySection extends React.Component {
         const { viewportWidth } = this.props;
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
 
-        const sectionStyles = {
-            transform: `translateY(${sectionTransformY}px)`,
-        };
 
-        const sheetMusicCardStyles = {
-            transform: `translateY(${sheetMusicCardTransformY}px)`,
-        };
+        let
+            sectionStyles,
+            sheetMusicCardStyles,
+            appLinkStyles,
+            appDescriptionCSSClassName = 'app-description';
 
-        const appLinkStyles = {
-            transform: `translateY(${appLinkTransformY}px)`,
-        };
+        //
+        // Check if desktop-specific styles need to be added
+        //
+        if ( Section.shouldDisplayDesktopUI.call(this) ) {
 
-        const appDescriptionCSSClassName = toCSSClassName([
-            'app-description',
-            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
-        ]);
+            sectionStyles = {
+                transform: `translateY(${sectionTransformY}px)`,
+            };
+
+            sheetMusicCardStyles = {
+                transform: `translateY(${sheetMusicCardTransformY}px)`,
+            };
+
+            appLinkStyles = {
+                transform: `translateY(${appLinkTransformY}px)`,
+            };
+
+            appDescriptionCSSClassName = toCSSClassName([
+                'app-description',
+                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+            ]);
+        }
 
         return (
             <div id="melody-section-wrapper" ref={this.sectionHTMLElement}>
@@ -141,6 +160,7 @@ class MelodySection extends React.Component {
                             keywords={APP_KEYWORDS}
                             position={sectionTitlePosition}
                             displayedOverDarkBackground={true}
+                            viewportWidth={viewportWidth}
                         />
 
                         <p className={appDescriptionCSSClassName}>

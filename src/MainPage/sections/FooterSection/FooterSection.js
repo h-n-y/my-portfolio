@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Section from '../shared';
 
 import {
     CSS_ANIMATION,
@@ -29,7 +30,7 @@ class FooterSection extends React.Component {
     }
 
     updateParallaxForSectionScrollPosition(position) {
-        console.log(`cta: ${position}px`);
+        //console.log(`cta: ${position}px`);
     }
 
     conditionallyDisplaySectionTextForScrollPosition(position) {
@@ -62,13 +63,24 @@ class FooterSection extends React.Component {
             sectionTextVisible,
         } = this.state;
 
-        const paragraphCSSClassName = toCSSClassName([
-            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
-        ]);
 
-        const emailLinkCSSClassName = toCSSClassName([
-            ( sectionTextVisible ? CSS_ANIMATION.fadeIn : '' ),
-        ]);
+        let
+            paragraphCSSClassName,
+            emailLinkCSSClassName;
+
+        //
+        // Check if desktop-specific styles need to be added
+        //
+        if ( Section.shouldDisplayDesktopUI.call(this) ) {
+
+            paragraphCSSClassName = toCSSClassName([
+                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+            ]);
+
+            emailLinkCSSClassName = toCSSClassName([
+                ( sectionTextVisible ? CSS_ANIMATION.fadeIn : '' ),
+            ]);
+        }
 
         return (
             <footer id="footer-section" ref={this.sectionHTMLElement}>

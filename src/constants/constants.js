@@ -31,3 +31,5 @@ export const CSS_ANIMATION = {
     fadeInFromBottom: 'animation--fade-in-from-bottom',
     scaleXUpFromZero: 'animation--scale-x-up-from-zero',
 };
+
+export const MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI = 1200/*px*/;

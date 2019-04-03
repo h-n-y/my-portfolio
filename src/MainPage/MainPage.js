@@ -7,6 +7,25 @@ import MelodySection from './sections/MelodySection/MelodySection';
 import OXOSection from './sections/OXOSection/OXOSection';
 import FooterSection from './sections/FooterSection/FooterSection';
 
+const SCROLL_RANGE_FOR_UPDATES = {
+    introSection: {
+        min: -1100,
+        max: 0
+    },
+    rouletteSection: {
+        min: -450,
+        max: 1200
+    },
+    trickOrTreatSection: {
+        min: -460,
+        max: 800
+    },
+    melodySection: {
+        min: -150,
+        max: 1000
+    },
+};
+
 class MainPage extends React.Component {
 
     constructor(props) {
@@ -44,14 +63,22 @@ class MainPage extends React.Component {
         return (
             <main id="main-page">
                      
-                <IntroSection />
-                <RouletteSection />
+                <IntroSection 
+                    scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.introSection}
+                    viewportWidth={viewportWidth}/>
+                <RouletteSection
+                    scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.rouletteSection}
+                    viewportWidth={viewportWidth}/>
                 <TrickOrTreatSection
-                    viewportWidth={viewportWidth}/>
+                    viewportWidth={viewportWidth}
+                    scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.trickOrTreatSection}/>
                 <MelodySection
+                    viewportWidth={viewportWidth}
+                    scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.melodySection}/>
+                <OXOSection
                     viewportWidth={viewportWidth}/>
-                <OXOSection />
-                <FooterSection />
+                <FooterSection
+                    viewportWidth={viewportWidth}/>
             </main>
         );
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
+import * as Section from '../shared';
 
 import {
     SECTION_TITLE_POSITION,
@@ -69,18 +70,30 @@ class SectionTitle extends React.Component {
         });
 
         const cssClassName = this.cssClassNameForComponent();
-        const titleCSSClassName = toCSSClassName([
-            'title',
-            ( isVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
-        ]);
-        const appKeywordsCSSClassName = toCSSClassName([
-            'app-keywords',
-            ( isVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
-        ]);
-        const dividerCSSClassName = toCSSClassName([
-            'title-keyword-divider',
-            ( isVisible ? CSS_ANIMATION.scaleXUpFromZero : '' ),
-        ]);
+
+        let
+            titleCSSClassName = 'title',
+            appKeywordsCSSClassName = 'app-keywords',
+            dividerCSSClassName = 'title-keyword-divider';
+
+        //
+        // Check if desktop-specific styles need to be added
+        //
+        if ( Section.shouldDisplayDesktopUI.call(this) ) {
+
+            titleCSSClassName = toCSSClassName([
+                'title',
+                ( isVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+            ]);
+            appKeywordsCSSClassName = toCSSClassName([
+                'app-keywords',
+                ( isVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+            ]);
+            dividerCSSClassName = toCSSClassName([
+                'title-keyword-divider',
+                ( isVisible ? CSS_ANIMATION.scaleXUpFromZero : '' ),
+            ]);
+        }
 
         return (
             <section className={cssClassName}>
@@ -115,6 +128,7 @@ SectionTitle.propTypes = {
     position: PT.string.isRequired,
 
     displayedOverDarkBackground: PT.bool.isRequired,
+    viewportWidth: PT.number.isRequired,
 };
 
 export default SectionTitle;

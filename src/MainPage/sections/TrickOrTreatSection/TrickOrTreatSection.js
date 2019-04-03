@@ -1,5 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
+import * as Section from '../shared';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import AppLink from '../../AppLink/AppLink';
@@ -107,10 +108,15 @@ class TrickOrTreatSection extends React.Component {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
-        this.updateParallaxForSectionScrollPosition(top);
-        this.conditionallyDisplaySectionTextForScrollPosition(top);
-        this.conditionallyDisplayJackForScrollPosition(top);
-        this.conditionallyDisplayAppLinkForScrollPosition(top);
+        const shouldUpdateForScroll = Section.insideScrollRangeForUpdates.call(this, top);
+        if ( shouldUpdateForScroll ) {
+            this.updateParallaxForSectionScrollPosition(top);
+            this.conditionallyDisplaySectionTextForScrollPosition(top);
+            this.conditionallyDisplayJackForScrollPosition(top);
+            this.conditionallyDisplayAppLinkForScrollPosition(top);
+        }
+
+        //console.log(`*** ${top}`);
     }
 
     componentDidMount() {
@@ -133,23 +139,36 @@ class TrickOrTreatSection extends React.Component {
         const { viewportWidth } = this.props;
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
 
-        const sectionStyles = {
-            transform: `translateY(${sectionTransformY}px)`,
-        };
 
-        const udacityCreditStyles = {
-            transform: `translateY(${udacityCreditTransformY}px)`,
-            opacity: ( udacityCreditVisible ? 1 : 0 ),
-        };
+        let
+            sectionStyles,
+            udacityCreditStyles,
+            jackAndCandyCSSClassName,
+            appDescriptionCSSClassName = 'app-description';
 
-        const appDescriptionCSSClassName = toCSSClassName([
-            'app-description',
-            ( sectionTextVisible ? CSS_ANIMATION.fadeInFromRight : '' ),
-        ]);
+        //
+        // Check if desktop-specific styles need to be added
+        //
+        if ( Section.shouldDisplayDesktopUI.call(this) ) {
 
-        const jackAndCandyCSSClassName = toCSSClassName([
-            ( jackAndCandyVisible ? CSS_ANIMATION.fadeIn : '' )
-        ]);
+            sectionStyles = {
+                transform: `translateY(${sectionTransformY}px)`,
+            };
+
+            udacityCreditStyles = {
+                transform: `translateY(${udacityCreditTransformY}px)`,
+                opacity: ( udacityCreditVisible ? 1 : 0 ),
+            };
+
+            appDescriptionCSSClassName = toCSSClassName([
+                'app-description',
+                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromRight : '' ),
+            ]);
+
+            jackAndCandyCSSClassName = toCSSClassName([
+                ( jackAndCandyVisible ? CSS_ANIMATION.fadeIn : '' )
+            ]);
+        }
 
         return (
             <div id="trick-or-treat-section-wrapper"
@@ -176,7 +195,9 @@ class TrickOrTreatSection extends React.Component {
                             title="Trick-or-Treat"
                             keywords={APP_KEYWORDS}
                             position={sectionTitlePosition}
-                            displayedOverDarkBackground={true} />
+                            displayedOverDarkBackground={true}
+                            viewportWidth={this.props.viewportWidth}
+                        />
                          
 
                         <img src={Jack} alt="Jack" className="tot-jack mobile-only"/> 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
+import * as Section from '../shared';
 
 import rouletteDesign from '../../../assets/img/roulette-design.png';
 
@@ -63,7 +64,12 @@ class IntroSection extends React.Component {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
-        this.updateParallaxForScrollPosition(top);
+        const shouldUpdateForScroll = Section.insideScrollRangeForUpdates.call(this, top);
+        if ( shouldUpdateForScroll ) {
+
+            this.updateParallaxForScrollPosition(top);
+        }
+
     }
 
     handleRouletteImageLoad() {
@@ -77,9 +83,6 @@ class IntroSection extends React.Component {
         // Listen for scroll events on the window
         //
         window.addEventListener('scroll', this.handleWindowScroll);
-
-
-        this.setState({ componentMounted: true });
     }
 
     render() {
@@ -91,28 +94,34 @@ class IntroSection extends React.Component {
             aboutMeTransformY,
         } = this.state;
 
-        const rouletteTransformY = DEFAULT_ROULETTE_DESIGN_TRANSFORM + this.state.rouletteDesignTransformY;
-        const rouletteCaptionTransform = Math.abs(rouletteTransformY / 5);
-
-        const rouletteStyles = {
-            transform: `translateY(${rouletteTransformY}px)`
-        };
-
-        const rouletteCaptionStyles = {
-            //transform: `translateY(${rouletteCaptionTransform}px)`,
-            transform: `translate(${DEFAULT_ROULETTE_CAPTION_TRANSFORM_X}px, ${DEFAULT_ROULETTE_CAPTION_TRANSFORM_Y + rouletteCaptionTransform}px)`,
-        };
-
-        const greetingStyles = {
-            transform: `translateY(${greetingTransformY}px)`,
-            opacity: greetingOpacity,
-        };
-
-        const aboutMeStyles = {
-            transform: `translateY(${aboutMeTransformY}px)`,
-        };
-
         const rouletteDesignClassName = ( rouletteDesignLoaded ? 'visible' : '' );
+
+        //
+        // Check if desktop-specific styles need to be added
+        //
+        let rouletteTransformY = 0, rouletteCaptionTransform = 0;
+        let rouletteStyles, rouletteCaptionStyles, greetingStyles, aboutMeStyles;
+        if ( Section.shouldDisplayDesktopUI.call(this) ) {
+            rouletteTransformY = DEFAULT_ROULETTE_DESIGN_TRANSFORM + this.state.rouletteDesignTransformY;
+            rouletteCaptionTransform = Math.abs(rouletteTransformY / 5);
+
+            rouletteStyles = {
+                transform: `translateY(${rouletteTransformY}px)`
+            };
+
+            rouletteCaptionStyles = {
+                transform: `translate(${DEFAULT_ROULETTE_CAPTION_TRANSFORM_X}px, ${DEFAULT_ROULETTE_CAPTION_TRANSFORM_Y + rouletteCaptionTransform}px)`,
+            };
+
+            greetingStyles = {
+                transform: `translateY(${greetingTransformY}px)`,
+                opacity: greetingOpacity,
+            };
+
+            aboutMeStyles = {
+                transform: `translateY(${aboutMeTransformY}px)`,
+            };
+        }
 
         return (
             <section id="intro-section" ref={this.sectionHTMLElement}>
@@ -153,6 +162,11 @@ class IntroSection extends React.Component {
 }
 
 IntroSection.propTypes = {
+    viewportWidth: PT.number.isRequired,
+    scrollRangeForUpdates: PT.shape({
+        min: PT.number,
+        max: PT.number,
+    }).isRequired,
 };
 
 export default IntroSection;
