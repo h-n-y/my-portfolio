@@ -12,6 +12,8 @@ import {
     APP_LINK_TYPE,
     CSS_ANIMATION,
     SECTION_TITLE_POSITION,
+    MIN_VIEWPORT_WIDTH_FOR_TABLET_PORTRAIT_UI,
+    MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI,
 } from '../../../constants/constants';
 
 import {
@@ -49,6 +51,20 @@ class OXOSection extends React.Component {
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
 
         this.sectionHTMLElement = React.createRef();
+    }
+
+    getOXOIconSource() {
+        const { viewportWidth } = this.props;
+
+        if ( viewportWidth < MIN_VIEWPORT_WIDTH_FOR_TABLET_PORTRAIT_UI ) {
+            return oxoIconMobile;
+        }
+
+        if ( viewportWidth < MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI ) {
+            return oxoIconTablet;
+        }
+
+        return oxoIconDesktop;
     }
 
     updateParallaxForSectionScrollPosition(position) {
@@ -97,6 +113,8 @@ class OXOSection extends React.Component {
 
         let appDescriptionCSSClassName = 'app-description';
 
+        const oxoIcon = this.getOXOIconSource();
+
         //
         // Check if desktop-specific styles need to be added
         //
@@ -126,10 +144,8 @@ class OXOSection extends React.Component {
 
                 <div id="oxo-screenshot-wrapper"
                     className={screenshotWrapperClassName}>
-                     
-                    <img src={oxoIconMobile} alt="oxo screenshot" className="mobile-only" />
-                    <img src={oxoIconTablet} alt="oxo screenshot" className="tablet-only" />
-                    <img src={oxoIconDesktop} alt="oxo screenshot" className="desktop-only" />
+
+                    <img src={oxoIcon} alt="oxo screenshot"/>
                 </div>
 
                 {/*
