@@ -30,6 +30,8 @@ export const CSS_ANIMATION = {
     fadeInFromRight: 'animation--fade-in-from-right',
     fadeInFromBottom: 'animation--fade-in-from-bottom',
     scaleXUpFromZero: 'animation--scale-x-up-from-zero',
+    pumpkinPeek: 'animation--pumpkin-peek',
+    skullPeek: 'animation--skull-peek',
 };
 
 export const MIN_VIEWPORT_WIDTH_FOR_TABLET_PORTRAIT_UI = 600/*px*/;

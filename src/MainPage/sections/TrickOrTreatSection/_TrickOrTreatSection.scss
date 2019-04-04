@@ -239,4 +239,29 @@
     #grey-panel-desktop-bg {
         z-index: 9;
     }
+
+    /**
+     * Peek animations from pumpkin and skulls
+     */
+
+    .tot-pumpkin,
+    .tot-skull {
+        will-change: transform;
+    }
+
+    .tot-pumpkin {
+        transform: translateY(20px);
+    }
+
+    .tot-skull {
+        transform: translateY(23px);
+    }
+
+    .tot-skull:first-of-type {
+        animation-delay: 0.5s;
+    }
+
+    .tot-skull:last-of-type {
+        animation-delay: 0.7s;
+    }
 }

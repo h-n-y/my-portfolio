@@ -33,6 +33,7 @@ const APP_KEYWORDS = [
  */
 const TEXT_DISPLAY_SCROLL_THRESHOLD = 200/*px*/;
 const JACK_DISPLAY_SCROLL_THRESHOLD = TEXT_DISPLAY_SCROLL_THRESHOLD;
+const PUMPKIN_SKULL_PEEK_ANIMATION_THRESHOLD = -100/*px*/;
 
 class TrickOrTreatSection extends React.Component {
 
@@ -43,6 +44,7 @@ class TrickOrTreatSection extends React.Component {
             sectionTextVisible: false,
             udacityCreditVisible: false,
             jackAndCandyVisible: false,
+            pumpkinAndSkullsShouldPeek: false,
             sectionTransformY: 0,
             udacityCreditTransformY: 0,
         };
@@ -92,6 +94,13 @@ class TrickOrTreatSection extends React.Component {
     conditionallyDisplayAppLinkForScrollPosition(position) {
     }
 
+    conditionallyPeekPumpkinAndSkullsForScrollPosition(position) {
+        if ( this.state.pumpkinAndSkullsShouldPeek ) { return; }
+        if ( position < PUMPKIN_SKULL_PEEK_ANIMATION_THRESHOLD ) {
+            this.setState({ pumpkinAndSkullsShouldPeek: true });
+        }
+    }
+
     updateParallaxForSectionScrollPosition(position) {
 
         const sectionTransformY = 0.4 * position;
@@ -114,9 +123,10 @@ class TrickOrTreatSection extends React.Component {
             this.conditionallyDisplaySectionTextForScrollPosition(top);
             this.conditionallyDisplayJackForScrollPosition(top);
             this.conditionallyDisplayAppLinkForScrollPosition(top);
+            this.conditionallyPeekPumpkinAndSkullsForScrollPosition(top);
         }
 
-        //console.log(`*** ${top}`);
+        console.log(`*** ${top}`);
     }
 
     componentDidMount() {
@@ -135,6 +145,7 @@ class TrickOrTreatSection extends React.Component {
             udacityCreditVisible,
             udacityCreditTransformY,
             jackAndCandyVisible,
+            pumpkinAndSkullsShouldPeek,
         } = this.state;
         const { viewportWidth } = this.props;
         const sectionTitlePosition = this.sectionTitlePositionForViewportWidth(viewportWidth);
@@ -144,6 +155,8 @@ class TrickOrTreatSection extends React.Component {
             sectionStyles,
             udacityCreditStyles,
             jackAndCandyCSSClassName,
+            pumpkinCSSClassName,
+            skullCSSClassName,
             appDescriptionCSSClassName = 'app-description';
 
         //
@@ -168,6 +181,17 @@ class TrickOrTreatSection extends React.Component {
             jackAndCandyCSSClassName = toCSSClassName([
                 ( jackAndCandyVisible ? CSS_ANIMATION.fadeIn : '' )
             ]);
+
+            pumpkinCSSClassName = toCSSClassName([
+                'tot-pumpkin',
+                ( pumpkinAndSkullsShouldPeek ? CSS_ANIMATION.pumpkinPeek : '' )
+            ]);
+
+            skullCSSClassName = toCSSClassName([
+                'tot-skull',
+                ( pumpkinAndSkullsShouldPeek ? CSS_ANIMATION.skullPeek : '' )
+            ]);
+
         }
 
         return (
@@ -231,9 +255,9 @@ class TrickOrTreatSection extends React.Component {
 
                     {/* skulls and pumpkins */}
                     <div id="skulls-and-pumpkins">
-                        <img src={skull} alt="skull" className="tot-skull"/> 
-                        <img src={pumpkin} alt="pumpkin" className="tot-pumpkin"/> 
-                        <img src={skull} alt="skull" className="tot-skull"/> 
+                        <img src={skull} alt="skull" className={skullCSSClassName}/> 
+                        <img src={pumpkin} alt="pumpkin" className={pumpkinCSSClassName}/> 
+                        <img src={skull} alt="skull" className={skullCSSClassName}/> 
                     </div>
                      
                 </div>

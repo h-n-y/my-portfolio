@@ -1,8 +1,8 @@
 ** General **
-- optimize images
 - remove window event listeners on components when they are destroyed
-- `handleWindowScroll` function is the same across all components --> extract
+- `handleWindowScroll` function is the same across many components --> extract
   to utility folder?
+- add resume and github links
 
 ** OXO Section **
 - set the screenshot image src according to the viewport width?

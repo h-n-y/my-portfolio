@@ -26,6 +26,15 @@
     animation: scaleXUpFromZero 0.5s cubic-bezier(0.26, 0.09, 0.23, 1.16) forwards;
 }
 
+.animation--pumpkin-peek {
+    animation: pumpkinPeek 0.5s cubic-bezier(0.26, 0.09, 0.39, 1.32) forwards;
+}
+
+.animation--skull-peek {
+    animation: skullPeek 0.5s cubic-bezier(0.26, 0.09, 0.39, 1.32) forwards;
+}
+
+
 /*
  * ANIMATION KEYFRAMES
  */
@@ -74,4 +83,12 @@
 @keyframes scaleXUpFromZero {
     from { transform: scaleX(0); }
     to   { transform: scaleX(1); }
+}
+
+@keyframes skullPeek {
+    to { transform: translateY(15px); }
+}
+
+@keyframes pumpkinPeek {
+    to { transform: translateY(0); }
 }

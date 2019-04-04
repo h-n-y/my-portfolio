@@ -136,6 +136,12 @@ a {
 .animation--scale-x-up-from-zero {
   animation: scaleXUpFromZero 0.5s cubic-bezier(0.26, 0.09, 0.23, 1.16) forwards; }
 
+.animation--pumpkin-peek {
+  animation: pumpkinPeek 0.5s cubic-bezier(0.26, 0.09, 0.39, 1.32) forwards; }
+
+.animation--skull-peek {
+  animation: skullPeek 0.5s cubic-bezier(0.26, 0.09, 0.39, 1.32) forwards; }
+
 /*
  * ANIMATION KEYFRAMES
  */
@@ -174,6 +180,14 @@ a {
     transform: scaleX(0); }
   to {
     transform: scaleX(1); } }
+
+@keyframes skullPeek {
+  to {
+    transform: translateY(15px); } }
+
+@keyframes pumpkinPeek {
+  to {
+    transform: translateY(0); } }
 
 /**
  * MAIN PAGE
@@ -612,7 +626,21 @@ a {
   #trick-or-treat-section {
     z-index: 10; }
   #grey-panel-desktop-bg {
-    z-index: 9; } }
+    z-index: 9; }
+  /**
+     * Peek animations from pumpkin and skulls
+     */
+  .tot-pumpkin,
+  .tot-skull {
+    will-change: transform; }
+  .tot-pumpkin {
+    transform: translateY(20px); }
+  .tot-skull {
+    transform: translateY(23px); }
+  .tot-skull:first-of-type {
+    animation-delay: 0.5s; }
+  .tot-skull:last-of-type {
+    animation-delay: 0.7s; } }
 
 #melody-section-wrapper {
   /**
