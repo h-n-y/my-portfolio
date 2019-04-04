@@ -3,10 +3,12 @@ import PT from 'prop-types';
 import * as Section from '../shared';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
+import AppLink from '../../AppLink/AppLink';
 
-import oxoIconMobile from '../../../assets/img/oxo-mobile.png';
-import oxoIconTablet from '../../../assets/img/oxo-tablet.png';
-import oxoIconDesktop from '../../../assets/img/oxo-desktop.png';
+import oxoIcon from '../../../assets/icons/oxo-icon.png';
+import oxoScreenshotsMobile from '../../../assets/img/oxo-mobile.png';
+import oxoScreenshotsTablet from '../../../assets/img/oxo-tablet.png';
+import oxoScreenshotsDesktop from '../../../assets/img/oxo-desktop.png';
 
 import {
     APP_LINK_TYPE,
@@ -30,7 +32,7 @@ const APP_KEYWORDS = [
 // Screenshot is kept hidden until OXO section is less than
 // this many pixels from the top of the viewport.
 //
-const SCREENSHOT_VISIBILITY_THRESHOLD = 60/*px*/;
+const SCREENSHOT_VISIBILITY_THRESHOLD = -100/*px*/;
 
 /*
  * When the distance between the top of the viewport and the top of this section
@@ -53,22 +55,23 @@ class OXOSection extends React.Component {
         this.sectionHTMLElement = React.createRef();
     }
 
-    getOXOIconSource() {
+    getOXOScreenshotsSource() {
         const { viewportWidth } = this.props;
 
         if ( viewportWidth < MIN_VIEWPORT_WIDTH_FOR_TABLET_PORTRAIT_UI ) {
-            return oxoIconMobile;
+            return oxoScreenshotsMobile;
         }
 
         if ( viewportWidth < MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI ) {
-            return oxoIconTablet;
+            return oxoScreenshotsTablet;
         }
 
-        return oxoIconDesktop;
+        return oxoScreenshotsDesktop;
     }
 
     updateParallaxForSectionScrollPosition(position) {
 
+        if ( this.state.screenshotVisible ) { return; }
         const screenshotVisible = ( position < SCREENSHOT_VISIBILITY_THRESHOLD );
         this.setState({ screenshotVisible });
     }
@@ -90,7 +93,7 @@ class OXOSection extends React.Component {
         this.updateParallaxForSectionScrollPosition(top);
         this.conditionallyDisplaySectionTextForScrollPosition(top);
 
-        //console.log(`*** ${top}`);
+        console.log(`*** ${top}`);
     }
 
     componentDidMount() {
@@ -111,41 +114,87 @@ class OXOSection extends React.Component {
         const screenshotWrapperClassName = ( screenshotVisible ? 'visible' : '' );
 
 
-        let appDescriptionCSSClassName = 'app-description';
+        let 
+            appFeatureItemCSSClassName,
+            appIconWrapperCSSClassName,
+            appDescriptionCSSClassName = 'app-description',
+            sectionTitlePosition = SECTION_TITLE_POSITION.center;
 
-        const oxoIcon = this.getOXOIconSource();
+
+        const oxoScreenshots = this.getOXOScreenshotsSource();
 
         //
         // Check if desktop-specific styles need to be added
         //
-        if ( Section.shouldDisplayDesktopUI.call(this) ) {
+        const shouldDisplayDesktopUI = Section.shouldDisplayDesktopUI.call(this);
+        if ( shouldDisplayDesktopUI ) {
+
+            sectionTitlePosition = SECTION_TITLE_POSITION.left;
+
+            appIconWrapperCSSClassName = ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' );
 
             appDescriptionCSSClassName = toCSSClassName([
                 'app-description',
                 ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
             ]);
+
+            appFeatureItemCSSClassName = toCSSClassName([
+                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
+            ]);
+
         }
 
         return (
             <div id="oxo-section" ref={this.sectionHTMLElement}>
 
-                <SectionTitle 
-                    title="OXO"
-                    keywords={APP_KEYWORDS}
-                    position={SECTION_TITLE_POSITION.center}
-                    isVisible={sectionTextVisible}
-                    viewportWidth={this.props.viewportWidth}
-                />
+                <div className="top-section">
+                    <div id="oxo-icon-wrapper"
+                        className={appIconWrapperCSSClassName}>
+                        <img src={oxoIcon} alt="oxo app icon" />
+                    </div>
+                    <div className="text-content">
+                         
+                        <SectionTitle 
+                            title="OXO"
+                            keywords={APP_KEYWORDS}
+                            position={sectionTitlePosition}
+                            isVisible={sectionTextVisible}
+                            viewportWidth={this.props.viewportWidth}
+                        />
 
-                <p className={appDescriptionCSSClassName}>
-                    Play a classic game - tic tac toe - with a minimalist finish
-                    and pleasing animations. 
-                </p>
+                        <p className={appDescriptionCSSClassName}>
+                            Play a classic game - tic tac toe - with a minimalist finish
+                            and pleasing animations. 
+                        </p>
+                        <ul id="oxo-features-list">
+                            <li className={appFeatureItemCSSClassName}>
+                                Previously on the App Store 
+                            </li> 
+                            <li className={appFeatureItemCSSClassName}>
+                                AI opponent uses custom game tree for decision making 
+                            </li>
+                            <li className={appFeatureItemCSSClassName}>
+                                Release trailer created with iMovie 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div id="oxo-screenshot-wrapper"
+                <figure id="oxo-screenshot-wrapper"
                     className={screenshotWrapperClassName}>
 
-                    <img src={oxoIcon} alt="oxo screenshot"/>
+                    <img src={oxoScreenshots} alt="oxo screenshot"/>
+                    <figcaption>
+                        OXO screenshots  
+                    </figcaption>
+                </figure>
+
+                {/* RELEASE TRAILER LINK */}
+                <div id="oxo-trailer-link-wrapper">
+                    <AppLink
+                        title="View Release Trailer"
+                        linkType={APP_LINK_TYPE.clear}
+                    />
                 </div>
 
                 {/*

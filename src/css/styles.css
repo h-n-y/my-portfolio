@@ -766,10 +766,24 @@ a {
   background-color: white; }
 
 #oxo-screenshot-wrapper {
+  position: relative;
   margin: 36px -16px;
   display: flex;
   justify-content: center;
   align-items: flex-start; }
+  #oxo-screenshot-wrapper figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 18px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #3a3b40;
+    color: white; }
   #oxo-screenshot-wrapper img {
     width: 100%;
     max-width: 375px;
@@ -783,21 +797,14 @@ a {
     display: none; }
 
 /**
- * this styling makes the embedded YouTube video responsive
+ * OXO icon is visible on desktop only.
  */
-#oxo-video-wrapper {
-  height: 0;
-  max-width: 1280px;
-  padding-top: 25px;
-  padding-bottom: 50.25%;
-  /* 16 : 9 ratio */
-  position: relative; }
-  #oxo-video-wrapper iframe {
-    width: 100% !important;
-    height: 100% !important;
-    position: absolute;
-    top: 0;
-    left: 0; }
+#oxo-icon-wrapper {
+  display: none; }
+
+#oxo-features-list {
+  list-style: inside;
+  margin-top: 32px; }
 
 /**
  * TABLET LAYOUT
@@ -825,7 +832,11 @@ a {
      * horizontally.
      */
   #oxo-screenshot-wrapper {
-    transform: translateY(-130px) rotateZ(-90deg); } }
+    transform: translateY(-130px) rotateZ(-90deg);
+    /*
+         * pattern created using tool at patternify.com
+         */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC); } }
 
 /**
  * DESKTOP LAYOUT
@@ -834,28 +845,57 @@ a {
   #oxo-section {
     padding-top: 96px; }
   #oxo-section .app-description {
+    text-align: left;
     opacity: 0;
     will-change: transform;
     animation-delay: 0.5s; }
+  /**
+     * Position the app icon to the left of the section text.
+     */
+  #oxo-section .top-section {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
   /**
      * undo screenshot rotation applied in tablet ( landscape ) layout
      */
   #oxo-screenshot-wrapper {
     transform: translateY(0) rotateZ(0); }
   #oxo-screenshot-wrapper {
-    opacity: 0;
     width: 80%;
     max-width: 1280px;
+    margin-top: 128px;
     margin-left: auto;
     margin-right: auto;
-    will-change: transform;
-    transition: opacity 0.3s ease-out;
-    transform: translateY(20px); }
-    #oxo-screenshot-wrapper.visible {
-      opacity: 1;
-      transform: translateY(0); }
+    will-change: transform; }
     #oxo-screenshot-wrapper img {
-      width: 100%; } }
+      opacity: 0;
+      will-change: transform;
+      transition: opacity 0.3s ease-out;
+      width: 100%; }
+    #oxo-screenshot-wrapper.visible img {
+      opacity: 1; }
+  #oxo-icon-wrapper {
+    position: relative;
+    display: block;
+    margin-right: 200px;
+    animation-delay: 0.5s;
+    will-change: transform;
+    opacity: 0;
+    /* the OXO app icon */ }
+    #oxo-icon-wrapper img {
+      width: 256px; }
+  #oxo-features-list li {
+    opacity: 0;
+    will-change: transform; }
+  #oxo-features-list li:nth-child(1) {
+    animation-delay: 1s; }
+  #oxo-features-list li:nth-child(2) {
+    animation-delay: 1.4s; }
+  #oxo-features-list li:nth-child(3) {
+    animation-delay: 1.8s; }
+  #oxo-trailer-link-wrapper {
+    margin-top: 64px; } }
 
 #footer-section {
   padding: 64px 16px 128px;

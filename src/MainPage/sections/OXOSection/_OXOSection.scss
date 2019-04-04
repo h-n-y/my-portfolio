@@ -4,10 +4,26 @@
 }
 
 #oxo-screenshot-wrapper {
+    position: relative;
     margin: 36px #{-$page-side-padding--mobile};
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
+    figcaption {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        padding-left: 12px;
+        padding-right: 12px;
+        border-radius: 18px;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background-color: $dark-grey;
+        color: white;
+    }
 
     img {
         width: 100%;
@@ -27,22 +43,15 @@
 }
 
 /**
- * this styling makes the embedded YouTube video responsive
+ * OXO icon is visible on desktop only.
  */
-#oxo-video-wrapper {
-    height: 0;
-    max-width: 1280px;
-    padding-top: 25px;
-    padding-bottom: 50.25%; /* 16 : 9 ratio */
-    position: relative;
+#oxo-icon-wrapper {
+    display: none;
+}
 
-    iframe {
-        width: 100% !important;
-        height: 100% !important;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+#oxo-features-list {
+    list-style: inside;
+    margin-top: 32px;
 }
 
 /**
@@ -84,6 +93,10 @@
     #oxo-screenshot-wrapper {
 
         transform: translateY(-130px) rotateZ(-90deg);
+        /*
+         * pattern created using tool at patternify.com
+         */
+        background-image:  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQoU2NkIBIwQtUZA+mz+PTAFILUgBSDAFYN+BSi2IKsENlmDKdgU4jVvegKkRWhuBmX1Riew6cQ5mawLcQoBGsAANj6CguQus8fAAAAAElFTkSuQmCC);
     }
 }
 
@@ -98,9 +111,19 @@
     }
 
     #oxo-section .app-description {
+        text-align: left;
         opacity: 0;
         will-change: transform;
         animation-delay: 0.5s;
+    }
+
+    /**
+     * Position the app icon to the left of the section text.
+     */
+    #oxo-section .top-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /**
@@ -108,26 +131,61 @@
      */
     #oxo-screenshot-wrapper {
         transform: translateY(0) rotateZ(0);
-
     }
 
     #oxo-screenshot-wrapper {
-        opacity: 0;
         width: 80%; 
         max-width: 1280px;
+        margin-top: 128px;
         margin-left: auto;
         margin-right: auto;
         will-change: transform;
-        transition: opacity 0.3s ease-out;
-        transform: translateY(20px);
 
-        &.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         img {
+            opacity: 0;
+            will-change: transform;
+            transition: opacity 0.3s ease-out;
             width: 100%;
         }
+
+        &.visible img {
+            opacity: 1;
+        }
     }
+
+    #oxo-icon-wrapper {
+        position: relative;
+        display: block;
+        margin-right: 200px;
+        animation-delay: 0.5s;
+        will-change: transform;
+        opacity: 0;
+
+
+        /* the OXO app icon */
+        img {
+            width: 256px;
+        }
+    }
+
+    #oxo-features-list li {
+        opacity: 0;
+        will-change: transform;
+    }
+
+    // 
+    // Set animation delays for feature list items.
+    // Increment by 0.05s intervals
+    //
+    @for $i from 1 through 3 {
+        #oxo-features-list li:nth-child(#{$i}) {
+            animation-delay: ( 0.6s + 0.4 * $i )
+        }
+    }
+
+    #oxo-trailer-link-wrapper {
+        margin-top: 64px;
+    }
+
 }
