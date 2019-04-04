@@ -33,7 +33,7 @@ const APP_KEYWORDS = [
  */
 const TEXT_DISPLAY_SCROLL_THRESHOLD = 200/*px*/;
 const JACK_DISPLAY_SCROLL_THRESHOLD = TEXT_DISPLAY_SCROLL_THRESHOLD;
-const PUMPKIN_SKULL_PEEK_ANIMATION_THRESHOLD = -100/*px*/;
+const PUMPKIN_SKULL_PEEK_ANIMATION_THRESHOLD = 0/*px*/;
 
 class TrickOrTreatSection extends React.Component {
 
@@ -125,8 +125,6 @@ class TrickOrTreatSection extends React.Component {
             this.conditionallyDisplayAppLinkForScrollPosition(top);
             this.conditionallyPeekPumpkinAndSkullsForScrollPosition(top);
         }
-
-        console.log(`*** ${top}`);
     }
 
     componentDidMount() {
@@ -155,8 +153,8 @@ class TrickOrTreatSection extends React.Component {
             sectionStyles,
             udacityCreditStyles,
             jackAndCandyCSSClassName,
-            pumpkinCSSClassName,
-            skullCSSClassName,
+            pumpkinCSSClassName = 'tot-pumpkin',
+            skullCSSClassName = 'tot-skull',
             appDescriptionCSSClassName = 'app-description';
 
         //
