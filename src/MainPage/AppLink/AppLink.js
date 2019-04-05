@@ -4,6 +4,9 @@ import PT from 'prop-types';
 import arrowIcon from '../../assets/icons/arrow@2x.png';
 import whiteArrowIcon from '../../assets/icons/arrow-white@2x.png';
 
+import externalLinkIcon from '../../assets/icons/external-link@2x.png';
+import externalLinkLightIcon from '../../assets/icons/external-link-light@2x.png';
+
 import {
     APP_LINK_TYPE
 } from '../../constants/constants';
@@ -21,23 +24,23 @@ class AppLink extends React.Component {
 
         switch( linkType ) {
             case APP_LINK_TYPE.clear:
-                properties.icon = arrowIcon;
+                properties.icon = externalLinkIcon;
                 properties.cssClassName += 'type-clear';
                 break;
 
             case APP_LINK_TYPE.standard:
-                properties.icon = whiteArrowIcon;
+                properties.icon = externalLinkLightIcon;
                 properties.cssClassName += 'type-standard';
                 break;
 
             case APP_LINK_TYPE.simple:
-                properties.icon = whiteArrowIcon;
+                properties.icon = externalLinkLightIcon;
                 properties.cssClassName += 'type-simple';
                 break;
 
             default:
                 console.warn(`link type "${linkType}" is not recognized!`);
-                properties.icon = arrowIcon;
+                properties.icon = externalLinkIcon;
         }
 
         return properties;
