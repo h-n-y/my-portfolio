@@ -16,7 +16,7 @@
     /**
      * email link
      */
-    a {
+    .email-link {
         display: block;
         margin-top: 36px;
         width: max-content;
@@ -26,6 +26,14 @@
         span {
             color: rgba(white, 0.5);
         }
+    }
+}
+
+#my-credentials-links {
+    display: flex;
+
+    .link-wrapper:first-of-type {
+        margin-right: 32px;
     }
 }
 
@@ -43,6 +51,10 @@
         p {
             width: 80%;
         }
+    }
+
+    #my-credentials-links {
+        margin-top: 48px;
     }
 }
 
@@ -111,11 +123,21 @@
 
     #footer-section a {
 
-        opacity: 0.5;
+        opacity: 0.7;
 
         &:hover {
             opacity: 1;
             text-decoration: underline;
+        }
+    }
+
+    #my-credentials-links {
+        margin-top: 96px;
+
+        & .link-wrapper {
+            will-change: transform;
+            opacity: 0;
+            animation-delay: 1s;
         }
     }
 }

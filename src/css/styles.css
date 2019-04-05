@@ -943,14 +943,19 @@ header {
      */ }
   #footer-section p:first-of-type {
     margin-bottom: 36px; }
-  #footer-section a {
+  #footer-section .email-link {
     display: block;
     margin-top: 36px;
     width: max-content;
     font-size: 24px;
     color: white; }
-    #footer-section a span {
+    #footer-section .email-link span {
       color: rgba(255, 255, 255, 0.5); }
+
+#my-credentials-links {
+  display: flex; }
+  #my-credentials-links .link-wrapper:first-of-type {
+    margin-right: 32px; }
 
 /**
  * TABLET LAYOUT
@@ -960,7 +965,9 @@ header {
     padding-left: 32px;
     padding-right: 32px; }
     #footer-section p {
-      width: 80%; } }
+      width: 80%; }
+  #my-credentials-links {
+    margin-top: 48px; } }
 
 /**
  * TABLET ( LANDSCAPE ) LAYOUT
@@ -1000,10 +1007,16 @@ header {
     will-change: transform;
     animation-delay: 0.8s; }
   #footer-section a {
-    opacity: 0.5; }
+    opacity: 0.7; }
     #footer-section a:hover {
       opacity: 1;
-      text-decoration: underline; } }
+      text-decoration: underline; }
+  #my-credentials-links {
+    margin-top: 96px; }
+    #my-credentials-links .link-wrapper {
+      will-change: transform;
+      opacity: 0;
+      animation-delay: 1s; } }
 
 /*.section-title {
 
@@ -1164,7 +1177,7 @@ header {
   /**
      * download icon
      */ }
-  .link-component span {
+  .link-component .link-label {
     font-size: 18px;
     margin-right: 6px; }
   .link-component img {
@@ -1172,6 +1185,8 @@ header {
     opacity: 0.25; }
   .link-component:hover img {
     opacity: 1; }
+  .link-component.theme--light .link-label {
+    color: white; }
 
 /**
  * GLOBAL STYLES

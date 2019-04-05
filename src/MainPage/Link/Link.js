@@ -10,6 +10,10 @@ import {
     LINK_TYPE,
 } from '../../constants/constants';
 
+import {
+    toCSSClassName,
+} from '../../utility/utility';
+
 function ResumeLink(props) {
 
     //const icon = props.lightTheme ? downloadLightIcon : downloadIcon;
@@ -36,9 +40,14 @@ function ResumeLink(props) {
             console.warn(`link type "${linkType}" is not recognized!`);
     }
 
+    const linkCSSClassName = toCSSClassName([
+        'link-component',
+        ( lightTheme ? 'theme--light' : '' )
+    ]);
+
     return (
-        <a className="link-component">
-            <span> {linkTitle} </span> 
+        <a className={linkCSSClassName}>
+            <span className="link-label"> {linkTitle} </span> 
             <img src={linkIcon} alt="link icon" />
         </a>
     );

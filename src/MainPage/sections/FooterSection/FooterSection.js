@@ -1,7 +1,10 @@
 import React from 'react';
 import * as Section from '../shared';
 
+import Link from '../../Link/Link';
+
 import {
+    LINK_TYPE,
     CSS_ANIMATION,
 } from '../../../constants/constants';
 
@@ -66,7 +69,9 @@ class FooterSection extends React.Component {
 
         let
             paragraphCSSClassName,
-            emailLinkCSSClassName;
+        emailLinkCSSClassName,
+        credentialsLinkCSSClassName;
+
 
         //
         // Check if desktop-specific styles need to be added
@@ -79,6 +84,11 @@ class FooterSection extends React.Component {
 
             emailLinkCSSClassName = toCSSClassName([
                 ( sectionTextVisible ? CSS_ANIMATION.fadeIn : '' ),
+            ]);
+
+            credentialsLinkCSSClassName = toCSSClassName([
+                'link-wrapper',
+                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
             ]);
         }
 
@@ -94,9 +104,22 @@ class FooterSection extends React.Component {
                 </p>
 
                 <div id="email-link-wrapper" className={emailLinkCSSClassName}>
-                    <a href="javascript:;">
+                    <a className="email-link" href="javascript:;">
                         hnyelek <span>@</span> gmail <span>.</span> com
                     </a>
+                </div>
+
+                <div id="my-credentials-links">
+                    <div className={credentialsLinkCSSClassName}>
+                        <Link
+                            linkType={LINK_TYPE.gitHub} 
+                            lightTheme={true} /> 
+                    </div>
+                    <div className={credentialsLinkCSSClassName}>
+                        <Link
+                            linkType={LINK_TYPE.resume}
+                            lightTheme={true} />
+                    </div>
                 </div>
             </footer>
         );

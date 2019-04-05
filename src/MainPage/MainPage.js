@@ -73,9 +73,9 @@ class MainPage extends React.Component {
             <div id="main-page-wrapper">
                 <header>
                     <Link
-                        linkType={LINK_TYPE.resume} />  
-                    <Link
                         linkType={LINK_TYPE.gitHub} />
+                    <Link
+                        linkType={LINK_TYPE.resume} />  
                 </header>
                      
                 <main id="main-page">
