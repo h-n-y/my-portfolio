@@ -8,6 +8,9 @@
  * DIMENSIONS
  */
 /*
+ * BOX SHADOWS
+ */
+/*
  * Breakpoint Mixins
  * see: freeCodeCamp article: "The 100% correct way to do CSS breakpoints"
  *
@@ -336,6 +339,9 @@ header {
      * desktop layout.
      */
   /**
+     * box shadows for roulette cards
+     */
+  /**
      * TODO: use a function or for loop to set z indices of cards?
      */ }
   #roulette-section .app-description {
@@ -375,6 +381,9 @@ header {
       top: -140px; }
   #roulette-section .roulette-card:nth-child(3) {
     display: none; }
+  #roulette-section .roulette-card:nth-child(1),
+  #roulette-section .roulette-card:nth-child(2) {
+    box-shadow: 0 3px 7px 1px rgba(58, 59, 64, 0.3); }
 
 /**
  * desaturated roulette background roulette
@@ -777,7 +786,8 @@ header {
     overflow: hidden;
     width: 530px;
     height: 580px;
-    background-color: white; }
+    background-color: white;
+    box-shadow: 0 3px 7px 1px rgba(58, 59, 64, 0.3); }
   #melody-section {
     width: 50%;
     margin-left: auto;

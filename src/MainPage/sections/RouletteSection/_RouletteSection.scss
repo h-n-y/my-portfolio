@@ -36,6 +36,7 @@
         }
     }
 
+
     .roulette-card:nth-child(1) {
         top: 106px;
         left: 0;
@@ -66,6 +67,16 @@
     .roulette-card:nth-child(3) {
         display: none;
     }
+
+    /**
+     * box shadows for roulette cards
+     */
+
+    .roulette-card:nth-child(1),
+    .roulette-card:nth-child(2) {
+        box-shadow: $card-box-shadow;
+    }
+
 
 
     /**
