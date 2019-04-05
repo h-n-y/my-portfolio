@@ -1,0 +1,24 @@
+.link-component {
+    display: flex;
+    align-items: center;
+
+    /**
+     * "Resume" label
+     */
+    span {
+        font-size: 18px;
+        margin-right: 6px;
+    }
+
+    /**
+     * download icon
+     */
+    img {
+        width: 20px;
+        opacity: 0.25;
+    }
+
+    &:hover img {
+        opacity: 1;
+    }
+}

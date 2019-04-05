@@ -18,6 +18,11 @@ export const APP_LINK_TYPE = {
     simple: 'simple',
 };
 
+export const LINK_TYPE = {
+    resume: 'resume',
+    gitHub: 'github',
+};
+
 export const SECTION_TITLE_POSITION = {
     left: 'left',
     center: 'center',

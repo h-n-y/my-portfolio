@@ -1,3 +1,52 @@
+#main-page-wrapper {
+    position: relative;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    padding-right: $page-side-padding--mobile;
+    z-index: 500;
+    will-change: transform;
+    background-color: $off-white;
+
+    /**
+     * Add spacing between resume and github links
+     */
+    .link-component:first-of-type {
+        margin-right: 32px;
+    }
+
+    /**
+     * Fixed styling applied when user scrolls a bit down from the
+     * top of the page
+     */
+
+    &.fixed {
+        padding-left: 32px;
+        padding-right: 32px;
+        opacity: 0;
+        box-shadow: 0 2px 4px rgba($dark-grey, 0.1);
+        position: fixed;
+        top: -$header-height;
+        right: 20px;
+        border-radius: $header-height / 2;
+        //transform: translateY(-$header-height);
+        transition: transform 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63),
+                    opacity 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63);
+    }
+
+    &.fixed.fixed--visible {
+        opacity: 1;
+        transform: translateY($header-height + 20px); 
+        transition: all 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63);
+    }
+}
+
 #main-page {
 
     /**
@@ -5,4 +54,22 @@
      * positioned partially off-screen.
      */
     overflow-x: hidden;
+}
+
+@include for-tablet-portrait-up {
+    header {
+        padding-right: $page-side-padding--tablet;
+    }
+}
+
+@include for-tablet-landscape-up {
+    header {
+        padding-right: $page-side-padding--tablet-landscape;
+    }
+}
+
+@include for-desktop-up {
+    header {
+        padding-right: $page-side-padding--desktop;
+    }
 }

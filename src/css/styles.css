@@ -4,6 +4,9 @@
 /**
  * PADDING 
  */
+/**
+ * DIMENSIONS
+ */
 /*
  * Breakpoint Mixins
  * see: freeCodeCamp article: "The 100% correct way to do CSS breakpoints"
@@ -192,12 +195,62 @@ a {
 /**
  * MAIN PAGE
  */
+#main-page-wrapper {
+  position: relative; }
+
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+  z-index: 500;
+  will-change: transform;
+  background-color: #f2f2f2;
+  /**
+     * Add spacing between resume and github links
+     */
+  /**
+     * Fixed styling applied when user scrolls a bit down from the
+     * top of the page
+     */ }
+  header .link-component:first-of-type {
+    margin-right: 32px; }
+  header.fixed {
+    padding-left: 32px;
+    padding-right: 32px;
+    opacity: 0;
+    box-shadow: 0 2px 4px rgba(58, 59, 64, 0.1);
+    position: fixed;
+    top: -60px;
+    right: 20px;
+    border-radius: 30px;
+    transition: transform 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63), opacity 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63); }
+  header.fixed.fixed--visible {
+    opacity: 1;
+    transform: translateY(80px);
+    transition: all 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63); }
+
 #main-page {
   /**
      * prevents horizontal scrolling due to background images
      * positioned partially off-screen.
      */
   overflow-x: hidden; }
+
+@media (min-width: 600px) {
+  header {
+    padding-right: 32px; } }
+
+@media (min-width: 900px) {
+  header {
+    padding-right: 48px; } }
+
+@media (min-width: 1200px) {
+  header {
+    padding-right: 64px; } }
 
 #intro-section {
   min-height: 100vh;
@@ -1121,6 +1174,24 @@ a {
     width: 33px; }
   .app-link .title, .app-link img {
     position: relative; }
+
+.link-component {
+  display: flex;
+  align-items: center;
+  /**
+     * "Resume" label
+     */
+  /**
+     * download icon
+     */ }
+  .link-component span {
+    font-size: 18px;
+    margin-right: 6px; }
+  .link-component img {
+    width: 20px;
+    opacity: 0.25; }
+  .link-component:hover img {
+    opacity: 1; }
 
 /**
  * GLOBAL STYLES
