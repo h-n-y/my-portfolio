@@ -35,10 +35,6 @@ const SCROLL_RANGE_FOR_UPDATES = {
     },
 };
 
-const HEADER_IS_FIXED_THRESHOLD = -500/*px*/;
-const SHOW_FIXED_HEADER_SCROLL_THRESHOLD = -1000/*px*/;
-const HIDE_FIXED_HEADER_SCROLL_THRESHOLD = -4600/*px*/;
-
 class MainPage extends React.Component {
 
     constructor(props) {
@@ -46,70 +42,14 @@ class MainPage extends React.Component {
 
         this.state = {
             viewportWidth: 0,
-            headerShouldBeFixed: false,
-            fixedHeaderShouldBeVisible: true,
         };
 
         this.handleViewportResize = this.handleViewportResize.bind(this);
-        this.handleWindowScroll = this.handleWindowScroll.bind(this);
-
-        this.mainPageHTMLElement = React.createRef();
-    }
-
-    updatePageHeaderForScrollPosition(position) {
-
-        if ( position > HEADER_IS_FIXED_THRESHOLD ) {
-            //
-            // Header should *NOT* be fixed, but should instead scroll up
-            // with the page
-            //
-            if ( this.state.headerShouldBeFixed ) {
-                this.setState({ headerShouldBeFixed: false });
-            }
-            return;
-        }
-
-        //
-        // Header should be fixed
-        //
-        if ( !this.state.headerShouldBeFixed ) {
-            this.setState({ headerShouldBeFixed: true });
-        }
-
-        //
-        // Check if the fixed header should be visible.
-        // The header should hide when user scrolls near the bottom of the ( desktop ) page.
-        // The threshold number is near the page bottom.
-        //
-        
-        //const fixedHeaderShouldBeVisible = position >= HIDE_FIXED_HEADER_SCROLL_THRESHOLD;
-        const fixedHeaderShouldBeVisible =
-            position < SHOW_FIXED_HEADER_SCROLL_THRESHOLD &&
-            position > HIDE_FIXED_HEADER_SCROLL_THRESHOLD;
-
-        //
-        // Update state if necessary.
-        //
-        const fixedHeaderVisibilityStateNeedsUpdated =
-            ( fixedHeaderShouldBeVisible && !this.state.fixedHeaderShouldBeVisible ) ||
-            ( !fixedHeaderShouldBeVisible && this.state.fixedHeaderShouldBeVisible );
-        if ( fixedHeaderVisibilityStateNeedsUpdated ) {
-            this.setState({ fixedHeaderShouldBeVisible });
-        }
     }
 
     handleViewportResize(e) {
         const viewportWidth = e.target.innerWidth;
         this.setState({ viewportWidth });
-    }
-
-    handleWindowScroll() {
-
-        const pageElement = this.mainPageHTMLElement.current;
-        const { top } = pageElement.getBoundingClientRect();
-
-        console.log(`main page: ${top}px`);
-        this.updatePageHeaderForScrollPosition(top);
     }
 
     componentDidMount() {
@@ -124,28 +64,14 @@ class MainPage extends React.Component {
         // Register a listener for changes to the viewport:
         //
         window.addEventListener('resize', this.handleViewportResize);
-
-        //
-        // Listen for scroll events on the window
-        //
-        window.addEventListener('scroll', this.handleWindowScroll);
     }
 
     render() {
-        const {
-            viewportWidth,
-            headerShouldBeFixed,
-            fixedHeaderShouldBeVisible,
-        } = this.state;
-
-        const headerCSSClassName = toCSSClassName([
-            ( headerShouldBeFixed ? 'fixed' : '' ),
-            ( fixedHeaderShouldBeVisible ? 'fixed--visible' : '' ),
-        ]);
+        const { viewportWidth, } = this.state;
 
         return (
-            <div id="main-page-wrapper" ref={this.mainPageHTMLElement}>
-                <header className={headerCSSClassName}>
+            <div id="main-page-wrapper">
+                <header>
                     <Link
                         linkType={LINK_TYPE.resume} />  
                     <Link

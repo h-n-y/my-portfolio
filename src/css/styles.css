@@ -207,31 +207,11 @@ header {
   align-items: center;
   padding-right: 16px;
   z-index: 500;
-  will-change: transform;
-  background-color: #f2f2f2;
   /**
      * Add spacing between resume and github links
-     */
-  /**
-     * Fixed styling applied when user scrolls a bit down from the
-     * top of the page
      */ }
   header .link-component:first-of-type {
     margin-right: 32px; }
-  header.fixed {
-    padding-left: 32px;
-    padding-right: 32px;
-    opacity: 0;
-    box-shadow: 0 2px 4px rgba(58, 59, 64, 0.1);
-    position: fixed;
-    top: -60px;
-    right: 20px;
-    border-radius: 30px;
-    transition: transform 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63), opacity 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63); }
-  header.fixed.fixed--visible {
-    opacity: 1;
-    transform: translateY(80px);
-    transition: all 0.3s cubic-bezier(0.26, 0.09, 0.48, 1.63); }
 
 #main-page {
   /**
