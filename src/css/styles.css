@@ -142,11 +142,11 @@ a {
 .animation--scale-x-up-from-zero {
   animation: scaleXUpFromZero 0.5s cubic-bezier(0.26, 0.09, 0.23, 1.16) forwards; }
 
-.animation--pumpkin-peek {
-  animation: pumpkinPeek 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards; }
+.animation--hide-skull {
+  animation: hideSkull 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards; }
 
-.animation--skull-peek {
-  animation: skullPeek 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards; }
+.animation--hide-pumpkin {
+  animation: hidePumpkin 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards; }
 
 /*
  * ANIMATION KEYFRAMES
@@ -187,13 +187,13 @@ a {
   to {
     transform: scaleX(1); } }
 
-@keyframes skullPeek {
+@keyframes hideSkull {
   to {
-    transform: translateY(15px); } }
+    transform: translateY(23px); } }
 
-@keyframes pumpkinPeek {
+@keyframes hidePumpkin {
   to {
-    transform: translateY(0); } }
+    transform: translateY(20px); } }
 
 /**
  * MAIN PAGE
@@ -675,10 +675,8 @@ header {
   .tot-pumpkin,
   .tot-skull {
     will-change: transform; }
-  .tot-pumpkin {
-    transform: translateY(20px); }
   .tot-skull {
-    transform: translateY(23px); }
+    transform: translateY(15px); }
   .tot-skull:first-of-type {
     animation-delay: 0.5s; }
   .tot-skull:last-of-type {

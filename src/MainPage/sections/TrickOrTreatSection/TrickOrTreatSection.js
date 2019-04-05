@@ -182,12 +182,12 @@ class TrickOrTreatSection extends React.Component {
 
             pumpkinCSSClassName = toCSSClassName([
                 'tot-pumpkin',
-                ( pumpkinAndSkullsShouldPeek ? CSS_ANIMATION.pumpkinPeek : '' )
+                ( pumpkinAndSkullsShouldPeek ? CSS_ANIMATION.hidePumpkin : '' )
             ]);
 
             skullCSSClassName = toCSSClassName([
                 'tot-skull',
-                ( pumpkinAndSkullsShouldPeek ? CSS_ANIMATION.skullPeek : '' )
+                ( pumpkinAndSkullsShouldPeek ? CSS_ANIMATION.hideSkull : '' )
             ]);
 
         }

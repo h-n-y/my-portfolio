@@ -26,12 +26,12 @@
     animation: scaleXUpFromZero 0.5s cubic-bezier(0.26, 0.09, 0.23, 1.16) forwards;
 }
 
-.animation--pumpkin-peek {
-    animation: pumpkinPeek 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards;
+.animation--hide-skull {
+    animation: hideSkull 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards;
 }
 
-.animation--skull-peek {
-    animation: skullPeek 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards;
+.animation--hide-pumpkin {
+    animation: hidePumpkin 0.45s cubic-bezier(0.26, 0.09, 0.48, 1.63) forwards;
 }
 
 
@@ -85,10 +85,10 @@
     to   { transform: scaleX(1); }
 }
 
-@keyframes skullPeek {
-    to { transform: translateY(15px); }
+@keyframes hideSkull {
+    to { transform: translateY(23px); }
 }
 
-@keyframes pumpkinPeek {
-    to { transform: translateY(0); }
+@keyframes hidePumpkin {
+    to { transform: translateY(20px); }
 }
