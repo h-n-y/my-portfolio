@@ -32,7 +32,7 @@ const APP_KEYWORDS = [
 // Screenshot is kept hidden until OXO section is less than
 // this many pixels from the top of the viewport.
 //
-const SCREENSHOT_VISIBILITY_THRESHOLD = -100/*px*/;
+const SCREENSHOT_VISIBILITY_THRESHOLD = 0/*px*/;
 
 /*
  * When the distance between the top of the viewport and the top of this section
@@ -92,8 +92,6 @@ class OXOSection extends React.Component {
 
         this.updateParallaxForSectionScrollPosition(top);
         this.conditionallyDisplaySectionTextForScrollPosition(top);
-
-        console.log(`*** ${top}`);
     }
 
     componentDidMount() {

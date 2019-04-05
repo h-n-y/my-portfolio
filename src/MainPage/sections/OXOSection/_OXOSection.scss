@@ -176,7 +176,7 @@
 
     // 
     // Set animation delays for feature list items.
-    // Increment by 0.05s intervals
+    // Increment by 0.4s intervals
     //
     @for $i from 1 through 3 {
         #oxo-features-list li:nth-child(#{$i}) {
