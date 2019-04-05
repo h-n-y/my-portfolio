@@ -16,6 +16,13 @@ import {
     toCSSClassName,
 } from '../utility/utility';
 
+/**
+ * In order to reduce the number of function calls made while scrolling,
+ * each section of the page only updates its scroll-based state properties
+ * in a restricted range. The range for each section represents the distance
+ * of the top of the section from the top of the viewport.
+ * @constant
+ */
 const SCROLL_RANGE_FOR_UPDATES = {
     introSection: {
         min: -1100,
@@ -35,6 +42,9 @@ const SCROLL_RANGE_FOR_UPDATES = {
     },
 };
 
+/**
+ * The main page of the portfolio.
+ */
 class MainPage extends React.Component {
 
     constructor(props) {
@@ -47,6 +57,10 @@ class MainPage extends React.Component {
         this.handleViewportResize = this.handleViewportResize.bind(this);
     }
 
+    /**
+     * Updates the viewport width state property.
+     * @param e - The resize event.
+     */
     handleViewportResize(e) {
         const viewportWidth = e.target.innerWidth;
         this.setState({ viewportWidth });

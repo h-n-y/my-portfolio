@@ -40,6 +40,9 @@ const SCREENSHOT_VISIBILITY_THRESHOLD = 0/*px*/;
  */
 const TEXT_DISPLAY_SCROLL_THRESHOLD = 300/*px*/;
 
+/**
+ * Displays a summary of my OXO project.
+ */
 class OXOSection extends React.Component {
 
     constructor(props) {
@@ -55,6 +58,9 @@ class OXOSection extends React.Component {
         this.sectionHTMLElement = React.createRef();
     }
 
+    /**
+     * @returns the appropriate screenshot icon for the current viewport width.
+     */
     getOXOScreenshotsSource() {
         const { viewportWidth } = this.props;
 
@@ -69,6 +75,11 @@ class OXOSection extends React.Component {
         return oxoScreenshotsDesktop;
     }
 
+    /**
+     * Updates parallax state properties for the given scroll position.
+     * @param position {number} - The distance of the top of the section from the
+     * top of the viewport.
+     */
     updateParallaxForSectionScrollPosition(position) {
 
         if ( this.state.screenshotVisible ) { return; }
@@ -79,6 +90,11 @@ class OXOSection extends React.Component {
     /**
      * NOTE: this method is the same across several components?
      */
+    /**
+     * Displays text for the given scroll position, if necessary.
+     * @param position {number} - The distance of the top of the section from the
+     * top of the viewport.
+     */
     conditionallyDisplaySectionTextForScrollPosition(position) {
         if ( this.state.sectionTextVisible ) { return; }
         if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {
@@ -86,6 +102,10 @@ class OXOSection extends React.Component {
         }
     }
 
+    /**
+     * `window` 'scroll' event listener
+     *  Updates parallax and text visibility state, if necessary.
+     */
     handleWindowScroll() {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
@@ -136,9 +156,7 @@ class OXOSection extends React.Component {
                 ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
             ]);
 
-            appFeatureItemCSSClassName = toCSSClassName([
-                ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' ),
-            ]);
+            appFeatureItemCSSClassName = ( sectionTextVisible ? CSS_ANIMATION.fadeInFromBottom : '' );
 
         }
 
@@ -194,18 +212,6 @@ class OXOSection extends React.Component {
                         linkType={APP_LINK_TYPE.clear}
                     />
                 </div>
-
-                {/*
-                <div id="oxo-trailer-section">
-
-                    <div id="oxo-video-wrapper">
-                        <iframe  src="https://www.youtube.com/embed/bjkJCgwsfvU" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                    </div>
-
-                     
-                </div>
-                */}
-                 
             </div>
        );
     }

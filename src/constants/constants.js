@@ -1,3 +1,12 @@
+//
+// CONSTANTS
+//
+
+/**
+ * Types assignable to the AppLink component.
+ * Each AppLink type has a unique style and animation on hover.
+ * @constant
+ */
 export const APP_LINK_TYPE = {
 
     /*
@@ -18,17 +27,30 @@ export const APP_LINK_TYPE = {
     simple: 'simple',
 };
 
+/**
+ * Types for the Link component.
+ * Each Link type has a unique label and icon
+ * @constant
+ */
 export const LINK_TYPE = {
     resume: 'resume',
     gitHub: 'github',
 };
 
+/**
+ * Text alignment positions for the SectionTitle component.
+ * @constant
+ */
 export const SECTION_TITLE_POSITION = {
     left: 'left',
     center: 'center',
     right: 'right',
 };
 
+/**
+ * CSS animation class names.
+ * @constant
+ */
 export const CSS_ANIMATION = {
     fadeIn: 'animation--fade-in',
     fadeInFromLeft: 'animation--fade-in-from-left',
@@ -39,5 +61,14 @@ export const CSS_ANIMATION = {
     hidePumpkin: 'animation--hide-pumpkin',
 };
 
+/**
+ * The minimum viewport width for tablet portrait layouts.
+ * @constant
+ */
 export const MIN_VIEWPORT_WIDTH_FOR_TABLET_PORTRAIT_UI = 600/*px*/;
+
+/**
+ * The minimum viewport width for desktop layouts.
+ * @constant
+ */
 export const MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI = 1200/*px*/;

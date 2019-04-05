@@ -28,9 +28,11 @@ const APP_KEYWORDS = [
  * When the distance between the top of the viewport and the top of this section
  * falls under this threshold, the section text is animated into view.
  */
-//const TEXT_DISPLAY_SCROLL_THRESHOLD = 450/*px*/;
 const TEXT_DISPLAY_SCROLL_THRESHOLD = 350/*px*/;
 
+/**
+ * Displays a summary of my Roulette app.
+ */
 class RouletteSection extends React.Component {
 
     constructor(props) {
@@ -54,6 +56,11 @@ class RouletteSection extends React.Component {
         this.sectionHTMLElement = React.createRef();
     }
 
+    /**
+     * Updates the state such that the loaded image fades into view.
+     * @param rouletteImageIndex {number} - The index of the load flag for the
+     * loaded image.
+     */
     handleImageLoad(rouletteImageIndex) {
 
         console.log(`roulette ${rouletteImageIndex} loaded`);
@@ -64,7 +71,11 @@ class RouletteSection extends React.Component {
         this.setState({ rouletteImageLoadedFlags: flagsUpdated });
     }
 
-    handleWindowScroll(e) {
+    /**
+     * `window` 'scroll' event listener.
+     * Updates parallax and text effects, if necessary.
+     */
+    handleWindowScroll() {
 
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
@@ -74,11 +85,13 @@ class RouletteSection extends React.Component {
             this.updateParallaxForSectionScrollPosition(top);
             this.conditionallyDisplaySectionTextForScrollPosition(top);
         }
-
-
-        //console.log(`*** ${top}`);
     }
 
+    /**
+     * Updates parallax state properties for the current scroll position.
+     * @param position {number} - The distance from the top of the section to
+     * the top of the viewport.
+     */
     updateParallaxForSectionScrollPosition(position) {
 
         const rouletteCard1TransformY = 0.4 * position - 0;
@@ -98,6 +111,11 @@ class RouletteSection extends React.Component {
         });
     }
 
+    /**
+     * Sets the visibility state of the section text, if necessary.
+     * @param position {number} - The distance from the top of the section t
+     * the top of the viewport.
+     */
     conditionallyDisplaySectionTextForScrollPosition(position) {
         if ( this.state.sectionTextVisible ) { return; }
         if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {

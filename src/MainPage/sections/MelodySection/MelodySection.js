@@ -32,6 +32,9 @@ const APP_KEYWORDS = [
  */
 const TEXT_DISPLAY_SCROLL_THRESHOLD = 500/*px*/;
 
+/**
+ * Displays a summary of my Melody project.
+ */
 class MelodySection extends React.Component {
 
     constructor(props) {
@@ -60,6 +63,11 @@ class MelodySection extends React.Component {
     /**
      * NOTE: this method is the same across several components?
      */
+    /**
+     * Displays the section text, if necessary.
+     * @param position {number} - The distance of the top of the section from the
+     * top of the viewport.
+     */
     conditionallyDisplaySectionTextForScrollPosition(position) {
         if ( this.state.sectionTextVisible ) { return; }
         if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {
@@ -67,6 +75,11 @@ class MelodySection extends React.Component {
         }
     }
 
+    /**
+     * Updates parallax state properties for the given scroll position.
+     * @param position {number} - The distance of the top of the section from
+     * the fop of the viewport.
+     */
     updateParallaxForSectionScrollPosition(position) {
 
         const sectionTransformY = 0.6 * position - 400;
@@ -80,7 +93,11 @@ class MelodySection extends React.Component {
         });
     }
 
-    handleWindowScroll(e) {
+    /**
+     * `window` 'scroll' event listener.
+     * Updates parallax and text state, if necessary.
+     */
+    handleWindowScroll() {
 
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
@@ -91,7 +108,6 @@ class MelodySection extends React.Component {
             this.updateParallaxForSectionScrollPosition(top);
             this.conditionallyDisplaySectionTextForScrollPosition(top);
         }
-        //console.log(`*** ${top}`);
     }
 
     componentDidMount() {

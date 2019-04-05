@@ -12,6 +12,9 @@ const DEFAULT_ROULETTE_DESIGN_TRANSFORM = -80/*px*/;
 const DEFAULT_ROULETTE_CAPTION_TRANSFORM_Y = -60/*px*/;
 const DEFAULT_ROULETTE_CAPTION_TRANSFORM_X = 90/*px*/;
 
+/**
+ * The first section displayed at the top of the portfolio page.
+ */
 class IntroSection extends React.Component {
 
     constructor(props) {
@@ -31,8 +34,13 @@ class IntroSection extends React.Component {
         this.sectionHTMLElement = React.createRef();
     }
 
+    /**
+     * Updates the positions of the greeting, 'about me', and roulette image for
+     * the provided scroll position.
+     * @param position {number} - The distance of the top of the section from the
+     * top of the viewport.
+     */
     updateParallaxForScrollPosition(position) {
-        //console.log(position);
 
         //
         // transforms
@@ -60,7 +68,11 @@ class IntroSection extends React.Component {
         });
     }
 
-    handleWindowScroll(e) {
+    /**
+     * `window` 'scroll' event listener. Condintionally updates parallax state
+     * properties.
+     */
+    handleWindowScroll() {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
@@ -72,12 +84,14 @@ class IntroSection extends React.Component {
 
     }
 
+    /**
+     * Sets state such that the loaded roulette image fades into view.
+     */
     handleRouletteImageLoad() {
         this.setState({ rouletteDesignLoaded: true });
     }
 
     componentDidMount() {
-
 
         //
         // Listen for scroll events on the window

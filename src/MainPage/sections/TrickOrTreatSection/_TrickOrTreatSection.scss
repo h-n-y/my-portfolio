@@ -186,6 +186,7 @@
     #trick-or-treat-section .udacity-credit {
         opacity: 0;
         transition: opacity 1.2s ease-out;
+        transition-delay: 0.8s;
     }
 
     #trick-or-treat-section,

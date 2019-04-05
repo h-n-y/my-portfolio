@@ -14,7 +14,11 @@ import {
     toCSSClassName,
 } from '../../utility/utility';
 
-function ResumeLink(props) {
+/**
+ * A link to either download my resume or navigate to my GitHub.
+ * The `linkType` property determines which link the component instance is.
+ */
+function Link(props) {
 
     //const icon = props.lightTheme ? downloadLightIcon : downloadIcon;
     const { lightTheme, linkType } = props;
@@ -53,13 +57,13 @@ function ResumeLink(props) {
     );
 }
 
-ResumeLink.defaultProps = {
+Link.defaultProps = {
     lightTheme: false,
 };
 
-ResumeLink.propTypes = {
+Link.propTypes = {
     lightTheme: PT.bool.isRequired,
     linkType: PT.string.isRequired, // expected to be a property of LINK_TYPE constant.
 };
 
-export default ResumeLink;
+export default Link;

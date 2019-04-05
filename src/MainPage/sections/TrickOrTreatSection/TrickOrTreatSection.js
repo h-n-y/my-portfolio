@@ -35,6 +35,9 @@ const TEXT_DISPLAY_SCROLL_THRESHOLD = 200/*px*/;
 const JACK_DISPLAY_SCROLL_THRESHOLD = TEXT_DISPLAY_SCROLL_THRESHOLD;
 const PUMPKIN_SKULL_PEEK_ANIMATION_THRESHOLD = 0/*px*/;
 
+/**
+ * Displays a summary of my Trick-or-Treat game app.
+ */
 class TrickOrTreatSection extends React.Component {
 
     constructor(props) {
@@ -42,7 +45,6 @@ class TrickOrTreatSection extends React.Component {
 
         this.state = {
             sectionTextVisible: false,
-            udacityCreditVisible: false,
             jackAndCandyVisible: false,
             pumpkinAndSkullsShouldPeek: false,
             sectionTransformY: 0,
@@ -54,6 +56,11 @@ class TrickOrTreatSection extends React.Component {
         this.sectionHTMLElement = React.createRef();
     }
 
+    /**
+     * @param width {number} - The width of the viewport.
+     * @returns the correct section title position for the given
+     * viewport width.
+     */
     sectionTitlePositionForViewportWidth(width) {
         if ( width < 600 ) {
             return SECTION_TITLE_POSITION.center;
@@ -65,25 +72,24 @@ class TrickOrTreatSection extends React.Component {
     /**
      * NOTE: a copy/paste from RouletteSection
      */
+    /**
+     * @param position {number} - The distance from the top of the section to
+     * the top of the viewport.
+     * Displays the section text, if necessary.
+     */
     conditionallyDisplaySectionTextForScrollPosition(position) {
 
-
-        //
-        // Udacity credit
-        //
-        if ( position < 0 && !this.state.udacityCreditVisbile ) {
-            this.setState({ udacityCreditVisible: true });
-        }
-
-        //
-        // App description
-        //
         if ( this.state.sectionTextVisible ) { return; }
         if ( position < TEXT_DISPLAY_SCROLL_THRESHOLD ) {
             this.setState({ sectionTextVisible: true });
         }
     }
 
+    /**
+     * Displays Jack ( and candy corn ) icons, if necessary.
+     * @param position {number} - The distance from the top of the section to
+     * the top of the viewport.
+     */
     conditionallyDisplayJackForScrollPosition(position) {
         if ( this.state.jackAndCandyVisible ) { return; }
         if ( position < JACK_DISPLAY_SCROLL_THRESHOLD ) {
@@ -91,16 +97,23 @@ class TrickOrTreatSection extends React.Component {
         }
     }
 
-    conditionallyDisplayAppLinkForScrollPosition(position) {
-    }
-
-    conditionallyPeekPumpkinAndSkullsForScrollPosition(position) {
+    /**
+     * Hides the pumpkin and skulls, if necessary.
+     * @param position {number} - The distance from the top of the section to
+     * the top of the viewport.
+     */
+    conditionallyHidePumpkinAndSkullsForScrollPosition(position) {
         if ( this.state.pumpkinAndSkullsShouldPeek ) { return; }
         if ( position < PUMPKIN_SKULL_PEEK_ANIMATION_THRESHOLD ) {
             this.setState({ pumpkinAndSkullsShouldPeek: true });
         }
     }
 
+    /**
+     * Updates parallax state properties for the given scroll position.
+     * @param position {number} - The distance from the top of the section to
+     * the top of the viewport.
+     */
     updateParallaxForSectionScrollPosition(position) {
 
         const sectionTransformY = 0.4 * position;
@@ -112,7 +125,11 @@ class TrickOrTreatSection extends React.Component {
         });
     }
 
-    handleWindowScroll(e) {
+    /**
+     * `window` 'scroll' event listener.
+     * Applies various section effectsbased on the current scroll position.
+     */
+    handleWindowScroll() {
 
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
@@ -122,8 +139,7 @@ class TrickOrTreatSection extends React.Component {
             this.updateParallaxForSectionScrollPosition(top);
             this.conditionallyDisplaySectionTextForScrollPosition(top);
             this.conditionallyDisplayJackForScrollPosition(top);
-            this.conditionallyDisplayAppLinkForScrollPosition(top);
-            this.conditionallyPeekPumpkinAndSkullsForScrollPosition(top);
+            this.conditionallyHidePumpkinAndSkullsForScrollPosition(top);
         }
     }
 
@@ -140,7 +156,6 @@ class TrickOrTreatSection extends React.Component {
         const {
             sectionTextVisible,
             sectionTransformY,
-            udacityCreditVisible,
             udacityCreditTransformY,
             jackAndCandyVisible,
             pumpkinAndSkullsShouldPeek,
@@ -168,7 +183,7 @@ class TrickOrTreatSection extends React.Component {
 
             udacityCreditStyles = {
                 transform: `translateY(${udacityCreditTransformY}px)`,
-                opacity: ( udacityCreditVisible ? 1 : 0 ),
+                opacity: ( sectionTextVisible ? 1 : 0 ),
             };
 
             appDescriptionCSSClassName = toCSSClassName([
@@ -176,9 +191,7 @@ class TrickOrTreatSection extends React.Component {
                 ( sectionTextVisible ? CSS_ANIMATION.fadeInFromRight : '' ),
             ]);
 
-            jackAndCandyCSSClassName = toCSSClassName([
-                ( jackAndCandyVisible ? CSS_ANIMATION.fadeIn : '' )
-            ]);
+            jackAndCandyCSSClassName = ( jackAndCandyVisible ? CSS_ANIMATION.fadeIn : '' );
 
             pumpkinCSSClassName = toCSSClassName([
                 'tot-pumpkin',
@@ -189,7 +202,6 @@ class TrickOrTreatSection extends React.Component {
                 'tot-skull',
                 ( pumpkinAndSkullsShouldPeek ? CSS_ANIMATION.hideSkull : '' )
             ]);
-
         }
 
         return (

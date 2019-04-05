@@ -50,15 +50,9 @@
          * prevent roulette design from being pushed down by section top padding
          */
         transform: translateY(-84px);
-        //transform: translateY(-80px);
 
         figcaption {
             will-change: transform;
-
-            /**
-             * moves caption closer to the roulette design
-             */
-            //transform: translate(90px, -60px);
         }
 
         img {
@@ -109,20 +103,12 @@
     }
 
     /**
-     * TODO: use for loop here...
+     * Stagger animations of 'About Me' paragraph text rows.
      */
-
-    #about-me span:nth-child(1) {
-        animation-delay: 0.5s;
-    }
-    #about-me span:nth-child(2) {
-        animation-delay: 0.55s;
-    }
-    #about-me span:nth-child(3) {
-        animation-delay: 0.6s;
-    }
-    #about-me span:nth-child(4) {
-        animation-delay: 0.65s;
+    @for $i from 1 through 4 {
+        #about-me span:nth-child(#{$i}) {
+            animation-delay: ( 0.5s + ( $i - 1 ) * 0.05 );
+        }
     }
 
     #intro-section {

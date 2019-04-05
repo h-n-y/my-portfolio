@@ -1,9 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import arrowIcon from '../../assets/icons/arrow@2x.png';
-import whiteArrowIcon from '../../assets/icons/arrow-white@2x.png';
-
 import externalLinkIcon from '../../assets/icons/external-link@2x.png';
 import externalLinkLightIcon from '../../assets/icons/external-link-light@2x.png';
 
@@ -11,6 +8,9 @@ import {
     APP_LINK_TYPE
 } from '../../constants/constants';
 
+/**
+ * A link to the web page of a portfolio project.
+ */
 class AppLink extends React.Component {
 
     /**

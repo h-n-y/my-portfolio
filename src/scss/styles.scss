@@ -1,8 +1,13 @@
+/**
+ * GENERAL
+ */
+
 @import './variables';
 @import './breakpoints';
 @import './fonts';
 @import './normalize';
 @import './animations';
+
 
 /**
  * MAIN PAGE
@@ -47,19 +52,18 @@
     }
 }
 
-/*
-.tablet-only,
-.desktop-only {
-    display: none;
-}
-*/
-
+/**
+ * Tablet Layouts
+ */
 @include for-tablet-portrait-up {
     .mobile-only {
         display: none !important;
     }
 }
 
+/**
+ * Desktop Layouts
+ */
 @include for-desktop-up {
 
     .app-description {

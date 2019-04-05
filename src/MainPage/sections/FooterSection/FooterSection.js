@@ -18,6 +18,10 @@ import {
  */
 const TEXT_DISPLAY_SCROLL_THRESHOLD = 300/*px*/;
 
+/**
+ * The footer of the portfolio page. Includes a call to action along with
+ * email, resume, and GitHub links.
+ */
 class FooterSection extends React.Component {
 
     constructor(props) {
@@ -32,10 +36,11 @@ class FooterSection extends React.Component {
         this.sectionHTMLElement = React.createRef();
     }
 
-    updateParallaxForSectionScrollPosition(position) {
-        //console.log(`cta: ${position}px`);
-    }
-
+    /**
+     * Displays the section text if scroll position is below threshold.
+     * @param position {number} - The distance of the top of the section from
+     * the viewport.
+     */
     conditionallyDisplaySectionTextForScrollPosition(position) {
 
         if ( this.state.sectionTextVisible ) { return; }
@@ -44,11 +49,13 @@ class FooterSection extends React.Component {
         }
     }
 
+    /**
+     * Window 'scroll' event listener. Updates section text visibility if necessary.
+     */
     handleWindowScroll() {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
-        this.updateParallaxForSectionScrollPosition(top);
         this.conditionallyDisplaySectionTextForScrollPosition(top);
     }
 

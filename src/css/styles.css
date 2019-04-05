@@ -1,4 +1,7 @@
 /**
+ * GENERAL
+ */
+/**
  * COLORS
  */
 /**
@@ -274,10 +277,7 @@ header {
          */
     transform: translateY(-84px); }
     #roulette-design-wrapper figcaption {
-      will-change: transform;
-      /**
-             * moves caption closer to the roulette design
-             */ }
+      will-change: transform; }
     #roulette-design-wrapper img {
       will-change: transform;
       opacity: 0;
@@ -310,7 +310,7 @@ header {
   #greeting span {
     animation-delay: 0.5s; }
   /**
-     * TODO: use for loop here...
+     * Stagger animations of 'About Me' paragraph text rows.
      */
   #about-me span:nth-child(1) {
     animation-delay: 0.5s; }
@@ -340,9 +340,6 @@ header {
      */
   /**
      * box shadows for roulette cards
-     */
-  /**
-     * TODO: use a function or for loop to set z indices of cards?
      */ }
   #roulette-section .app-description {
     margin-bottom: 24px;
@@ -633,7 +630,8 @@ header {
     animation-delay: 0.2s; }
   #trick-or-treat-section .udacity-credit {
     opacity: 0;
-    transition: opacity 1.2s ease-out; }
+    transition: opacity 1.2s ease-out;
+    transition-delay: 0.8s; }
   #trick-or-treat-section,
   #trick-or-treat-section .app-description,
   #trick-or-treat-section .udacity-credit,
@@ -1027,29 +1025,6 @@ header {
       opacity: 0;
       animation-delay: 1s; } }
 
-/*.section-title {
-
-}
-
-.title-keyword-divider {
-    width: 66px;
-    height: 2px;
-    background-color: $light-grey;
-    margin-top: 8px;
-    margin-bottom: 4px;
-}
-
-.app-keywords {
-    display: flex;
-    align-items: baseline;
-    color: $light-grey;
-    font-weight: bold;
-
-    li:not(:last-child) {
-        margin-right: 4px;
-    }
-}
-*/
 .section-title {
   display: flex;
   flex-direction: column; }
@@ -1215,16 +1190,16 @@ header {
   .app-description span:not(:last-child) {
     margin-right: 4px; }
 
-/*
-.tablet-only,
-.desktop-only {
-    display: none;
-}
-*/
+/**
+ * Tablet Layouts
+ */
 @media (min-width: 600px) {
   .mobile-only {
     display: none !important; } }
 
+/**
+ * Desktop Layouts
+ */
 @media (min-width: 1200px) {
   .app-description {
     will-change: transform; } }
