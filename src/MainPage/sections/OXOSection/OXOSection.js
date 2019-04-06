@@ -84,7 +84,9 @@ class OXOSection extends React.Component {
 
         if ( this.state.screenshotVisible ) { return; }
         const screenshotVisible = ( position < SCREENSHOT_VISIBILITY_THRESHOLD );
-        this.setState({ screenshotVisible });
+        if ( screenshotVisible ) {
+            this.setState({ screenshotVisible: true });
+        }
     }
 
     /**
