@@ -88,7 +88,16 @@ class RouletteSection extends React.Component {
             this.conditionallyDisplaySectionTextForScrollPosition(top);
         }
 
-        this.setState({ rouletteCardsVisible: true });
+        /**
+         * Show the roulette cards as soon as the section reaches the top
+         * of the viewport
+         */
+        /*
+        console.log(`top: ${top}px\tcards: ${this.state.rouletteCardsVisible}`);
+        if ( top < 0 && !this.state.rouletteCardsVisible ) {
+            this.setState({ rouletteCardsVisible: true });
+        }
+        */
     }
 
     /**
@@ -127,9 +136,16 @@ class RouletteSection extends React.Component {
         }
     }
 
+    setInitialRouletteCardPositions() {
+        const sectionHTMLElement = this.sectionHTMLElement.current;
+        const { top } = sectionHTMLElement.getBoundingClientRect();
+        this.updateParallaxForSectionScrollPosition(top);
+    }
+
     componentDidMount() {
 
         Section.setSectionHeight.call(this);
+        this.setInitialRouletteCardPositions();
 
         //
         // Listen for scroll events on the window.

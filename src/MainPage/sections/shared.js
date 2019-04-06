@@ -28,14 +28,16 @@ function inRange(min, max, value) {
  * @returns `true` iff the section should update itself for the current
  * page scroll position
  */
-export function insideScrollRangeForUpdates(currentScrollPosition) {
+export function insideScrollRangeForUpdates(currentScrollPosition, scrollPadding) {
+
+    scrollPadding = scrollPadding || 0;
 
     const { viewportHeight } = this.props;
     const { sectionHeight } = this.state;
 
     const sectionIsVisibleInViewport =
-        ( -sectionHeight < currentScrollPosition ) &&
-        ( currentScrollPosition < viewportHeight );
+        ( -sectionHeight - scrollPadding < currentScrollPosition ) &&
+        ( currentScrollPosition < viewportHeight + scrollPadding );
     return sectionIsVisibleInViewport;
 }
 

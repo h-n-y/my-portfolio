@@ -143,8 +143,16 @@ class TrickOrTreatSection extends React.Component {
         }
     }
 
+    setInitialParallaxPositions() {
+        const sectionHTMLElement = this.sectionHTMLElement.current;
+        const { top } = sectionHTMLElement.getBoundingClientRect();
+        this.updateParallaxForSectionScrollPosition(top);
+    }
+
     componentDidMount() {
         Section.setSectionHeight.call(this);
+
+        this.setInitialParallaxPositions();
 
         //
         // Listen for scroll events on the window

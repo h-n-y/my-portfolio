@@ -103,15 +103,24 @@ class MelodySection extends React.Component {
         const { top } = sectionHTMLElement.getBoundingClientRect();
 
         
-        const shouldUpdateForScroll = Section.insideScrollRangeForUpdates.call(this, top);
+        const scrollPadding = 300/*px*/
+        const shouldUpdateForScroll = Section.insideScrollRangeForUpdates.call(this, top, scrollPadding);
         if ( shouldUpdateForScroll ) {
             this.updateParallaxForSectionScrollPosition(top);
             this.conditionallyDisplaySectionTextForScrollPosition(top);
         }
     }
 
+    setInitialParallaxPositions() {
+        const sectionHTMLElement = this.sectionHTMLElement.current;
+        const { top } = sectionHTMLElement.getBoundingClientRect();
+        this.updateParallaxForSectionScrollPosition(top);
+    }
+
     componentDidMount() {
         Section.setSectionHeight.call(this);
+
+        this.setInitialParallaxPositions();
 
         //
         // Listen for scroll events on the window

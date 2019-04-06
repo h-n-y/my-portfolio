@@ -484,11 +484,7 @@ header {
     #roulette-section .roulette-cards {
       width: 60%; }
     #roulette-section .roulette-card {
-      will-change: transform;
-      transition: opacity 0.3s ease-out;
-      opacity: 0; }
-      #roulette-section .roulette-card.visible {
-        opacity: 1; }
+      will-change: transform; }
     #roulette-section .roulette-card:nth-child(1) {
       top: 106px;
       top: -25px;
