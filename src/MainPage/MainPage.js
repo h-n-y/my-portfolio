@@ -10,6 +10,7 @@ import Link from './Link/Link';
 
 import {
     LINK_TYPE,
+    SECTION_DESKTOP_SCROLL_POSITION,
 } from '../constants/constants';
 
 import {
@@ -23,6 +24,7 @@ import {
  * of the top of the section from the top of the viewport.
  * @constant
  */
+/*
 const SCROLL_RANGE_FOR_UPDATES = {
     introSection: {
         min: -1100,
@@ -41,6 +43,7 @@ const SCROLL_RANGE_FOR_UPDATES = {
         max: 1000
     },
 };
+*/
 
 /**
  * The main page of the portfolio.
@@ -51,19 +54,27 @@ class MainPage extends React.Component {
         super(props);
 
         this.state = {
-            viewportWidth: 0,
+            viewportWidth: 0/*px*/,
+            viewportHeight: 0/*px*/,
         };
 
         this.handleViewportResize = this.handleViewportResize.bind(this);
     }
+
 
     /**
      * Updates the viewport width state property.
      * @param e - The resize event.
      */
     handleViewportResize(e) {
-        const viewportWidth = e.target.innerWidth;
-        this.setState({ viewportWidth });
+        const { target } = e;
+        const viewportWidth = target.innerWidth;
+        const viewportHeight = target.innerHeight;
+
+        this.setState({
+            viewportWidth,
+            viewportHeight,
+        });
     }
 
     componentDidMount() {
@@ -72,16 +83,20 @@ class MainPage extends React.Component {
         // Set the initial viewport width
         //
         const viewportWidth = window.innerWidth;
-        this.setState({ viewportWidth });
+        const viewportHeight = window.innerHeight;
+        this.setState({
+            viewportWidth,
+            viewportHeight,
+        });
 
         //
-        // Register a listener for changes to the viewport:
+        // Register listener for changes to the viewport size:
         //
         window.addEventListener('resize', this.handleViewportResize);
     }
 
     render() {
-        const { viewportWidth, } = this.state;
+        const { viewportWidth, viewportHeight } = this.state;
 
         return (
             <div id="main-page-wrapper">
@@ -95,20 +110,24 @@ class MainPage extends React.Component {
                 <main id="main-page">
                          
                     <IntroSection 
-                        scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.introSection}
-                        viewportWidth={viewportWidth}/>
+                        viewportWidth={viewportWidth}
+                        viewportHeight={viewportHeight}
+                        desktopScrollPosition={SECTION_DESKTOP_SCROLL_POSITION.intro} />
                     <RouletteSection
-                        scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.rouletteSection}
-                        viewportWidth={viewportWidth}/>
+                        desktopScrollPosition={SECTION_DESKTOP_SCROLL_POSITION.roulette}
+                        viewportWidth={viewportWidth}
+                        viewportHeight={viewportHeight} />
                     <TrickOrTreatSection
+                        viewportHeight={viewportHeight}
                         viewportWidth={viewportWidth}
-                        scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.trickOrTreatSection}/>
+                        desktopScrollPosition={SECTION_DESKTOP_SCROLL_POSITION.trickOrTreat}/>
                     <MelodySection
+                        viewportHeight={viewportHeight}
                         viewportWidth={viewportWidth}
-                        scrollRangeForUpdates={SCROLL_RANGE_FOR_UPDATES.melodySection}/>
+                        desktopScrollPosition={SECTION_DESKTOP_SCROLL_POSITION.melody}/>
                     <OXOSection
                         viewportWidth={viewportWidth}/>
-                    <FooterSection
+                    <FooterSection 
                         viewportWidth={viewportWidth}/>
                 </main>
             </div>

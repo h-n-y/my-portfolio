@@ -28,9 +28,15 @@ function inRange(min, max, value) {
  * @returns `true` iff the section should update itself for the current
  * page scroll position
  */
-export function insideScrollRangeForUpdates(scrollPosition) {
-    const { min, max } = this.props.scrollRangeForUpdates;
-    return inRange(min, max, scrollPosition);
+export function insideScrollRangeForUpdates(currentScrollPosition) {
+
+    const { viewportHeight } = this.props;
+    const { sectionHeight } = this.state;
+
+    const sectionIsVisibleInViewport =
+        ( -sectionHeight < currentScrollPosition ) &&
+        ( currentScrollPosition < viewportHeight );
+    return sectionIsVisibleInViewport;
 }
 
 /**
@@ -39,4 +45,11 @@ export function insideScrollRangeForUpdates(scrollPosition) {
 export function shouldDisplayDesktopUI() {
 
     return ( this.props.viewportWidth >= MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI );
+}
+
+export function setSectionHeight() {
+    const sectionHTMLElement = this.sectionHTMLElement.current;
+    const sectionHeight = sectionHTMLElement.offsetHeight;
+
+    this.setState({ sectionHeight });
 }

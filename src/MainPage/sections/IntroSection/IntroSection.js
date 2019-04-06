@@ -12,6 +12,9 @@ const DEFAULT_ROULETTE_DESIGN_TRANSFORM = -80/*px*/;
 const DEFAULT_ROULETTE_CAPTION_TRANSFORM_Y = -60/*px*/;
 const DEFAULT_ROULETTE_CAPTION_TRANSFORM_X = 90/*px*/;
 
+// 'About me' paragraph is hidden once scroll position of this section
+// falls below this threshold.
+const ABOUT_ME_VISIBILITY_SCROLL_THRESHOLD = -700/*px*/;
 /**
  * The first section displayed at the top of the portfolio page.
  */
@@ -21,11 +24,14 @@ class IntroSection extends React.Component {
         super(props);
 
         this.state = {
+            sectionName: 'Intro',
+            sectionHeight: 0,
             rouletteDesignLoaded: false,
             rouletteDesignTransformY: 0,
             greetingTransformY: 0,
             greetingOpacity: 1,
             aboutMeTransformY: 0,
+            aboutMeIsVisible: true,
         };
 
         this.handleWindowScroll = this.handleWindowScroll.bind(this);
@@ -59,6 +65,15 @@ class IntroSection extends React.Component {
         // set greeting to fade to 0 opacity over a 300 pixel scroll
         const greetingOpacity = Math.max(0, (1 - ( -position / 300 )));
 
+        // Hide 'About Me' if necessary
+        if ( position < ABOUT_ME_VISIBILITY_SCROLL_THRESHOLD ) {
+            if ( this.state.aboutMeIsVisible ) {
+                this.setState({ aboutMeIsVisible: false });
+            }
+        } else if ( !this.state.aboutMeIsVisible ) {
+            this.setState({ aboutMeIsVisible: true });
+        }
+
         this.setState({ 
             rouletteDesignTransformY,
             greetingTransformY,
@@ -82,6 +97,8 @@ class IntroSection extends React.Component {
             this.updateParallaxForScrollPosition(top);
         }
 
+        console.log(`intro: ${top}`);
+
     }
 
     /**
@@ -92,6 +109,8 @@ class IntroSection extends React.Component {
     }
 
     componentDidMount() {
+
+        Section.setSectionHeight.call(this);
 
         //
         // Listen for scroll events on the window
@@ -106,6 +125,7 @@ class IntroSection extends React.Component {
             greetingTransformY,
             greetingOpacity,
             aboutMeTransformY,
+            aboutMeIsVisible,
         } = this.state;
 
         const rouletteDesignClassName = ( rouletteDesignLoaded ? 'visible' : '' );
@@ -147,6 +167,7 @@ class IntroSection extends React.Component {
 
             aboutMeStyles = {
                 transform: `translateY(${aboutMeTransformY}px)`,
+                opacity: ( aboutMeIsVisible ? 1 : 0 ),
             };
         }
 
@@ -189,11 +210,8 @@ class IntroSection extends React.Component {
 }
 
 IntroSection.propTypes = {
-    viewportWidth: PT.number.isRequired,
-    scrollRangeForUpdates: PT.shape({
-        min: PT.number,
-        max: PT.number,
-    }).isRequired,
+    viewportHeight: PT.number.isRequired,
+    //desktopScrollPosition: PT.number.isRequired,
 };
 
 export default IntroSection;

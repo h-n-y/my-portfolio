@@ -262,3 +262,24 @@
         animation-delay: 0.7s;
     }
 }
+
+/**
+ * LARGE DESKTOP LAYOUT
+ */
+@include for-large-desktop-up {
+
+    #jack-and-candy {
+        width: 20%;
+    }
+
+    #trick-or-treat-section .primary {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 50%;
+
+        p {
+            width: 55%;
+        }
+    }
+}

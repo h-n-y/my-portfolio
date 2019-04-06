@@ -144,6 +144,7 @@ class TrickOrTreatSection extends React.Component {
     }
 
     componentDidMount() {
+        Section.setSectionHeight.call(this);
 
         //
         // Listen for scroll events on the window
@@ -285,6 +286,8 @@ TrickOrTreatSection.propTypes = {
     // from other SectionTitles in its text-alignment behavior.
     //
     viewportWidth: PT.number.isRequired,
+
+    desktopScrollPosition: PT.number.isRequired,
 };
 
 export default TrickOrTreatSection;

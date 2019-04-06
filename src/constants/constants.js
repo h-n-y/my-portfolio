@@ -48,6 +48,19 @@ export const SECTION_TITLE_POSITION = {
 };
 
 /**
+ * The number of pixels below the top of the page the tops of
+ * each section is located.
+ * @constant
+ */
+export const SECTION_DESKTOP_SCROLL_POSITION = {
+    intro: 0,
+    roulette: -1150/*px*/,
+    trickOrTreat: -1860/*px*/,
+    melody: -2500/*px*/,
+    oxo: -3288/*px*/,
+};
+
+/**
  * CSS animation class names.
  * @constant
  */

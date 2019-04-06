@@ -122,6 +122,9 @@
 @include for-desktop-up {
 
     #melody-section-wrapper {
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 360px;
         padding-bottom: 0;
         position: relative;

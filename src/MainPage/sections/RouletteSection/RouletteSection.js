@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 import * as Section from '../shared';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
@@ -40,6 +41,7 @@ class RouletteSection extends React.Component {
 
         this.state = {
             sectionTextVisible: false,
+            rouletteCardsVisible: false, // set to true as soon as scrolling starts
             rouletteImageLoadedFlags: [ false, false, false, false ],
 
             rouletteCard1TransformY: 0,
@@ -85,6 +87,8 @@ class RouletteSection extends React.Component {
             this.updateParallaxForSectionScrollPosition(top);
             this.conditionallyDisplaySectionTextForScrollPosition(top);
         }
+
+        this.setState({ rouletteCardsVisible: true });
     }
 
     /**
@@ -125,6 +129,8 @@ class RouletteSection extends React.Component {
 
     componentDidMount() {
 
+        Section.setSectionHeight.call(this);
+
         //
         // Listen for scroll events on the window.
         //
@@ -143,6 +149,7 @@ class RouletteSection extends React.Component {
 
         const {
             sectionTextVisible,
+            rouletteCardsVisible,
             rouletteCard1TransformY, 
             rouletteCard2TransformY, 
             rouletteImage3TransformY,
@@ -150,6 +157,7 @@ class RouletteSection extends React.Component {
         } = this.state;
 
         let 
+            rouletteCardCSSClass,
             rouletteCard1Styles,
             rouletteCard2Styles,
             rouletteImage3Styles,
@@ -160,6 +168,11 @@ class RouletteSection extends React.Component {
         // Check if desktop-specific styles need to be added
         //
         if ( Section.shouldDisplayDesktopUI.call(this) ) {
+
+            rouletteCardCSSClass = toCSSClassName([
+                'roulette-card',
+                ( rouletteCardsVisible ? 'visible' : '' ), 
+            ]);
             
             rouletteCard1Styles = {
                 transform: `translateY(${rouletteCard1TransformY}px)`,
@@ -215,20 +228,20 @@ class RouletteSection extends React.Component {
 
                 <div className="roulette-cards">
                      
-                    <div className="roulette-card" style={rouletteCard1Styles}>
+                    <div className={rouletteCardCSSClass}style={rouletteCard1Styles}>
                         <img src={rouletteDesign1} alt="roulette example"
                             onLoad={() => this.handleImageLoad(1)} 
                             className={roulette1Visible ? 'visible' : ''} 
                         /> 
                     </div>
-                    <div className="roulette-card" style={rouletteCard2Styles}>
+                    <div className={rouletteCardCSSClass}style={rouletteCard2Styles}>
                         <img src={rouletteDesign2} alt="roulette example"
                             onLoad={() => this.handleImageLoad(2)}
                             className={roulette2Visible ? 'visible' : ''} 
                         />
                     </div>
 
-                    <div className="roulette-card">
+                    <div className={rouletteCardCSSClass}>
                         <img src={rouletteDesign3} alt="roulette example"
                             style={rouletteImage3Styles}
                             onLoad={() => this.handleImageLoad(3)}
@@ -240,5 +253,11 @@ class RouletteSection extends React.Component {
         );
     }
 }
+
+RouletteSection.propTypes = {
+    viewportWidth: PT.number.isRequired,
+    viewportHeight: PT.number.isRequired,
+    desktopScrollPosition: PT.number.isRequired,
+};
 
 export default RouletteSection;

@@ -106,7 +106,7 @@ class FooterSection extends React.Component {
                    help me grow into a professional developer. 
                 </p>
                 <p className={paragraphCSSClassName}>
-                    If you like what you see or would like to know more, I&apos;m always
+                    If you like what you see or want to know more, I&apos;m always
                    available at 
                 </p>
 

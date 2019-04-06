@@ -91,8 +91,14 @@
 
 
     #greeting span,
+    #about-me,
     #about-me span {
         opacity: 0;
+        will-change: transform;
+    }
+
+    #about-me {
+        transition: opacity 0.3s ease-out;
     }
 
     /**
@@ -112,6 +118,9 @@
     }
 
     #intro-section {
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
         padding-left: $page-side-padding--desktop;
         padding-right: $page-side-padding--desktop;
         padding-bottom: 540px;
@@ -123,5 +132,14 @@
 
     #roulette-design-wrapper {
         transform: translateY(0);
+    }
+}
+
+@include for-large-desktop-up {
+
+    #intro-section {
+        padding: 0;
+        height: 100vh;
+        align-items: center;
     }
 }

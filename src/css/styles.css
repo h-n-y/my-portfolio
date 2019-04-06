@@ -302,8 +302,12 @@ header {
   #greeting {
     overflow: hidden; }
   #greeting span,
+  #about-me,
   #about-me span {
-    opacity: 0; }
+    opacity: 0;
+    will-change: transform; }
+  #about-me {
+    transition: opacity 0.3s ease-out; }
   /**
      * Animation delays from greeting and 'about me' text
      */
@@ -321,6 +325,9 @@ header {
   #about-me span:nth-child(4) {
     animation-delay: 0.65s; }
   #intro-section {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 64px;
     padding-right: 64px;
     padding-bottom: 540px; }
@@ -328,6 +335,12 @@ header {
       line-height: 1.8; }
   #roulette-design-wrapper {
     transform: translateY(0); } }
+
+@media (min-width: 1800px) {
+  #intro-section {
+    padding: 0;
+    height: 100vh;
+    align-items: center; } }
 
 #roulette-section {
   position: relative;
@@ -454,6 +467,9 @@ header {
  */
 @media (min-width: 1200px) {
   #roulette-section {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 256px;
     /**
          * set column widths
@@ -468,7 +484,11 @@ header {
     #roulette-section .roulette-cards {
       width: 60%; }
     #roulette-section .roulette-card {
-      will-change: transform; }
+      will-change: transform;
+      transition: opacity 0.3s ease-out;
+      opacity: 0; }
+      #roulette-section .roulette-card.visible {
+        opacity: 1; }
     #roulette-section .roulette-card:nth-child(1) {
       top: 106px;
       top: -25px;
@@ -680,6 +700,20 @@ header {
   .tot-skull:last-of-type {
     animation-delay: 0.7s; } }
 
+/**
+ * LARGE DESKTOP LAYOUT
+ */
+@media (min-width: 1800px) {
+  #jack-and-candy {
+    width: 20%; }
+  #trick-or-treat-section .primary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 50%; }
+    #trick-or-treat-section .primary p {
+      width: 55%; } }
+
 #melody-section-wrapper {
   /**
      * positions the melody section over the light grey background
@@ -770,6 +804,9 @@ header {
 
 @media (min-width: 1200px) {
   #melody-section-wrapper {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 360px;
     padding-bottom: 0;
     position: relative;
@@ -1000,6 +1037,7 @@ header {
     height: 100vh;
     min-height: 500px; }
   #footer-section p {
+    max-width: 610px;
     width: 50%;
     font-size: 22px;
     opacity: 0;

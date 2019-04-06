@@ -185,6 +185,9 @@
 
     #roulette-section {
 
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
         padding-bottom: 256px;
 
         .app-description {
@@ -205,6 +208,12 @@
 
         .roulette-card {
             will-change: transform;
+            transition: opacity 0.3s ease-out;
+            opacity: 0;
+
+            &.visible {
+                opacity: 1;
+            }
         }
 
         /**
