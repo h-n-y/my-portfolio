@@ -8,6 +8,12 @@ Roulette is an art tool I made with **React** for creating [Spirograph](https://
 
 Here are some examples of what Roulette can do:
 
+![roulette design](./src/assets/img/roulette-design.png)
+
+![roulette design](./src/assets/img/roulette-example-1.png)
+
+![roulette design](./src/assets/img/roulette-example-2.png)
+
 ### Trick-or-Treat
 
 While taking [a course with Udacity](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) to solidfy my front-end skillset, I created this JavaScript game. Udacity provided me a simple game engine that continuously rerenders the board and several image assets. The game-specific design, code, and assets, however, are my own creation.
