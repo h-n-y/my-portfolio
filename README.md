@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my portfolio site! Here I show off a handful of the personal front-end and iOS projects I've been working on.
 
-## Available Scripts
+## Front-end
 
-In the project directory, you can run:
+### Roulette
 
-### `npm start`
+Roulette is an art tool I made with **React** for creating [Spirograph](https://en.wikipedia.org/wiki/Spirograph)-like designs. Similar to a Spirograph, Roulette works by rotating a wheel, fixed with a pen, around the surface of another wheel. In so doing, the pen traces out shapes with stroke or fill patterns.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Here are some examples of what Roulette can do:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Trick-or-Treat
 
-### `npm test`
+While taking [a course with Udacity](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) to solidfy my front-end skillset, I created this JavaScript game. Udacity provided me a simple game engine that continuously rerenders the board and several image assets. The game-specific design, code, and assets, however, are my own creation.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Melody
 
-### `npm run build`
+Melody is a straightforward responsive search app created with **Angular 6**. All search results are requested from a 3rd-party API provided my [musixmatch](https://developer.musixmatch.com).
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## iOS
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### OXO
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+OXO is a native tic-tac-toe app for iPhone. Most notable to me about this app is the in-memory game tree I created using a modified [minimax algorithm](https://en.wikipedia.org/wiki/Minimax). The game tree provides the "computer" opponent full knowledge of the state of the game. By adjusting the probability of the computer's moving to a suboptimal branch of the tree, I could adjust its difficulty from "easy" to "impossible-to-beat".
