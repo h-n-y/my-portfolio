@@ -17,6 +17,10 @@ import {
  */
 class SectionTitle extends React.Component {
 
+    /**
+     * @returns The appropriate CSS class name for the component, which depends
+     * on the background and position of the component.
+     */
     cssClassNameForComponent() {
         const { displayedOverDarkBackground, position } = this.props;
 

@@ -20,7 +20,7 @@ While taking [a course with Udacity](https://www.udacity.com/course/front-end-we
 
 ### Melody
 
-Melody is a straightforward responsive search app created with **Angular 6**. All search results are requested from a 3rd-party API provided my [musixmatch](https://developer.musixmatch.com).
+Melody is a straightforward responsive music search app created with **Angular 6**. All search results are requested from a 3rd-party API provided my [musixmatch](https://developer.musixmatch.com).
 
 ## iOS
 
