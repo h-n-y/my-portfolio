@@ -52,7 +52,7 @@ class AppLink extends React.Component {
         const { icon, cssClassName } = this.propertiesForAppLinkType(linkType);
 
         return (
-                <a className={cssClassName} href={href} target="_blank">
+                <a className={cssClassName} href={href} target="_blank" rel="noopener noreferrer">
 
                     <span className="background"></span>
                     <span className="title"> {title.toUpperCase()} </span> 

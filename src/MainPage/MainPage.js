@@ -13,10 +13,6 @@ import {
     SECTION_DESKTOP_SCROLL_POSITION,
 } from '../constants/constants';
 
-import {
-    toCSSClassName,
-} from '../utility/utility';
-
 /**
  * In order to reduce the number of function calls made while scrolling,
  * each section of the page only updates its scroll-based state properties

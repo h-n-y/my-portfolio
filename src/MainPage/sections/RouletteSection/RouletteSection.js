@@ -164,7 +164,6 @@ class RouletteSection extends React.Component {
             bgDesignVisible,
             roulette1Visible, 
             roulette2Visible, 
-            roulette3Visible,
 
         ] = this.state.rouletteImageLoadedFlags;
 

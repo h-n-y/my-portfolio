@@ -257,11 +257,11 @@ class TrickOrTreatSection extends React.Component {
                         <p className="udacity-credit"
                             style={udacityCreditStyles}>
                             Built atop a game engine provided by 
-                            <a href="javascript:;">
+                            <a href="https://www.udacity.com" target="_blank" rel="noopener noreferrer">
                                 Udacity 
                             </a>,
                            from whom I took and completed a 
-                            <a href="javascript:;"
+                            <a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001" target="_blank" rel="noopener noreferrer"
                                 className="udacity-fed-link">
                                 Front-end Developer 
                             </a> 

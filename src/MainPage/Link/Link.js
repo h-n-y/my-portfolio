@@ -53,6 +53,7 @@ function Link(props) {
 
     return (
         <a  target="_blank"
+            rel="noopener noreferrer"
             className={linkCSSClassName}
             href={linkHref}>
             <span className="link-label"> {linkTitle} </span> 
