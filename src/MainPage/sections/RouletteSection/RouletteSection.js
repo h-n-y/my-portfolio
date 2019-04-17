@@ -25,6 +25,11 @@ const APP_KEYWORDS = [
     'art'
 ];
 
+/**
+ * Link to Roulette app
+ */
+const ROULETTE_HREF = 'https://h-n-y.github.io/roulette';
+
 /*
  * When the distance between the top of the viewport and the top of this section
  * falls under this threshold, the section text is animated into view.
@@ -238,6 +243,7 @@ class RouletteSection extends React.Component {
                     <div className="app-link-wrapper" style={appLinkWrapperStyles}>
                         <AppLink
                             title="create"
+                            href={ROULETTE_HREF}
                             linkType={APP_LINK_TYPE.clear} />
                     </div>
                 </div>

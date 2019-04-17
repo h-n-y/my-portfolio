@@ -47,12 +47,12 @@ class AppLink extends React.Component {
     }
 
     render() {
-        const { title, linkType } = this.props;
+        const { title, linkType, href } = this.props;
 
         const { icon, cssClassName } = this.propertiesForAppLinkType(linkType);
 
         return (
-                <a className={cssClassName}>
+                <a className={cssClassName} href={href} target="_blank">
 
                     <span className="background"></span>
                     <span className="title"> {title.toUpperCase()} </span> 
@@ -65,6 +65,7 @@ class AppLink extends React.Component {
 AppLink.propTypes = {
     title: PT.string.isRequired,
     linkType: PT.string.isRequired,
+    href: PT.string.isRequired,
 };
 
 export default AppLink;

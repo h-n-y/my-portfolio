@@ -26,6 +26,11 @@ const APP_KEYWORDS = [
     'music'
 ];
 
+/**
+ * Link to Melody app.
+ */
+const MELODY_APP_HREF = 'https://h-n-y.github.io/melody';
+
 /*
  * When the distance between the top of the viewport and the top of this section
  * falls under this threshold, the section text is animated into view.
@@ -195,6 +200,7 @@ class MelodySection extends React.Component {
                              
                         <div className="app-link-wrapper" style={appLinkStyles}>
                             <AppLink
+                                href={MELODY_APP_HREF}
                                 title="Search"
                                 linkType={APP_LINK_TYPE.simple}
                             />

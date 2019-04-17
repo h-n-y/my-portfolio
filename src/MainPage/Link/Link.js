@@ -25,7 +25,8 @@ function Link(props) {
 
     let
         linkTitle,
-        linkIcon;
+        linkIcon,
+        linkHref;
     //
     // Get the appropriate title and icon for link type:
     //
@@ -38,6 +39,7 @@ function Link(props) {
         case LINK_TYPE.gitHub:
             linkTitle = 'GitHub';
             linkIcon = ( lightTheme ? externalLinkLightIcon : externalLinkIcon );
+            linkHref = 'https://github.com/h-n-y';
             break;
 
         default:
@@ -50,7 +52,9 @@ function Link(props) {
     ]);
 
     return (
-        <a className={linkCSSClassName}>
+        <a  target="_blank"
+            className={linkCSSClassName}
+            href={linkHref}>
             <span className="link-label"> {linkTitle} </span> 
             <img src={linkIcon} alt="link icon" />
         </a>

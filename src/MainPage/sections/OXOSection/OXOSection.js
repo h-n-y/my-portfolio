@@ -22,6 +22,11 @@ import {
     toCSSClassName,
 } from '../../../utility/utility';
 
+/*
+ * Link to OXO release trailer.
+ */
+const OXO_TRAILER_HREF = 'https://www.youtube.com/watch?v=bjkJCgwsfvU';
+
 const APP_KEYWORDS = [
     'iOS',
     'Objective-C',
@@ -211,6 +216,7 @@ class OXOSection extends React.Component {
                 <div id="oxo-trailer-link-wrapper">
                     <AppLink
                         title="View Release Trailer"
+			href={OXO_TRAILER_HREF}
                         linkType={APP_LINK_TYPE.clear}
                     />
                 </div>

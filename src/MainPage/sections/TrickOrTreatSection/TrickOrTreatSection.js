@@ -27,6 +27,11 @@ const APP_KEYWORDS = [
     'Udacity'
 ];
 
+/**
+ * link to Trick-or-Treat app.
+ */
+const TRICK_OR_TREAT_HREF = 'https://h-n-y.github.io/trick-or-treat';
+
 /*
  * When the distance between the top of the viewport and the top of this section
  * falls under this threshold, the section text is animated into view.
@@ -227,6 +232,7 @@ class TrickOrTreatSection extends React.Component {
                         <div className="app-link-wrapper">
                             <AppLink
                                 title="Help"
+                                href={TRICK_OR_TREAT_HREF}
                                 linkType={APP_LINK_TYPE.standard} />
                         </div>
                         <img src={candy} alt="candy corn" className="tot-candy"/>

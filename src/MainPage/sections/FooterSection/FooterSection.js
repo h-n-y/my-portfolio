@@ -111,7 +111,7 @@ class FooterSection extends React.Component {
                 </p>
 
                 <div id="email-link-wrapper" className={emailLinkCSSClassName}>
-                    <a className="email-link" href="javascript:;">
+                    <a className="email-link" href="mailto:hnyelek@gmail.com">
                         hnyelek <span>@</span> gmail <span>.</span> com
                     </a>
                 </div>
