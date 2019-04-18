@@ -16,6 +16,8 @@ Here are some examples of what Roulette can do:
 
 ### Trick-or-Treat
 
+![Jack](./src/assets/img/jack.png)
+
 While taking [a course with Udacity](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) to solidfy my front-end skillset, I created [this JavaScript game](https://h-n-y.github.io/trick-or-treat). Udacity provided me a simple game engine that continuously rerenders the board and several image assets. The game-specific design, code, and assets, however, are my own creation.
 
 ### Melody
