@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/my-portfolio/static/media/treble.872e6ff0.svg"
   },
   {
-    "revision": "1796ec39d62ee7a4131a",
-    "url": "/my-portfolio/static/css/main.d2740c57.chunk.css"
+    "revision": "9ab39294d64040ab7b8c",
+    "url": "/my-portfolio/static/css/main.a51f5b15.chunk.css"
   },
   {
     "revision": "f2d15970f74596a69ca7",
@@ -36,8 +36,8 @@ self.__precacheManifest = [
     "url": "/my-portfolio/static/media/roulette-example-3.3faddf72.png"
   },
   {
-    "revision": "1796ec39d62ee7a4131a",
-    "url": "/my-portfolio/static/js/main.d89c65c3.chunk.js"
+    "revision": "9ab39294d64040ab7b8c",
+    "url": "/my-portfolio/static/js/main.642313bd.chunk.js"
   },
   {
     "revision": "def0f6de483ae418fdd1860b3ed945b7",
@@ -56,8 +56,8 @@ self.__precacheManifest = [
     "url": "/my-portfolio/static/media/oxo-desktop.db1ebfeb.png"
   },
   {
-    "revision": "cbcbc3650edabdd3fe6aff7b7e21e186",
-    "url": "/my-portfolio/static/media/Resume.cbcbc365.pdf"
+    "revision": "79c1f7179d4e187e892b28632efd0bd9",
+    "url": "/my-portfolio/static/media/Resume.79c1f717.pdf"
   },
   {
     "revision": "0e6a152e776daf1ddfd4e46fb42f78a8",
@@ -68,7 +68,7 @@ self.__precacheManifest = [
     "url": "/my-portfolio/static/media/Cantarell-Regular.9565b058.ttf"
   },
   {
-    "revision": "b279d9f45dd34d0f7202be1c50c7b5f1",
+    "revision": "85ed1ce4ec8b8527e1676a71dcc4cf90",
     "url": "/my-portfolio/index.html"
   }
 ];
