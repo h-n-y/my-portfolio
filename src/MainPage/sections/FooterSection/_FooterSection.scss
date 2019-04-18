@@ -30,6 +30,7 @@
 }
 
 #my-credentials-links {
+    margin-top: 24px;
     display: flex;
 
     .link-wrapper:first-of-type {
@@ -75,6 +76,10 @@
             text-align: center;
             width: 60%;
         }
+    }
+
+    #my-credentials-links {
+        justify-content: center;
     }
 }
 

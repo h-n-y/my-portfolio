@@ -77,7 +77,7 @@ class FooterSection extends React.Component {
         let
             paragraphCSSClassName,
         emailLinkCSSClassName,
-        credentialsLinkCSSClassName;
+        credentialsLinkCSSClassName = 'link-wrapper';
 
 
         //
