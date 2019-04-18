@@ -105,7 +105,7 @@
      * Animation delays from greeting and 'about me' text
      */
     #greeting span {
-        animation-delay: 0.5s;
+        animation-delay: 0.8s;
     }
 
     /**
@@ -113,7 +113,7 @@
      */
     @for $i from 1 through 4 {
         #about-me span:nth-child(#{$i}) {
-            animation-delay: ( 0.5s + ( $i - 1 ) * 0.05 );
+            animation-delay: ( 0.7s + ( $i - 1 ) * 0.05 );
         }
     }
 
