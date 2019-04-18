@@ -993,6 +993,7 @@ header {
       color: rgba(255, 255, 255, 0.5); }
 
 #my-credentials-links {
+  margin-top: 24px;
   display: flex; }
   #my-credentials-links .link-wrapper:first-of-type {
     margin-right: 32px; }
@@ -1018,7 +1019,9 @@ header {
     margin-right: auto; }
   #footer-section p {
     text-align: center;
-    width: 60%; } }
+    width: 60%; }
+  #my-credentials-links {
+    justify-content: center; } }
 
 /**
  * DESKTOP LAYOUT
@@ -1189,12 +1192,18 @@ header {
 .link-component {
   display: flex;
   align-items: center;
+  color: #222326;
   /**
      * "Resume" label
      */
   /**
      * download icon
      */ }
+  .link-component:hover {
+    text-decoration: underline;
+    text-decoration-color: #222326; }
+  .link-component.theme--light:hover {
+    text-decoration-color: white; }
   .link-component .link-label {
     font-size: 18px;
     margin-right: 6px; }
