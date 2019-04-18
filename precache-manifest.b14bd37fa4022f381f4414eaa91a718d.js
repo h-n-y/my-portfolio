@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/my-portfolio/static/media/treble.872e6ff0.svg"
   },
   {
-    "revision": "fa2eabbf41daa431d885",
-    "url": "/my-portfolio/static/css/main.506dc266.chunk.css"
+    "revision": "1796ec39d62ee7a4131a",
+    "url": "/my-portfolio/static/css/main.d2740c57.chunk.css"
   },
   {
     "revision": "f2d15970f74596a69ca7",
@@ -36,8 +36,8 @@ self.__precacheManifest = [
     "url": "/my-portfolio/static/media/roulette-example-3.3faddf72.png"
   },
   {
-    "revision": "fa2eabbf41daa431d885",
-    "url": "/my-portfolio/static/js/main.895e6a1e.chunk.js"
+    "revision": "1796ec39d62ee7a4131a",
+    "url": "/my-portfolio/static/js/main.d89c65c3.chunk.js"
   },
   {
     "revision": "def0f6de483ae418fdd1860b3ed945b7",
@@ -60,15 +60,15 @@ self.__precacheManifest = [
     "url": "/my-portfolio/static/media/Resume.cbcbc365.pdf"
   },
   {
+    "revision": "0e6a152e776daf1ddfd4e46fb42f78a8",
+    "url": "/my-portfolio/static/media/ebgaramond-semibold-webfont.0e6a152e.woff"
+  },
+  {
     "revision": "9565b05825b42c217f9152c2fbadb653",
     "url": "/my-portfolio/static/media/Cantarell-Regular.9565b058.ttf"
   },
   {
-    "revision": "340f1f0557525e193416dbfbc1f3a704",
-    "url": "/my-portfolio/static/media/EBGaramond-SemiBold.340f1f05.ttf"
-  },
-  {
-    "revision": "9c351431da4f06d0c105241d86f80cb1",
+    "revision": "b279d9f45dd34d0f7202be1c50c7b5f1",
     "url": "/my-portfolio/index.html"
   }
 ];
