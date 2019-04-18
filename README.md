@@ -1,4 +1,4 @@
-Welcome to my portfolio site! Here I show off a handful of the personal front-end and iOS projects I've been working on.
+Welcome to [my portfolio site](https://h-n-y.github.io/my-portfolio)! Here I show off a handful of the personal front-end and iOS projects I've been working on.
 
 ## Front-end
 
