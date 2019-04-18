@@ -536,6 +536,8 @@ header {
     color: #88898c;
     line-height: 1.6;
     margin-top: 16px; }
+  #trick-or-treat-section .udacity-credit a:hover {
+    text-decoration: underline; }
   #trick-or-treat-section a {
     color: white; }
   #trick-or-treat-section a {
