@@ -121,6 +121,10 @@ class OXOSection extends React.Component {
         this.conditionallyDisplaySectionTextForScrollPosition(top);
     }
 
+    //
+    // LIFECYCLE HOOKS
+    //
+
     componentDidMount() {
 
         //
@@ -128,6 +132,10 @@ class OXOSection extends React.Component {
         //
         window.addEventListener('scroll', this.handleWindowScroll);
     }
+
+    //
+    // RENDER
+    //
 
     render() {
 

@@ -58,6 +58,10 @@ class SectionTitle extends React.Component {
         return cssClassName;
     }
 
+    //
+    // RENDER
+    //
+
     render() {
         const { title, keywords, isVisible } = this.props;
 

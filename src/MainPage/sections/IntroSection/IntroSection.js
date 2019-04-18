@@ -15,6 +15,8 @@ const DEFAULT_ROULETTE_CAPTION_TRANSFORM_X = 90/*px*/;
 // 'About me' paragraph is hidden once scroll position of this section
 // falls below this threshold.
 const ABOUT_ME_VISIBILITY_SCROLL_THRESHOLD = -700/*px*/;
+
+
 /**
  * The first section displayed at the top of the portfolio page.
  */
@@ -96,9 +98,6 @@ class IntroSection extends React.Component {
 
             this.updateParallaxForScrollPosition(top);
         }
-
-        console.log(`intro: ${top}`);
-
     }
 
     /**
@@ -107,6 +106,10 @@ class IntroSection extends React.Component {
     handleRouletteImageLoad() {
         this.setState({ rouletteDesignLoaded: true });
     }
+
+    //
+    // LIFECYCLE HOOKS
+    //
 
     componentDidMount() {
 
@@ -117,6 +120,10 @@ class IntroSection extends React.Component {
         //
         window.addEventListener('scroll', this.handleWindowScroll);
     }
+
+    //
+    // RENDER
+    //
 
     render() {
 

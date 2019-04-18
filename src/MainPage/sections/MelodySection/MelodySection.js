@@ -57,6 +57,10 @@ class MelodySection extends React.Component {
         this.sectionHTMLElement = React.createRef();
     }
 
+    /**
+     * @param {number} width - The width of the viewport, which determines the text alignment.
+     * @returns {SECTION_TITLE_POSITION} The text alignment for the section title.
+     */
     sectionTitlePositionForViewportWidth(width) {
         if ( width < 600 ) {
             return SECTION_TITLE_POSITION.right;
@@ -65,9 +69,6 @@ class MelodySection extends React.Component {
         return SECTION_TITLE_POSITION.center;
     }
 
-    /**
-     * NOTE: this method is the same across several components?
-     */
     /**
      * Displays the section text, if necessary.
      * @param position {number} - The distance of the top of the section from the
@@ -116,11 +117,19 @@ class MelodySection extends React.Component {
         }
     }
 
+    /**
+     * Updates all elements undergoing parallax to reflect the current scroll position
+     * of the section HTML element.
+     */
     setInitialParallaxPositions() {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
         this.updateParallaxForSectionScrollPosition(top);
     }
+
+    //
+    // LIFECYCLE HOOKS
+    //
 
     componentDidMount() {
         Section.setSectionHeight.call(this);
@@ -132,6 +141,10 @@ class MelodySection extends React.Component {
         //
         window.addEventListener('scroll', this.handleWindowScroll);
     }
+
+    //
+    // RENDER
+    //
 
     render() {
 

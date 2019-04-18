@@ -13,33 +13,6 @@ import {
     SECTION_DESKTOP_SCROLL_POSITION,
 } from '../constants/constants';
 
-/**
- * In order to reduce the number of function calls made while scrolling,
- * each section of the page only updates its scroll-based state properties
- * in a restricted range. The range for each section represents the distance
- * of the top of the section from the top of the viewport.
- * @constant
- */
-/*
-const SCROLL_RANGE_FOR_UPDATES = {
-    introSection: {
-        min: -1100,
-        max: 0
-    },
-    rouletteSection: {
-        min: -450,
-        max: 1200
-    },
-    trickOrTreatSection: {
-        min: -460,
-        max: 800
-    },
-    melodySection: {
-        min: -150,
-        max: 1000
-    },
-};
-*/
 
 /**
  * The main page of the portfolio.
@@ -73,6 +46,10 @@ class MainPage extends React.Component {
         });
     }
 
+    //
+    // LIFECYCLE HOOKS
+    //
+
     componentDidMount() {
 
         //
@@ -90,6 +67,10 @@ class MainPage extends React.Component {
         //
         window.addEventListener('resize', this.handleViewportResize);
     }
+
+    //
+    // RENDER
+    //
 
     render() {
         const { viewportWidth, viewportHeight } = this.state;

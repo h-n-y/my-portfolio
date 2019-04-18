@@ -75,9 +75,6 @@ class TrickOrTreatSection extends React.Component {
     }
 
     /**
-     * NOTE: a copy/paste from RouletteSection
-     */
-    /**
      * @param position {number} - The distance from the top of the section to
      * the top of the viewport.
      * Displays the section text, if necessary.
@@ -148,11 +145,19 @@ class TrickOrTreatSection extends React.Component {
         }
     }
 
+    /**
+     * Sets the initial positions of elements undergoing parallax to reflect the
+     * current position of the section HTML element.
+     */
     setInitialParallaxPositions() {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
         this.updateParallaxForSectionScrollPosition(top);
     }
+
+    //
+    // LIFECYCLE HOOKS
+    //
 
     componentDidMount() {
         Section.setSectionHeight.call(this);
@@ -164,6 +169,10 @@ class TrickOrTreatSection extends React.Component {
         //
         window.addEventListener('scroll', this.handleWindowScroll);
     }
+
+    //
+    // RENDER
+    //
 
     render() {
 
@@ -274,6 +283,7 @@ class TrickOrTreatSection extends React.Component {
                         <div className="app-link-wrapper mobile-only">
                             <AppLink
                                 title="Help"
+                                href={TRICK_OR_TREAT_HREF}
                                 linkType={APP_LINK_TYPE.standard} />
                         </div>
                     </div>

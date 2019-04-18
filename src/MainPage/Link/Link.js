@@ -25,7 +25,6 @@ const DOWNLOADED_RESUME_NAME = 'HansYelekResume.pdf';
  */
 function Link(props) {
 
-    //const icon = props.lightTheme ? downloadLightIcon : downloadIcon;
     const { lightTheme, linkType } = props;
 
     let

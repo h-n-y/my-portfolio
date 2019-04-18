@@ -59,6 +59,10 @@ class FooterSection extends React.Component {
         this.conditionallyDisplaySectionTextForScrollPosition(top);
     }
 
+    //
+    // LIFECYCLE HOOKS
+    //
+
     componentDidMount() {
 
         //
@@ -66,6 +70,10 @@ class FooterSection extends React.Component {
         //
         window.addEventListener('scroll', this.handleWindowScroll);
     }
+
+    //
+    // RENDER
+    //
 
     render() {
 
@@ -76,8 +84,8 @@ class FooterSection extends React.Component {
 
         let
             paragraphCSSClassName,
-        emailLinkCSSClassName,
-        credentialsLinkCSSClassName = 'link-wrapper';
+            emailLinkCSSClassName,
+            credentialsLinkCSSClassName = 'link-wrapper';
 
 
         //

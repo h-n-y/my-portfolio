@@ -35,6 +35,10 @@ export function shouldDisplayDesktopUI() {
     return ( this.props.viewportWidth >= MIN_VIEWPORT_WIDTH_FOR_DESKTOP_UI );
 }
 
+/**
+ * Adds the height of the section HTML element wrapper to the component state.
+ * This section height is required when determining whether or not to apply parallax effects.
+ */
 export function setSectionHeight() {
     const sectionHTMLElement = this.sectionHTMLElement.current;
     const sectionHeight = sectionHTMLElement.offsetHeight;

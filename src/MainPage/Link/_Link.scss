@@ -1,16 +1,15 @@
-.link-component {
+a.link-component {
     display: flex;
     align-items: center;
 
     color: $black;
 
     &:hover {
-        text-decoration: underline;
-        text-decoration-color: $black;
+        text-decoration: underline $black;
     }
 
     &.theme--light:hover {
-        text-decoration-color: white;
+        text-decoration: underline white;
     }
 
 

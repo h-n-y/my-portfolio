@@ -3,6 +3,8 @@
 - `handleWindowScroll` function is the same across many components --> extract
   to utility folder?
 - add resume and github links
+- should create a general `conditionallyDisplaySectionTextForScrollPosition`
+  function in shared.js for section components?
 
 ** OXO Section **
 - set the screenshot image src according to the viewport width?

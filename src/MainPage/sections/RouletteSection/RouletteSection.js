@@ -70,7 +70,6 @@ class RouletteSection extends React.Component {
      */
     handleImageLoad(rouletteImageIndex) {
 
-        console.log(`roulette ${rouletteImageIndex} loaded`);
         const flags = this.state.rouletteImageLoadedFlags;
         const flagsUpdated = flags.slice(0, flags.length);
         flagsUpdated[rouletteImageIndex] = true;
@@ -92,17 +91,6 @@ class RouletteSection extends React.Component {
             this.updateParallaxForSectionScrollPosition(top);
             this.conditionallyDisplaySectionTextForScrollPosition(top);
         }
-
-        /**
-         * Show the roulette cards as soon as the section reaches the top
-         * of the viewport
-         */
-        /*
-        console.log(`top: ${top}px\tcards: ${this.state.rouletteCardsVisible}`);
-        if ( top < 0 && !this.state.rouletteCardsVisible ) {
-            this.setState({ rouletteCardsVisible: true });
-        }
-        */
     }
 
     /**
@@ -114,16 +102,12 @@ class RouletteSection extends React.Component {
 
         const rouletteCard1TransformY = 0.4 * position - 0;
         const rouletteCard2TransformY = 0.6 * position - 100;
-
-        //const rouletteImage3TransformY = -1 * ( rouletteCard1TransformY / 4 );
         const rouletteImage3TransformY = -0.05 * position;
-
         const appLinkTransformY = -1 * ( 0.1 * position - 50 );
 
         this.setState({
             rouletteCard1TransformY,
             rouletteCard2TransformY,
-            //rouletteImage1TransformY,
             rouletteImage3TransformY,
             appLinkTransformY,
         });
@@ -141,11 +125,19 @@ class RouletteSection extends React.Component {
         }
     }
 
+    /**
+     * Sets the initial positions of the roulette cards undergoing parallax to reflect
+     * the current scroll position of the section HTML element.
+     */
     setInitialRouletteCardPositions() {
         const sectionHTMLElement = this.sectionHTMLElement.current;
         const { top } = sectionHTMLElement.getBoundingClientRect();
         this.updateParallaxForSectionScrollPosition(top);
     }
+
+    //
+    // LIFECYCLE HOOKS
+    //
 
     componentDidMount() {
 
@@ -157,6 +149,10 @@ class RouletteSection extends React.Component {
         //
         window.addEventListener('scroll', this.handleWindowScroll);
     }
+
+    //
+    // RENDER
+    //
 
     render() {
 
